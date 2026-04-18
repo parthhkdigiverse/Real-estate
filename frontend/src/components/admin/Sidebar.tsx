@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { LayoutDashboard, Building2, MessageSquare, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,12 @@ const menuItems = [
 
 export function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("admin_token");
+    navigate({ to: "/login" });
+  };
 
   return (
     <div className="flex h-screen w-64 flex-col border-r border-ink/5 bg-[#141416] p-4 text-white">
@@ -42,7 +48,10 @@ export function Sidebar() {
       </nav>
 
       <div className="mt-auto border-t border-white/5 pt-6 px-2">
-        <button className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/30 transition-all hover:bg-rose/10 hover:text-rose">
+        <button 
+          onClick={handleLogout}
+          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/30 transition-all hover:bg-rose/10 hover:text-rose cursor-pointer"
+        >
           <LogOut className="h-4 w-4" />
           Sign Out
         </button>

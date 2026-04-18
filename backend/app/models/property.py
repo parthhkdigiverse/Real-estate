@@ -16,6 +16,11 @@ class PropertyModel(BaseModel):
     showApartmentNote: str
     hours: str
     apartments: List[Apartment]
+    # Fields for featured list (Availability section)
+    tag: Optional[str] = "For Sale"
+    date: Optional[str] = None
+    featured_image: Optional[str] = None
+    is_featured: bool = False
 
 class PropertyResponse(PropertyModel):
     id: Optional[str] = Field(None, alias="_id")

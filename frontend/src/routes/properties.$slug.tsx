@@ -1,13 +1,16 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Header } from "@/components/sandars/Header";
 import { Footer } from "@/components/sandars/Footer";
-import { PROPERTIES } from "@/data/properties";
+import { fetchPropertyBySlug } from "@/lib/api";
 
 export const Route = createFileRoute("/properties/$slug")({
-  loader: ({ params }) => {
-    const property = PROPERTIES[params.slug];
-    if (!property) throw notFound();
-    return { property };
+  loader: async ({ params }) => {
+    try {
+      const property = await fetchPropertyBySlug(params.slug);
+      return { property };
+    } catch (error) {
+      throw notFound();
+    }
   },
   head: ({ loaderData }) => ({
     meta: loaderData

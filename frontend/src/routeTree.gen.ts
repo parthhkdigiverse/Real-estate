@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SpecificationRouteImport } from './routes/specification'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as LifestyleRouteImport } from './routes/lifestyle'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -23,6 +24,11 @@ import { Route as AdminInquiriesRouteImport } from './routes/admin/inquiries'
 const SpecificationRoute = SpecificationRouteImport.update({
   id: '/specification',
   path: '/specification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LifestyleRoute = LifestyleRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/lifestyle': typeof LifestyleRoute
+  '/login': typeof LoginRoute
   '/specification': typeof SpecificationRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/properties': typeof AdminPropertiesRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/lifestyle': typeof LifestyleRoute
+  '/login': typeof LoginRoute
   '/specification': typeof SpecificationRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/properties': typeof AdminPropertiesRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/lifestyle': typeof LifestyleRoute
+  '/login': typeof LoginRoute
   '/specification': typeof SpecificationRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/properties': typeof AdminPropertiesRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faqs'
     | '/lifestyle'
+    | '/login'
     | '/specification'
     | '/admin/inquiries'
     | '/admin/properties'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faqs'
     | '/lifestyle'
+    | '/login'
     | '/specification'
     | '/admin/inquiries'
     | '/admin/properties'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faqs'
     | '/lifestyle'
+    | '/login'
     | '/specification'
     | '/admin/inquiries'
     | '/admin/properties'
@@ -151,6 +163,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
   LifestyleRoute: typeof LifestyleRoute
+  LoginRoute: typeof LoginRoute
   SpecificationRoute: typeof SpecificationRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
 }
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/specification'
       fullPath: '/specification'
       preLoaderRoute: typeof SpecificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lifestyle': {
@@ -250,6 +270,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
   LifestyleRoute: LifestyleRoute,
+  LoginRoute: LoginRoute,
   SpecificationRoute: SpecificationRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
 }

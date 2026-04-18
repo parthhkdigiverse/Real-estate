@@ -8,3 +8,5 @@ pymongo
 python-dotenv
 email-validator
 dnspython
+python-jose[cryptography]
+passlib[bcrypt]

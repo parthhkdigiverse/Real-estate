@@ -13,7 +13,7 @@ export const Route = createFileRoute("/faqs")({
   head: () => ({
     meta: [
       { title: "Frequently Asked Questions \u2014 The Sandars" },
-      { name: "description", content: "Discover frequently asked questions in relation to The Sandars. Gain valuable insights into our vibrant community as we provide answers to common questions about life at our esteemed later-life apartments." },
+      { name: "description", content: "Discover frequently asked questions in relation to The Sandars. Gain valuable insights into our vibrant community as we provide answers to common questions about life at our esteemed later life apartments." },
       { property: "og:title", content: "Frequently Asked Questions \u2014 The Sandars" },
       { property: "og:description", content: "Common questions about life at The Sandars luxury later living community in Surrey." },
       { property: "og:image", content: faqHero },
@@ -93,7 +93,7 @@ function FaqsPage() {
             />
             <div className="absolute inset-0 bg-ink/35" />
             <div className="relative h-full flex items-center justify-center px-6">
-              <h1 className="font-display text-paper text-4xl md:text-6xl lg:text-[80px] uppercase tracking-tight text-center leading-[1.05]">
+              <h1 className="font-display text-paper text-5xl md:text-7xl lg:text-[88px] uppercase tracking-tight text-center leading-[1.05]">
                 Frequently Asked Questions
               </h1>
             </div>
@@ -102,9 +102,9 @@ function FaqsPage() {
       </section>
 
       {/* Intro */}
-      <section className="py-14 md:py-20">
+      <section className="py-20 md:py-28">
         <div className="container-luxe max-w-4xl text-center">
-          <p className="text-ink/70 text-[15px] md:text-base leading-relaxed">
+          <p className="text-ink/75 text-base md:text-lg leading-relaxed font-sans font-light">
             Discover frequently asked questions in relation to The Sandars. Gain valuable insights
             into our vibrant community as we provide the answers to common questions about life at
             our esteemed later-life apartments.
@@ -122,11 +122,11 @@ function FaqsPage() {
                 value={`faq-${i}`}
                 className="border-b border-border"
               >
-                <AccordionTrigger className="text-left text-[15px] md:text-base text-ink hover:text-rose hover:no-underline py-5 md:py-6 font-normal">
+                <AccordionTrigger className="font-display text-xl md:text-2xl text-ink hover:no-underline py-6 text-left">
                   {f.q}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="pb-5 text-ink/70 leading-relaxed">{f.a}</p>
+                  <p className="pb-6 text-ink/75 leading-relaxed font-sans font-light text-[15px] md:text-base">{f.a}</p>
                 </AccordionContent>
               </AccordionItem>
             ))}

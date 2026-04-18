@@ -1,22 +1,31 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Outlet, useNavigate } from "@tanstack/react-router";
 import { Sidebar } from "@/components/admin/Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/admin")({
   component: AdminLayout,
 });
 
 function AdminLayout() {
-  const [isAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("admin_token");
+    if (!token) {
+      setIsAuthenticated(false);
+      navigate({ to: "/login" });
+    } else {
+      setIsAuthenticated(true);
+    }
+  }, [navigate]);
+
+  if (isAuthenticated === null) {
+    return null; // or a loading spinner
+  }
 
   if (!isAuthenticated) {
-    return (
-      <div className="flex h-screen items-center justify-center bg-paper text-ink">
-        <div className="text-center">
-          <h1 className="font-display text-2xl">Access Denied</h1>
-        </div>
-      </div>
-    );
+    return null; // Redirection handled in useEffect
   }
 
   return (

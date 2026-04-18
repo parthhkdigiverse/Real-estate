@@ -1,8 +1,10 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Plus, Trash2, Save, X } from "lucide-react";
+import { Plus, Trash2, Save, X, Image as ImageIcon } from "lucide-react";
 import { AdminCard } from "./AdminCard";
+import { useState } from "react";
+import { AssetPicker } from "./AssetPicker";
 
 const apartmentSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -15,7 +17,11 @@ const apartmentSchema = z.object({
 const propertySchema = z.object({
   name: z.string().min(1, "Name is required"),
   slug: z.string().min(1, "Slug is required"),
-  hero: z.string().min(1, "Hero image URL is required"),
+  hero: z.string().min(1, "Hero image is required"),
+  featured_image: z.string().optional(),
+  tag: z.string().optional(),
+  date: z.string().optional(),
+  is_featured: z.boolean().optional(),
   intro: z.string().min(1, "Intro text is required"),
   showApartmentNote: z.string().min(1, "Apartment note is required"),
   hours: z.string().min(1, "Sales hours are required"),
@@ -31,10 +37,14 @@ interface PropertyEditorProps {
 }
 
 export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditorProps) {
+  const [pickerConfig, setPickerConfig] = useState<{ field: keyof PropertyFormValues; open: boolean } | null>(null);
+
   const {
     register,
     control,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<PropertyFormValues>({
     resolver: zodResolver(propertySchema),
@@ -42,9 +52,13 @@ export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditor
       name: "",
       slug: "",
       hero: "",
+      featured_image: "",
+      tag: "For Sale",
+      date: "",
+      is_featured: false,
       intro: "",
-      showApartmentNote: "Apartments from £XXX",
-      hours: "Daily, 10am — 5pm",
+      showApartmentNote: "Apartments from \u00a3XXX",
+      hours: "Daily, 10am \u2014 5pm",
       apartments: [],
     },
   });
@@ -53,6 +67,9 @@ export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditor
     control,
     name: "apartments",
   });
+
+  const heroUrl = watch("hero");
+  const featuredUrl = watch("featured_image");
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 px-4 backdrop-blur-md">
@@ -80,15 +97,87 @@ export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditor
               />
               {errors.slug && <p className="mt-1 text-xs text-rose">{errors.slug.message}</p>}
             </div>
-            <div className="md:col-span-2">
-              <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Hero Image URL</label>
-              <input
-                {...register("hero")}
-                className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
-                placeholder="/images/hero-1.jpg"
-              />
-              {errors.hero && <p className="mt-1 text-xs text-rose">{errors.hero.message}</p>}
+
+            <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <label className="block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Main Hero Image</label>
+                <div 
+                  onClick={() => setPickerConfig({ field: "hero", open: true })}
+                  className="group relative aspect-video w-full cursor-pointer overflow-hidden rounded-2xl border-2 border-dashed border-ink/10 bg-paper-soft transition-all hover:border-rose/40"
+                >
+                  {heroUrl ? (
+                    <>
+                      <img src={heroUrl} alt="Hero" className="h-full w-full object-cover transition-transform group-hover:scale-105" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-ink/40 opacity-0 transition-opacity group-hover:opacity-100">
+                        <span className="text-[10px] font-bold text-white uppercase tracking-widest">Change Image</span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full gap-2 p-4 text-center">
+                      <ImageIcon className="h-6 w-6 text-ink/20" />
+                      <span className="text-[10px] font-bold text-ink/30 uppercase tracking-widest">Select From Gallery</span>
+                    </div>
+                  )}
+                </div>
+                {errors.hero && <p className="text-xs text-rose">{errors.hero.message}</p>}
+              </div>
+
+              <div className="space-y-3">
+                <label className="block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Featured Card Image (Optional)</label>
+                <div 
+                  onClick={() => setPickerConfig({ field: "featured_image", open: true })}
+                  className="group relative aspect-video w-full cursor-pointer overflow-hidden rounded-2xl border-2 border-dashed border-ink/10 bg-paper-soft transition-all hover:border-rose/40"
+                >
+                  {featuredUrl ? (
+                    <>
+                      <img src={featuredUrl} alt="Featured" className="h-full w-full object-cover transition-transform group-hover:scale-105" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-ink/40 opacity-0 transition-opacity group-hover:opacity-100">
+                        <span className="text-[10px] font-bold text-white uppercase tracking-widest">Change Image</span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full gap-2 p-4 text-center">
+                      <ImageIcon className="h-6 w-6 text-ink/20" />
+                      <span className="text-[10px] font-bold text-ink/30 uppercase tracking-widest">Select From Gallery</span>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
+
+            <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Property Tag</label>
+                <input
+                  {...register("tag")}
+                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                  placeholder="For Sale"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Availability Date</label>
+                <input
+                  {...register("date")}
+                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                  placeholder="18 November 2024"
+                />
+              </div>
+              <div className="flex items-end pb-2">
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <div className="relative">
+                    <input
+                      type="checkbox"
+                      {...register("is_featured")}
+                      className="peer sr-only"
+                    />
+                    <div className="h-6 w-11 rounded-full bg-ink/10 transition-colors peer-checked:bg-rose group-hover:bg-ink/20"></div>
+                    <div className="absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition-transform peer-checked:translate-x-5"></div>
+                  </div>
+                  <span className="text-[10px] font-bold text-ink/40 uppercase tracking-widest group-hover:text-ink transition-colors">Featured listing</span>
+                </label>
+              </div>
+            </div>
+
             <div className="md:col-span-2">
               <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Introduction</label>
               <textarea
@@ -100,6 +189,14 @@ export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditor
               {errors.intro && <p className="mt-1 text-xs text-rose">{errors.intro.message}</p>}
             </div>
           </div>
+
+          {pickerConfig?.open && (
+            <AssetPicker 
+              currentValue={watch(pickerConfig.field) as string}
+              onSelect={(val) => setValue(pickerConfig.field, val)}
+              onClose={() => setPickerConfig(null)}
+            />
+          )}
 
           <div className="rounded-2xl border border-ink/5 bg-paper-soft/30 p-8">
             <div className="mb-6 flex items-center justify-between border-b border-ink/5 pb-4">
