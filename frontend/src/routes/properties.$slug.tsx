@@ -144,12 +144,6 @@ function PropertyPage() {
               </li>
             ))}
           </ul>
-
-          <div className="mt-12">
-            <Link to="/" className="text-xs tracking-display uppercase text-ink/70 hover:text-rose transition-colors">
-              \u2190 Back to all properties
-            </Link>
-          </div>
         </div>
       </section>
 

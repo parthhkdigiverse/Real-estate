@@ -10,14 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SpecificationRouteImport } from './routes/specification'
+import { Route as LifestyleRouteImport } from './routes/lifestyle'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
+import { Route as AdminPropertiesRouteImport } from './routes/admin/properties'
+import { Route as AdminInquiriesRouteImport } from './routes/admin/inquiries'
 
 const SpecificationRoute = SpecificationRouteImport.update({
   id: '/specification',
   path: '/specification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LifestyleRoute = LifestyleRouteImport.update({
+  id: '/lifestyle',
+  path: '/lifestyle',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqsRoute = FaqsRouteImport.update({
@@ -30,57 +40,117 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
 } as any)
 const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   id: '/properties/$slug',
   path: '/properties/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPropertiesRoute = AdminPropertiesRouteImport.update({
+  id: '/properties',
+  path: '/properties',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInquiriesRoute = AdminInquiriesRouteImport.update({
+  id: '/inquiries',
+  path: '/inquiries',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
+  '/lifestyle': typeof LifestyleRoute
   '/specification': typeof SpecificationRoute
+  '/admin/inquiries': typeof AdminInquiriesRoute
+  '/admin/properties': typeof AdminPropertiesRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
+  '/lifestyle': typeof LifestyleRoute
   '/specification': typeof SpecificationRoute
+  '/admin/inquiries': typeof AdminInquiriesRoute
+  '/admin/properties': typeof AdminPropertiesRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
+  '/lifestyle': typeof LifestyleRoute
   '/specification': typeof SpecificationRoute
+  '/admin/inquiries': typeof AdminInquiriesRoute
+  '/admin/properties': typeof AdminPropertiesRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/faqs' | '/specification' | '/properties/$slug'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/faqs'
+    | '/lifestyle'
+    | '/specification'
+    | '/admin/inquiries'
+    | '/admin/properties'
+    | '/properties/$slug'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/faqs' | '/specification' | '/properties/$slug'
-  id:
-    | '__root__'
+  to:
     | '/'
     | '/contact'
     | '/faqs'
+    | '/lifestyle'
     | '/specification'
+    | '/admin/inquiries'
+    | '/admin/properties'
     | '/properties/$slug'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/faqs'
+    | '/lifestyle'
+    | '/specification'
+    | '/admin/inquiries'
+    | '/admin/properties'
+    | '/properties/$slug'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
+  LifestyleRoute: typeof LifestyleRoute
   SpecificationRoute: typeof SpecificationRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
 }
@@ -92,6 +162,13 @@ declare module '@tanstack/react-router' {
       path: '/specification'
       fullPath: '/specification'
       preLoaderRoute: typeof SpecificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lifestyle': {
+      id: '/lifestyle'
+      path: '/lifestyle'
+      fullPath: '/lifestyle'
+      preLoaderRoute: typeof LifestyleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faqs': {
@@ -108,12 +185,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/properties/$slug': {
       id: '/properties/$slug'
@@ -122,13 +213,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropertiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/properties': {
+      id: '/admin/properties'
+      path: '/properties'
+      fullPath: '/admin/properties'
+      preLoaderRoute: typeof AdminPropertiesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/inquiries': {
+      id: '/admin/inquiries'
+      path: '/inquiries'
+      fullPath: '/admin/inquiries'
+      preLoaderRoute: typeof AdminInquiriesRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminInquiriesRoute: typeof AdminInquiriesRoute
+  AdminPropertiesRoute: typeof AdminPropertiesRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminInquiriesRoute: AdminInquiriesRoute,
+  AdminPropertiesRoute: AdminPropertiesRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
+  LifestyleRoute: LifestyleRoute,
   SpecificationRoute: SpecificationRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
 }

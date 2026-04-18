@@ -11,13 +11,10 @@ export const Lifestyle = () => (
         </h2>
         <div className="space-y-5 text-ink/75 leading-relaxed text-[17px]">
           <p>
-            Find yourself part of a close-knit community at The Sandars, surrounded by
-            like-minded individuals who share your interests and values.
+            Find yourself as part of a close-knit community at The Sandars where you'll be surrounded by like-minded individuals who share your interests and values.
           </p>
           <p>
-            Later life can sometimes present challenges when it comes to social connection \u2014
-            but here, you have nothing to worry about. Regular social events and activities
-            provide plenty of opportunities to connect.
+            Later life can sometimes present challenges when it comes to social connection, but here, you have nothing to worry about. Regular social events and activities provide plenty of opportunities for you to connect and enjoy later life.
           </p>
         </div>
         <Link

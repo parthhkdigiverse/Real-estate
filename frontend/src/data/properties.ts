@@ -33,9 +33,19 @@ export const PROPERTIES: Record<string, Property> = {
     apartments: [
       { name: "No.1 Cullinan House", type: "1 Bedroom", size: "76 sq m", price: "On request", slug: "no-1-cullinan-house" },
       { name: "No.2 Cullinan House", type: "1 Bedroom", size: "72 sq m", price: "On request", slug: "no-2-cullinan-house" },
+      { name: "No.3 Cullinan House", type: "1 Bedroom", size: "72 sq m", price: "On request", slug: "no-3-cullinan-house" },
       { name: "No.4 Cullinan House", type: "2 Bedroom", size: "91 sq m", price: "On request", slug: "no-4-cullinan-house" },
+      { name: "No.5 Cullinan House", type: "1 Bedroom", size: "74 sq m", price: "On request", slug: "no-5-cullinan-house" },
+      { name: "No.6 Cullinan House", type: "1 Bedroom", size: "77 sq m", price: "On request", slug: "no-6-cullinan-house" },
       { name: "No.7 Cullinan House", type: "2 Bedroom", size: "101 sq m", price: "On request", slug: "no-7-cullinan-house" },
+      { name: "No.11 Cullinan House", type: "1 Bedroom", size: "66 sq m", price: "On request", slug: "no-11-cullinan-house" },
+      { name: "No.13 Cullinan House", type: "1 Bedroom", size: "61 sq m", price: "On request", slug: "no-13-cullinan-house" },
+      { name: "No.14 Cullinan House", type: "1 Bedroom", size: "61 sq m", price: "On request", slug: "no-14-cullinan-house" },
       { name: "No.15 Cullinan House", type: "2 Bedroom", size: "83 sq m", price: "On request", slug: "no-15-cullinan-house" },
+      { name: "No.16 Cullinan House", type: "1 Bedroom", size: "61 sq m", price: "On request", slug: "no-16-cullinan-house" },
+      { name: "No.18 Cullinan House", type: "1 Bedroom", size: "77 sq m", price: "On request", slug: "no-18-cullinan-house" },
+      { name: "No.19 Cullinan House", type: "1 Bedroom", size: "67 sq m", price: "On request", slug: "no-19-cullinan-house" },
+      { name: "No.21 Cullinan House", type: "1 Bedroom", size: "74 sq m", price: "On request", slug: "no-21-cullinan-house" },
       { name: "No.22 Cullinan House", type: "2 Bedroom", size: "102 sq m", price: "On request", slug: "no-22-cullinan-house" },
     ],
   },
@@ -44,7 +54,7 @@ export const PROPERTIES: Record<string, Property> = {
     name: "Pollards Court",
     hero: heroPollards,
     intro:
-      "Beautifully appointed apartments set within the heart of the estate, Pollards Court combines warm contemporary interiors with quiet, garden-facing aspects.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper erat a nunc dictum, quis consectetur turpis posuere. Aliquam quis enim nec nunc lacinia ullamcorper.",
     showApartmentNote: "Show apartment available to view",
     hours: "Open from 10am \u2013 5pm Monday \u2013 Friday",
     apartments: [
@@ -57,7 +67,7 @@ export const PROPERTIES: Record<string, Property> = {
     name: "Eastley End House",
     hero: heroEastley,
     intro:
-      "Exuding Georgian charm and character, Eastley End House is a three-storey building originally built in the late 18th century and contains a number of luxury apartments.",
+      "Exuding Georgian charm and character, Eastley End House is a three-storey block originally built in the late 18th century and contains a number of luxury apartments. A grade II listed building, Eastley End House is the perfect place to combine all your modern comforts with some historic charm.",
     showApartmentNote: "Show apartment available to view",
     hours: "Open from 10am \u2013 5pm Monday \u2013 Friday",
     apartments: [
@@ -70,7 +80,7 @@ export const PROPERTIES: Record<string, Property> = {
     name: "Meadlake House",
     hero: heroMeadlake,
     intro:
-      "A Grade II listed Georgian house offering one and two bedroom luxury living apartments, including duplex and penthouse options.",
+      "A grade 2 listed Georgian House offering one and two bedroom luxury living apartments, including Duplex and Penthouse options.Set in stunning picturesque gardens and parkland, it benefits from a whole range of amenities right on its doorstep.",
     showApartmentNote: "Show apartment available to view",
     hours: "Open from 10am \u2013 5pm Monday \u2013 Friday",
     apartments: [

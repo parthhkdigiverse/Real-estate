@@ -7,11 +7,11 @@ import belonging from "@/assets/life-belonging.jpg";
 
 const ITEMS = [
   { image: wellbeing, title: "Health & wellbeing", body: "Health and wellbeing is at the heart of everything we do. Our extensive fitness suite is second to none, providing bespoke solutions for all." },
-  { image: parkland, title: "27 acres of lakes & parkland", body: "Our serene lake and picturesque gardens are an idyllic spot to unwind \u2014 a peaceful walk, watching the sunset, or simply relaxing by the water." },
-  { image: hub, title: "The Community Hub", body: "The vibrant heart of The Sandars \u2014 a seamless blend of relaxation, wellness and social engagement, designed for a life of comfort and sophistication." },
-  { image: architecture, title: "Eclectic architecture", body: "A spectrum of choice across the 18th, 19th, 20th and 21st centuries \u2014 creating the broadest possible appeal to suit any taste." },
-  { image: enjoyment, title: "A life of enjoyment", body: "Regular social events and activities offer plenty of opportunity to connect \u2014 from yoga and art classes to private dinners and recitals." },
-  { image: belonging, title: "True belonging", body: "A bespoke yet \u2018village feel\u2019 enhances the sense of belonging \u2014 a community where you are known, welcomed and at home." },
+  { image: parkland, title: "27 acres of lakes & parkland", body: "Our serene lake and picturesque gardens are an idyllic spot to unwind, whether you're taking a peaceful walk, watching the sunset, or simply relaxing by the water." },
+  { image: hub, title: "The Community Hub", body: "The Community Hub is the vibrant heart of The Sandars. This exclusive space offers residents a seamless blend of relaxation, wellness, and social engagement, designed for a life of comfort and sophistication." },
+  { image: architecture, title: "Eclectic architecture", body: "Our properties offer a spectrum of choice in a timeline from the 18th, 19th, 20th & 21st centuries creating the broadest possible appeal." },
+  { image: enjoyment, title: "A life of enjoyment", body: "Regular social events and activities provide plenty of opportunities for you to connect and enjoy Life at The Sandars. From yoga to art classes, we have activities to suit everyone." },
+  { image: belonging, title: "True belonging", body: "A bespoke yet 'village feel' to the development really enhances the feeling of belonging." },
 ];
 
 export const LifeGrid = () => (

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import { Header } from "@/components/sandars/Header";
 import { Footer } from "@/components/sandars/Footer";
 import {
@@ -39,51 +40,73 @@ const SPEC_SECTIONS = [
   {
     title: "Kitchen",
     items: [
-      "Bespoke handle-less cabinetry with soft-close doors and drawers",
-      "Composite stone worktops and matching upstands",
-      "Integrated Siemens or Bosch oven, combination microwave and induction hob",
-      "Integrated dishwasher, fridge/freezer and recirculating extractor",
-      "Quooker boiling water tap and undermount stainless steel sink",
-      "Recessed LED downlights and under-cabinet task lighting",
-    ],
-  },
-  {
-    title: "Utility & Electricals",
-    items: [
-      "Integrated washer/dryer in dedicated utility cupboard",
-      "Brushed steel sockets and switches throughout living areas",
-      "Underfloor heating to all rooms with individual thermostats",
-      "Pre-wired for high-speed broadband and Sky Q in living room and bedrooms",
-      "Mains-powered smoke, heat and carbon monoxide detection",
-      "Video door entry system linked to the concierge desk",
-    ],
-  },
-  {
-    title: "Interior Decoration",
-    items: [
-      "Engineered oak flooring to hallway, living and kitchen areas",
-      "Wool-rich fitted carpets to bedrooms",
-      "Walls finished in soft neutral emulsion with satinwood woodwork",
-      "Solid core internal doors with brushed nickel ironmongery",
-      "Built-in wardrobes to principal bedrooms with internal lighting",
-      "Bespoke skirtings and architraves throughout",
+      "Porcelain tiles in all bathrooms",
+      "Handleless German kitchens by Hacker, Miele integrated appliances, quartz worktops, and LED pelmet lighting",
     ],
   },
   {
     title: "Bathroom & Ensuite",
     items: [
-      "Villeroy & Boch sanitaryware with chrome Hansgrohe brassware",
-      "Walk-in shower enclosures with frameless glass screens",
-      "Vanity units with integrated storage and illuminated mirrors",
-      "Large-format porcelain wall and floor tiles",
-      "Heated chrome towel rails",
-      "Underfloor heating with individual room control",
+      "Porcelain tiles in all bathrooms",
+      "Large format porcelain tiles",
+      "Electric underfloor heating and towel rails",
+      "Recessed mirrors with LED",
+      "Villeroy Boch sanitaryware and Hansgrohe brassware",
+      "Walk-in wet room showers with glass screen",
+    ],
+  },
+  {
+    title: "Interior Decoration",
+    items: [
+      "High-quality windows and doors fitted to complement the Grade 2 listed building",
+      "Engineered flooring to hall, living/dining, and kitchen areas (Grange, Annex, part of Meadlake, and Eastley End)",
+      "Carpets to all bedrooms",
+      "Voiles for windows",
+      "Wood-effect porcelain tiles to hall, living, and kitchen (Cemex House)",
+      "Fitted wardrobes including hanging rails in master bedrooms",
+    ],
+  },
+  {
+    title: "Utility & Electricals",
+    items: [
+      "Recessed LED down-lighting",
+      "Sockets with USB charging points in the lounge, bedrooms, and entrance hall",
+      "TV/satellite, internet, and telephone points provided",
+      "Home automation for lighting throughout the apartment to give homeowners the ability to control all lighting functions via an app installed on their phone",
+      "Utility cupboards fitted with washer/dryer",
+      "Air-conditioning cooling and heating",
+      "Underfloor heating with smart controls and serviced by air source heat pumps",
+      "Mechanical ventilation with heat recovery system (MVHR)",
     ],
   },
 ];
 
 function Specification() {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: false,
+    skipSnaps: false,
+    dragFree: true
+  });
+
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  const onSelect = useCallback((emblaApi: any) => {
+    setPrevBtnEnabled(emblaApi.canScrollPrev());
+    setNextBtnEnabled(emblaApi.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect(emblaApi);
+    emblaApi.on("reInit", onSelect);
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -117,33 +140,65 @@ function Specification() {
         </div>
       </section>
 
-      <section className="bg-paper-soft py-20 md:py-28">
+      <section className="bg-paper-soft py-20 md:py-28 overflow-hidden">
         <div className="container-luxe">
-          <h2 className="font-display text-3xl md:text-5xl text-ink uppercase tracking-tight text-center">
-            Gallery
-          </h2>
-          <p className="mt-4 text-center text-ink/65">Click for full size images.</p>
-
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-            {GALLERY.map((g, i) => (
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <h2 className="font-display text-3xl md:text-5xl text-ink uppercase tracking-tight">
+                Gallery
+              </h2>
+              <p className="mt-2 text-ink/65 uppercase text-[10px] tracking-widest font-bold">Curated views of the estate</p>
+            </div>
+            <div className="flex gap-3">
               <button
-                key={i}
-                onClick={() => setLightbox(i)}
-                aria-label={`Open ${g.alt}`}
-                className="group relative aspect-square overflow-hidden bg-ink/5"
+                onClick={scrollPrev}
+                disabled={!prevBtnEnabled}
+                className="h-10 w-10 flex items-center justify-center rounded-full border border-ink/10 text-ink/40 hover:text-rose hover:border-rose disabled:opacity-20 transition-all active:scale-95"
+                aria-label="Previous slide"
               >
-                <img
-                  src={g.src}
-                  alt={g.alt}
-                  loading="lazy"
-                  width={1024}
-                  height={1024}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/15 transition-colors duration-500" />
+                <ChevronLeft className="h-5 w-5" />
               </button>
-            ))}
+              <button
+                onClick={scrollNext}
+                disabled={!nextBtnEnabled}
+                className="h-10 w-10 flex items-center justify-center rounded-full border border-ink/10 text-ink/40 hover:text-rose hover:border-rose disabled:opacity-20 transition-all active:scale-95"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
           </div>
+
+          <div className="embla" ref={emblaRef}>
+            <div className="flex gap-5 md:gap-6 ml-[-1.25rem] md:ml-[-1.5rem]">
+              {GALLERY.map((g, i) => (
+                <div key={i} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-[1.25rem] md:pl-[1.5rem]">
+                  <button
+                    onClick={() => setLightbox(i)}
+                    aria-label={`Open ${g.alt}`}
+                    className="group relative w-full aspect-square overflow-hidden bg-ink/5 block"
+                  >
+                    <img
+                      src={g.src}
+                      alt={g.alt}
+                      loading="lazy"
+                      width={1024}
+                      height={1024}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/15 transition-colors duration-500 flex items-center justify-center">
+                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-90 group-hover:scale-100">
+                          <div className="w-12 h-12 rounded-full bg-paper/90 backdrop-blur-sm flex items-center justify-center text-ink shadow-2xl">
+                             <X className="h-5 w-5 rotate-45" />
+                          </div>
+                       </div>
+                    </div>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="mt-8 text-center text-[10px] tracking-widest uppercase text-ink/30 font-bold">Swipe or use arrows to explore more</p>
         </div>
       </section>
 
@@ -172,12 +227,6 @@ function Specification() {
               </AccordionItem>
             ))}
           </Accordion>
-
-          <div className="mt-14">
-            <Link to="/" className="text-xs tracking-display uppercase text-ink/70 hover:text-rose transition-colors">
-              \u2190 Back to all properties
-            </Link>
-          </div>
         </div>
       </section>
 
