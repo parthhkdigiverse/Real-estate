@@ -10,12 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SpecificationRouteImport } from './routes/specification'
+import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 
 const SpecificationRoute = SpecificationRouteImport.update({
   id: '/specification',
   path: '/specification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,30 +43,44 @@ const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
   '/specification': typeof SpecificationRoute
   '/properties/$slug': typeof PropertiesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
   '/specification': typeof SpecificationRoute
   '/properties/$slug': typeof PropertiesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/faqs': typeof FaqsRoute
   '/specification': typeof SpecificationRoute
   '/properties/$slug': typeof PropertiesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/specification' | '/properties/$slug'
+  fullPaths: '/' | '/contact' | '/faqs' | '/specification' | '/properties/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/specification' | '/properties/$slug'
-  id: '__root__' | '/' | '/specification' | '/properties/$slug'
+  to: '/' | '/contact' | '/faqs' | '/specification' | '/properties/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/faqs'
+    | '/specification'
+    | '/properties/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  FaqsRoute: typeof FaqsRoute
   SpecificationRoute: typeof SpecificationRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
 }
@@ -66,6 +92,20 @@ declare module '@tanstack/react-router' {
       path: '/specification'
       fullPath: '/specification'
       preLoaderRoute: typeof SpecificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,6 +127,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  FaqsRoute: FaqsRoute,
   SpecificationRoute: SpecificationRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
 }
