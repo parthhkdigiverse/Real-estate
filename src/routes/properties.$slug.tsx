@@ -111,7 +111,7 @@ function PropertyPage() {
           </div>
 
           <ul className="divide-y divide-border">
-            {property.apartments.map((a) => (
+            {property.apartments.map((a: typeof property.apartments[number]) => (
               <li
                 key={a.slug}
                 className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 items-start md:items-center px-2 py-5 md:py-6 group"
