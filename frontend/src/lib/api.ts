@@ -3,7 +3,7 @@ export const API_BASE_URL = "";
 export const getApiUrl = (path: string) => `${API_BASE_URL}${path.startsWith("/") ? "" : "/"}${path}`;
 
 export async function fetchProperties() {
-  const res = await fetch(getApiUrl("/api/properties"));
+  const res = await fetch(getApiUrl("/api/properties/"));
   if (!res.ok) throw new Error("Failed to fetch properties");
   return res.json();
 }
@@ -15,7 +15,7 @@ export async function fetchPropertyBySlug(slug: string) {
 }
 
 export async function createProperty(data: any, token: string) {
-  const res = await fetch(getApiUrl("/api/properties"), {
+  const res = await fetch(getApiUrl("/api/properties/"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export async function uploadAsset(file: File) {
 }
 
 export async function fetchInquiries(token: string) {
-  const res = await fetch(getApiUrl("/api/inquiries"), {
+  const res = await fetch(getApiUrl("/api/inquiries/"), {
     headers: {
       "Authorization": `Bearer ${token}`
     }
