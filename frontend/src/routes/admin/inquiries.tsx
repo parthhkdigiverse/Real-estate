@@ -65,6 +65,21 @@ function InquiriesPage() {
       ),
     },
     {
+      header: "Unit Interest",
+      accessor: (item: any) => (
+        <div className="space-y-1">
+          <div className="text-[10px] font-bold text-ink/80 uppercase tracking-widest leading-tight">
+            {item.property || "General Inquiry"}
+          </div>
+          {item.apartment && (
+            <div className="text-[9px] font-bold text-rose uppercase tracking-tighter">
+              {item.apartment}
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
       header: "Communications",
       accessor: (item: any) => (
         <div className="space-y-2">

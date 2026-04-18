@@ -51,13 +51,13 @@ function ApartmentDetailPage() {
   };
 
   return (
-    <main className="bg-paper text-ink">
+    <main className="bg-paper text-ink min-h-screen">
       <Header />
 
       {/* Hero Section */}
       <section className="relative pt-24 md:pt-28">
         <div className="container-luxe">
-          <div className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+          <div className="relative h-[65vh] min-h-[450px] w-full overflow-hidden">
             <img
               src={apartment.hero_image || property.hero}
               alt={apartment.name}
@@ -72,10 +72,19 @@ function ApartmentDetailPage() {
                 <ChevronRight className="h-3 w-3" />
                 <span className="text-paper">Details</span>
               </nav>
-              <h1 className="font-display text-white text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight">
+              <h2 className="text-paper/90 tracking-display text-[10px] md:text-xs uppercase mb-4">
+                {property.name}
+              </h2>
+              <h1 className="font-display text-white text-5xl md:text-7xl lg:text-[84px] uppercase tracking-tight leading-none mb-6">
                 {apartment.name}
               </h1>
-              <div className="mt-6 flex items-center gap-8 text-[11px] tracking-display uppercase text-paper/90">
+              <p className="text-[11px] md:text-xs tracking-display uppercase text-paper/80 mb-2">
+                {property.showApartmentNote}
+              </p>
+              <p className="text-[10px] md:text-[11px] tracking-display uppercase text-paper/60">
+                {property.hours}
+              </p>
+              <div className="mt-10 flex items-center gap-10 text-[11px] font-bold tracking-display uppercase text-paper/90">
                 <span>{apartment.type}</span>
                 <span className="h-4 w-[1px] bg-paper/20" />
                 <span>{apartment.size}</span>
@@ -87,75 +96,66 @@ function ApartmentDetailPage() {
         </div>
       </section>
 
-      {/* Main Content - Floorplan & Dimensions */}
-      <section className="py-20 md:py-32">
-        <div className="container-luxe">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            
-            {/* Left: Floorplan Visuals */}
-            <div className="space-y-12">
-              <div className="bg-white p-8 md:p-12 shadow-sm border border-border/50">
-                <h2 className="font-display text-3xl uppercase tracking-tight mb-10 text-ink/80 flex items-center gap-3">
-                  <Layout className="h-6 w-6 text-rose" />
-                  Floorplan
-                </h2>
-                {apartment.floorplan_image ? (
-                  <img 
-                    src={apartment.floorplan_image} 
-                    alt="Floorplan" 
-                    className="w-full h-auto"
-                  />
-                ) : (
-                  <div className="aspect-[4/5] bg-paper-soft flex items-center justify-center text-ink/20 italic text-sm">
-                    Floorplan coming soon
-                  </div>
-                )}
-              </div>
-
-              {apartment.location_map_image && (
-                <div className="bg-white p-8 md:p-12 shadow-sm border border-border/50 max-w-md">
-                  <h3 className="font-display text-xl uppercase tracking-tight mb-6 text-ink/80 flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-rose" />
-                    Relative Location
-                  </h3>
-                  <img 
-                    src={apartment.location_map_image} 
-                    alt="Location map" 
-                    className="w-full h-auto"
-                  />
+      {/* Floorplan Content Section */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container-luxe max-w-[1300px]">
+          <h2 className="font-display text-[44px] md:text-[56px] uppercase tracking-[0.2em] mb-16 text-ink/80 text-center lg:text-left">
+            Floorplan
+          </h2>
+          
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-16 lg:gap-24 items-start">
+            {/* Left: Major Visual */}
+            <div className="flex items-center justify-center">
+              {apartment.floorplan_image ? (
+                <img 
+                  src={apartment.floorplan_image} 
+                  alt={`${apartment.name} Floorplan`} 
+                  className="w-full h-auto max-h-[800px] object-contain"
+                />
+              ) : (
+                <div className="aspect-[4/5] w-full bg-paper-soft flex items-center justify-center text-ink/20 italic text-sm">
+                  Floorplan available on request
                 </div>
               )}
             </div>
 
-            {/* Right: Dimensions Table */}
-            <div className="lg:sticky lg:top-32">
-              <h2 className="font-display text-3xl uppercase tracking-tight mb-10 text-ink/80 flex items-center gap-3">
-                <Ruler className="h-6 w-6 text-rose" />
-                Dimensions
-              </h2>
-              
-              <div className="overflow-x-auto">
-                <table className="w-full text-left">
-                  <thead>
-                    <tr className="border-b border-border text-[11px] tracking-display uppercase text-ink/40">
-                      <th className="py-4 font-bold">Room</th>
-                      <th className="py-4 font-bold">Metric</th>
-                      <th className="py-4 font-bold">Imperial</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border/50">
+            {/* Right: Map & Table */}
+            <div className="space-y-16 lg:pt-8">
+              {/* Mini Map */}
+              {apartment.location_map_image && (
+                <div className="flex justify-center lg:justify-end pr-4">
+                  <div className="max-w-[180px] opacity-80">
+                    <img 
+                      src={apartment.location_map_image} 
+                      alt="Unit Location Key" 
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* Specs Table */}
+              <div className="overflow-hidden">
+                <table className="w-full text-left border-collapse">
+                  <tbody className="divide-y divide-ink/5">
                     {apartment.dimensions && apartment.dimensions.length > 0 ? (
                       apartment.dimensions.map((dim: any, i: number) => (
-                        <tr key={i} className="text-sm md:text-base text-ink/80">
-                          <td className="py-5 pr-4 font-medium">{dim.room}</td>
-                          <td className="py-5 pr-4 text-ink/60">{dim.metric}</td>
-                          <td className="py-5 text-ink/60">{dim.imperial}</td>
+                        <tr key={i} className="group">
+                          <td className="py-4 pr-10 text-[13px] md:text-[14px] font-medium text-ink uppercase tracking-wider min-w-[140px]">
+                            {dim.room}
+                          </td>
+                          <td className="py-4 pr-8 text-[13px] text-ink/60 font-medium">
+                            {dim.metric}
+                          </td>
+                          <td className="py-4 text-[13px] text-ink/60 font-medium whitespace-nowrap">
+                            {dim.imperial}
+                          </td>
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan={3} className="py-10 text-center text-ink/30 italic text-sm">
-                          Specifications available on request
+                        <td colSpan={3} className="py-8 text-center text-ink/30 italic text-sm">
+                          Detailed room specifications coming soon
                         </td>
                       </tr>
                     )}
@@ -163,10 +163,9 @@ function ApartmentDetailPage() {
                 </table>
               </div>
 
-              <div className="mt-12 p-8 bg-paper-soft border border-border/50">
-                <p className="text-xs italic text-ink/40 leading-relaxed uppercase tracking-wide">
-                  Not to scale. All area measures and dimensions are approximate and for illustrative purposes only. 
-                  Actual room layout and specifications may vary.
+              <div className="pt-2">
+                <p className="text-[10px] leading-relaxed text-ink/30 uppercase tracking-widest font-bold">
+                  * All dimensions are approximate and for guidance only.
                 </p>
               </div>
             </div>
@@ -174,44 +173,55 @@ function ApartmentDetailPage() {
         </div>
       </section>
 
-      {/* Inquiry Form Section */}
-      <section className="py-20 md:py-32 bg-[#DED1C1]/20">
+      {/* Inquiry Form Section - Light Beige Background */}
+      <section className="py-24 md:py-36 bg-[#F2ECE4]">
         <div className="container-luxe max-w-4xl">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl uppercase tracking-tight text-ink/85">
+            <h2 className="font-display text-4xl md:text-[54px] uppercase tracking-[0.1em] text-ink leading-tight">
               Book a visit or request a call back
             </h2>
-            <p className="mt-6 text-ink/60 max-w-xl mx-auto">
-              Fill in your details below and a member of our team will contact you shortly to discuss {apartment.name}.
+            <p className="mt-8 text-[13px] md:text-[14px] font-medium text-ink/60 max-w-xl mx-auto tracking-tight">
+              Fill in your details below and a member of our team will contact you shortly
             </p>
           </div>
 
-          <form onSubmit={handleInquiry} className="grid md:grid-cols-2 gap-8">
-            <div className="md:col-span-2">
-              <Field label="Title" name="title" placeholder="Title" />
-            </div>
-            <Field label="First Name" name="firstName" placeholder="First Name" required />
-            <Field label="Surname" name="surname" placeholder="Surname" required />
-            <Field label="Email" name="email" type="email" placeholder="Email" required />
-            <Field label="Telephone" name="telephone" type="tel" placeholder="Telephone" />
-            <div className="md:col-span-2">
-              <Field label="Postcode" name="postcode" placeholder="Post Code" />
+          <form onSubmit={handleInquiry} className="space-y-8 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
+              <div className="md:col-span-2">
+                <Field label="Title" name="title" placeholder="Title" />
+              </div>
+              
+              <Field label="First Name" name="firstName" placeholder="First Name" required />
+              <Field label="Surname" name="surname" placeholder="Surname" required />
+              
+              <Field label="Email" name="email" type="email" placeholder="Email" required />
+              <Field label="Telephone" name="telephone" type="tel" placeholder="Telephone" />
+              
+              <div className="md:col-span-2">
+                <Field label="Postcode" name="postcode" placeholder="Post code" />
+              </div>
             </div>
             
-            <div className="md:col-span-2 pt-4">
+            <div className="flex justify-center pt-8">
               <button
                 type="submit"
-                className="w-full md:w-auto px-12 py-4 bg-[#576D69] text-white text-[11px] tracking-display uppercase transition-all hover:bg-rose active:scale-95 disabled:opacity-50"
+                className="w-full md:w-auto px-16 py-4 bg-[#576D69] text-white text-[11px] font-bold tracking-[0.2em] uppercase transition-all hover:bg-ink hover:scale-[1.02] active:scale-95 disabled:opacity-50"
                 disabled={submitted}
               >
-                {submitted ? "Inquiry Received" : "Submit Inquiry"}
+                {submitted ? "Inquiry Received" : "Submit"}
               </button>
-              {submitted && (
-                <p className="mt-4 text-rose font-medium text-center">
-                  Thank you. We have received your request for {apartment.name}.
-                </p>
-              )}
             </div>
+            
+            {submitted && (
+              <div className="pt-6 text-center animate-in fade-in duration-500">
+                <p className="text-ink font-display text-xl uppercase tracking-widest">
+                  Thank you.
+                </p>
+                <p className="mt-2 text-ink/60 text-xs font-bold uppercase tracking-widest">
+                  Our team will be in touch shortly regarding {apartment.name}.
+                </p>
+              </div>
+            )}
           </form>
         </div>
       </section>
@@ -223,9 +233,9 @@ function ApartmentDetailPage() {
 
 function Field({ label, name, type = "text", placeholder, required }: any) {
   return (
-    <div className="space-y-2">
-      <label htmlFor={name} className="block text-[11px] font-bold tracking-display uppercase text-ink/60">
-        {label} {required && <span className="text-rose">*</span>}
+    <div className="space-y-2.5">
+      <label htmlFor={name} className="block text-[11px] font-bold tracking-[0.1em] uppercase text-ink/80">
+        {label} {required && <span className="text-rose opacity-50">*</span>}
       </label>
       <input
         id={name}
@@ -233,7 +243,7 @@ function Field({ label, name, type = "text", placeholder, required }: any) {
         type={type}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-white border border-border px-4 py-3 text-ink placeholder:text-ink/30 focus:outline-none focus:border-rose transition-colors"
+        className="w-full bg-white border border-transparent border-b-ink/10 px-0 py-3 text-ink text-sm placeholder:text-ink/20 focus:outline-none focus:border-b-rose transition-all bg-transparent"
       />
     </div>
   );

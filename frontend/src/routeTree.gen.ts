@@ -17,9 +17,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
-import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as AdminPropertiesRouteImport } from './routes/admin/properties'
 import { Route as AdminInquiriesRouteImport } from './routes/admin/inquiries'
+import { Route as PropertiesSlugIndexRouteImport } from './routes/properties.$slug.index'
 import { Route as PropertiesSlugApartmentsAptSlugRouteImport } from './routes/properties.$slug.apartments.$aptSlug'
 
 const SpecificationRoute = SpecificationRouteImport.update({
@@ -62,11 +62,6 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
-const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
-  id: '/properties/$slug',
-  path: '/properties/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AdminPropertiesRoute = AdminPropertiesRouteImport.update({
   id: '/properties',
   path: '/properties',
@@ -77,11 +72,16 @@ const AdminInquiriesRoute = AdminInquiriesRouteImport.update({
   path: '/inquiries',
   getParentRoute: () => AdminRoute,
 } as any)
+const PropertiesSlugIndexRoute = PropertiesSlugIndexRouteImport.update({
+  id: '/properties/$slug/',
+  path: '/properties/$slug/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PropertiesSlugApartmentsAptSlugRoute =
   PropertiesSlugApartmentsAptSlugRouteImport.update({
-    id: '/apartments/$aptSlug',
-    path: '/apartments/$aptSlug',
-    getParentRoute: () => PropertiesSlugRoute,
+    id: '/properties/$slug/apartments/$aptSlug',
+    path: '/properties/$slug/apartments/$aptSlug',
+    getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -94,8 +94,8 @@ export interface FileRoutesByFullPath {
   '/specification': typeof SpecificationRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/properties': typeof AdminPropertiesRoute
-  '/properties/$slug': typeof PropertiesSlugRouteWithChildren
   '/admin/': typeof AdminIndexRoute
+  '/properties/$slug/': typeof PropertiesSlugIndexRoute
   '/properties/$slug/apartments/$aptSlug': typeof PropertiesSlugApartmentsAptSlugRoute
 }
 export interface FileRoutesByTo {
@@ -107,8 +107,8 @@ export interface FileRoutesByTo {
   '/specification': typeof SpecificationRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/properties': typeof AdminPropertiesRoute
-  '/properties/$slug': typeof PropertiesSlugRouteWithChildren
   '/admin': typeof AdminIndexRoute
+  '/properties/$slug': typeof PropertiesSlugIndexRoute
   '/properties/$slug/apartments/$aptSlug': typeof PropertiesSlugApartmentsAptSlugRoute
 }
 export interface FileRoutesById {
@@ -122,8 +122,8 @@ export interface FileRoutesById {
   '/specification': typeof SpecificationRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/properties': typeof AdminPropertiesRoute
-  '/properties/$slug': typeof PropertiesSlugRouteWithChildren
   '/admin/': typeof AdminIndexRoute
+  '/properties/$slug/': typeof PropertiesSlugIndexRoute
   '/properties/$slug/apartments/$aptSlug': typeof PropertiesSlugApartmentsAptSlugRoute
 }
 export interface FileRouteTypes {
@@ -138,8 +138,8 @@ export interface FileRouteTypes {
     | '/specification'
     | '/admin/inquiries'
     | '/admin/properties'
-    | '/properties/$slug'
     | '/admin/'
+    | '/properties/$slug/'
     | '/properties/$slug/apartments/$aptSlug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -151,8 +151,8 @@ export interface FileRouteTypes {
     | '/specification'
     | '/admin/inquiries'
     | '/admin/properties'
-    | '/properties/$slug'
     | '/admin'
+    | '/properties/$slug'
     | '/properties/$slug/apartments/$aptSlug'
   id:
     | '__root__'
@@ -165,8 +165,8 @@ export interface FileRouteTypes {
     | '/specification'
     | '/admin/inquiries'
     | '/admin/properties'
-    | '/properties/$slug'
     | '/admin/'
+    | '/properties/$slug/'
     | '/properties/$slug/apartments/$aptSlug'
   fileRoutesById: FileRoutesById
 }
@@ -178,7 +178,8 @@ export interface RootRouteChildren {
   LifestyleRoute: typeof LifestyleRoute
   LoginRoute: typeof LoginRoute
   SpecificationRoute: typeof SpecificationRoute
-  PropertiesSlugRoute: typeof PropertiesSlugRouteWithChildren
+  PropertiesSlugIndexRoute: typeof PropertiesSlugIndexRoute
+  PropertiesSlugApartmentsAptSlugRoute: typeof PropertiesSlugApartmentsAptSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -239,13 +240,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/properties/$slug': {
-      id: '/properties/$slug'
-      path: '/properties/$slug'
-      fullPath: '/properties/$slug'
-      preLoaderRoute: typeof PropertiesSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/admin/properties': {
       id: '/admin/properties'
       path: '/properties'
@@ -260,12 +254,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminInquiriesRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/properties/$slug/': {
+      id: '/properties/$slug/'
+      path: '/properties/$slug'
+      fullPath: '/properties/$slug/'
+      preLoaderRoute: typeof PropertiesSlugIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/properties/$slug/apartments/$aptSlug': {
       id: '/properties/$slug/apartments/$aptSlug'
-      path: '/apartments/$aptSlug'
+      path: '/properties/$slug/apartments/$aptSlug'
       fullPath: '/properties/$slug/apartments/$aptSlug'
       preLoaderRoute: typeof PropertiesSlugApartmentsAptSlugRouteImport
-      parentRoute: typeof PropertiesSlugRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -284,18 +285,6 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
-interface PropertiesSlugRouteChildren {
-  PropertiesSlugApartmentsAptSlugRoute: typeof PropertiesSlugApartmentsAptSlugRoute
-}
-
-const PropertiesSlugRouteChildren: PropertiesSlugRouteChildren = {
-  PropertiesSlugApartmentsAptSlugRoute: PropertiesSlugApartmentsAptSlugRoute,
-}
-
-const PropertiesSlugRouteWithChildren = PropertiesSlugRoute._addFileChildren(
-  PropertiesSlugRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
@@ -304,7 +293,8 @@ const rootRouteChildren: RootRouteChildren = {
   LifestyleRoute: LifestyleRoute,
   LoginRoute: LoginRoute,
   SpecificationRoute: SpecificationRoute,
-  PropertiesSlugRoute: PropertiesSlugRouteWithChildren,
+  PropertiesSlugIndexRoute: PropertiesSlugIndexRoute,
+  PropertiesSlugApartmentsAptSlugRoute: PropertiesSlugApartmentsAptSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

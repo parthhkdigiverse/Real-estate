@@ -17,8 +17,8 @@ async def seed_admin():
     db = client[DATABASE_NAME]
     
     admin_user = {
-        "username": "HK_Digiverse",
-        "hashed_password": security.get_password_hash("HK@Digiverse@123")
+        "username": "Admin",
+        "hashed_password": security.get_password_hash("Admin123")
     }
     
     # Check if user exists

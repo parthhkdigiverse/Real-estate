@@ -3,7 +3,7 @@ import { Header } from "@/components/sandars/Header";
 import { Footer } from "@/components/sandars/Footer";
 import { fetchPropertyBySlug } from "@/lib/api";
 
-export const Route = createFileRoute("/properties/$slug")({
+export const Route = createFileRoute("/properties/$slug/")({
   loader: async ({ params }) => {
     try {
       const property = await fetchPropertyBySlug(params.slug);
@@ -104,7 +104,7 @@ function PropertyPage() {
           <p className="text-ink/65 mb-10 md:mb-12">
             For individual apartment details and specification please select from the list below
           </p>
-
+ 
           <div className="hidden md:grid grid-cols-12 gap-6 px-2 pb-4 text-[11px] tracking-display uppercase text-ink/60 border-b border-border">
             <div className="col-span-4">Apartment</div>
             <div className="col-span-2">Type</div>
@@ -114,7 +114,7 @@ function PropertyPage() {
           </div>
 
           <ul className="divide-y divide-border">
-            {property.apartments.map((a: typeof property.apartments[number]) => (
+            {property.apartments.map((a: any) => (
               <li
                 key={a.slug}
                 className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 items-start md:items-center px-2 py-5 md:py-6 group"

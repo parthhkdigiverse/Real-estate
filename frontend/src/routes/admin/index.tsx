@@ -156,9 +156,16 @@ function Dashboard() {
                 </div>
                 <div className="flex-1 overflow-hidden">
                   <p className="truncate text-sm font-semibold text-ink">{inquiry.firstName} {inquiry.surname}</p>
-                  <div className="mt-1 flex items-center gap-2 text-[10px] font-medium text-ink/30 uppercase">
-                    <Clock className="h-3 w-3" />
-                    <span>{new Date(inquiry.createdAt).toLocaleDateString()}</span>
+                  <div className="mt-0.5 flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-[10px] font-medium text-ink/30 uppercase">
+                      <Clock className="h-3 w-3" />
+                      <span>{new Date(inquiry.createdAt).toLocaleDateString()}</span>
+                    </div>
+                    {inquiry.property && (
+                      <span className="text-[9px] font-bold text-rose uppercase tracking-tighter truncate max-w-[80px]">
+                        {inquiry.apartment ? `${inquiry.property}: ${inquiry.apartment}` : inquiry.property}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>

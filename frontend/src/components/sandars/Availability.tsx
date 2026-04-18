@@ -75,7 +75,7 @@ export const Availability = () => {
                     params={{ slug: p.slug }}
                     className="text-xs tracking-display uppercase text-rose hover:text-ink border-b border-rose/40 hover:border-ink pb-0.5 transition-colors"
                   >
-                    Read more
+                    Take a look
                   </Link>
                 </div>
               </div>
