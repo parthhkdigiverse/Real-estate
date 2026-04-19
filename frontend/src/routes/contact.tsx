@@ -175,15 +175,18 @@ function ContactPage() {
       </section>
 
       {/* Map */}
-      <section>
-        <div className="w-full h-[360px] md:h-[420px] overflow-hidden">
-          <iframe
-            title={`Map of ${contact.address}`}
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-0.5640%2C51.4040%2C-0.5040%2C51.4360&amp;layer=mapnik&amp;marker=51.4198%2C-0.5340"
-            className="w-full h-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+      <section className="py-12 md:py-16">
+        <div className="container-luxe">
+          <div className="w-full h-[360px] md:h-[500px] overflow-hidden rounded-3xl border border-ink/5 relative bg-paper-soft shadow-inner-luxe group">
+            {/* We use a slight height increase and negative offset to clip the attribution for a cleaner look */}
+            <iframe
+              title={`Map of ${contact.address}`}
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-0.5640%2C51.4040%2C-0.5040%2C51.4360&amp;layer=mapnik&amp;marker=51.4198%2C-0.5340"
+              className="absolute top-0 left-0 w-full h-[calc(100%+30px)] border-0 grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out opacity-85 hover:opacity-100"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </section>
 
