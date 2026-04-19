@@ -41,7 +41,6 @@ function SettingsPage() {
     setSaving(true);
     
     const token = localStorage.getItem("admin_token");
-    
     try {
       const res = await fetch(`${API_BASE_URL}/api/settings`, {
         method: "PUT",
@@ -52,10 +51,15 @@ function SettingsPage() {
         body: JSON.stringify(settings)
       });
 
+      if (res.status === 401) {
+        toast.error("Session expired. Please log in again.");
+        return;
+      }
+
       if (res.ok) {
         toast.success("Site configuration updated successfully");
       } else {
-        toast.error("Failed to save settings");
+        toast.error("Failed to save settings. Please try again.");
       }
     } catch (error) {
       toast.error("Network error while saving settings");

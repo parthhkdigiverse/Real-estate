@@ -15,7 +15,7 @@ DEFAULT_SETTINGS = {
     "linkedin": "#"
 }
 
-@router.get("/", response_model=SiteSettingsResponse)
+@router.get("", response_model=SiteSettingsResponse)
 async def get_settings():
     db = get_database()
     settings = await db.settings.find_one({})
@@ -28,7 +28,7 @@ async def get_settings():
     settings["_id"] = str(settings["_id"])
     return settings
 
-@router.put("/", response_model=SiteSettingsResponse)
+@router.put("", response_model=SiteSettingsResponse)
 async def update_settings(settings_in: SiteSettingsModel, current_user: str = Depends(get_current_user)):
     db = get_database()
     
