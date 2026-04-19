@@ -59,7 +59,7 @@ function Dashboard() {
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <AdminCard title="Portfolio Size">
           <div className="flex items-center justify-between">
             <span className="text-4xl font-display text-ink">{stats?.totalProperties || 0}</span>
@@ -77,30 +77,7 @@ function Dashboard() {
               <MessageSquare className="h-6 w-6" />
             </div>
           </div>
-          <div className="mt-4 flex items-center gap-1 text-[10px] font-bold text-rose uppercase tracking-widest">
-            <TrendingUp className="h-3 w-3" />
-            <span>Growth +12%</span>
-          </div>
-        </AdminCard>
-
-        <AdminCard title="Engagement">
-          <div className="flex items-center justify-between">
-            <span className="text-4xl font-display text-ink">4.2%</span>
-            <div className="rounded-xl bg-paper-soft p-3 text-ink/20">
-              <ArrowUpRight className="h-6 w-6" />
-            </div>
-          </div>
-          <p className="mt-4 text-[10px] font-bold text-ink/30 uppercase tracking-widest">Conversion Rate</p>
-        </AdminCard>
-
-        <AdminCard title="Live Visitors">
-          <div className="flex items-center justify-between">
-            <span className="text-4xl font-display text-ink">124</span>
-            <div className="rounded-xl bg-paper-soft p-3 text-ink/20">
-              <User className="h-6 w-6" />
-            </div>
-          </div>
-          <p className="mt-4 text-[10px] font-bold text-ink/30 uppercase tracking-widest">Real-time Traffic</p>
+          <p className="mt-4 text-[10px] font-bold text-ink/30 uppercase tracking-widest">Cumulative Registrations</p>
         </AdminCard>
       </div>
 
