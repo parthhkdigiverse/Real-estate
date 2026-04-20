@@ -1,10 +1,11 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { LayoutDashboard, Building2, MessageSquare, LogOut, Mail, Settings } from "lucide-react";
+import { LayoutDashboard, Building2, MessageSquare, LogOut, Mail, Settings, Image } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/admin" },
   { icon: Building2, label: "Properties", href: "/admin/properties" },
+  { icon: Image, label: "Media Assets", href: "/admin/assets" },
   { icon: MessageSquare, label: "Inquiries", href: "/admin/inquiries" },
   { icon: Mail, label: "Newsletter", href: "/admin/newsletter" },
   { icon: Settings, label: "Settings", href: "/admin/settings" },
