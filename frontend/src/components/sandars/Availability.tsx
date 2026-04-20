@@ -82,16 +82,6 @@ export const Availability = () => {
             </article>
           ))}
         </div>
-
-        <div className="mt-12 flex justify-end">
-          <a
-            href="#properties"
-            className="group inline-flex items-center gap-3 text-sm tracking-display uppercase text-ink/80 hover:text-rose transition-colors"
-          >
-            <Grid3x3 className="h-5 w-5 text-rose" />
-            See all availability
-          </a>
-        </div>
       </div>
     </section>
   );

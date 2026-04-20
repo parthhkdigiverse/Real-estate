@@ -24,55 +24,226 @@ export const Route = createFileRoute("/faqs")({
 });
 
 const FAQS: { q: string; a: string }[] = [
-  { q: "What type of heating will I have, and where is its source?", a: "Each apartment is fitted with energy-efficient underfloor heating to all rooms, individually controlled by room thermostats. Heating and hot water are supplied via a centralised low-carbon plant room serving the development." },
-  { q: "Are there smoke, heat and carbon dioxide detectors in all apartments and throughout the communal areas?", a: "Yes. All apartments and communal areas are fitted with mains-powered, interlinked smoke, heat and carbon monoxide detectors with battery back-up, conforming to current British Standards." },
-  { q: "Will there be free Wi-Fi in all the communal areas?", a: "Yes \u2014 complimentary high-speed Wi-Fi is available throughout all communal lounges, the restaurant, library, spa and gardens." },
-  { q: "Who is responsible for the maintenance of the patios and balconies?", a: "The exterior of patios and balconies, including the structure and any planters provided by the development, is maintained by the management team as part of your service charge. Personal furniture and plants are the resident's responsibility." },
-  { q: "Are there any curtains / voiles included?", a: "Apartments are handed over with neutral track curtains and voiles to all principal windows. Bespoke options can be specified at additional cost." },
-  { q: "Will my oven self-clean?", a: "Yes. All apartments are fitted with Siemens or Bosch ovens featuring a pyrolytic self-cleaning function." },
-  { q: "Who is Eden's company solicitor?", a: "Eden Retirement Living's appointed solicitor is Trowers & Hamlins LLP. Reservation packs include the recommended firms for purchaser representation." },
-  { q: "How much is the reservation fee?", a: "The reservation fee is \u00a35,000, fully deductible from the purchase price upon exchange of contracts." },
-  { q: "How long does the reservation deposit secure an apartment?", a: "Your reservation secures the apartment for 28 days, during which exchange of contracts is expected to take place." },
-  { q: "What is the ground rent charge?", a: "There is no ground rent payable on any Sandars apartment, in line with current legislation." },
-  { q: "How much do I get back if I am unable to continue with my purchase?", a: "If you withdraw within the 28-day reservation period, the reservation fee is refunded less a \u00a3500 administration charge plus any solicitor disbursements already incurred." },
-  { q: "Should I allow for any extra cost?", a: "In addition to the purchase price, allow for stamp duty, legal fees, the management charge, and removals. Your sales advisor will provide a detailed indicative cost summary." },
-  { q: "How much does a parking space cost?", a: "Allocated parking is included with most apartments. Additional spaces, where available, are offered at \u00a325,000 each." },
-  { q: "How do I pay for my electricity consumption?", a: "Each apartment is individually metered. You may select your own electricity supplier and pay them directly." },
-  { q: "Do I own my own home?", a: "Yes. Apartments are sold on a 999-year lease, giving you full ownership for all practical purposes." },
-  { q: "What documentation is available for the Buildings Insurance?", a: "A summary of the buildings insurance policy is provided in your handover pack and updated annually. Full schedules are available on request from the management office." },
-  { q: "Can I gift the apartment to a family member?", a: "Yes, subject to the family member meeting the minimum age requirement of 55 years and the standard transfer process." },
-  { q: "Can I sublet my apartment?", a: "Subletting is permitted with prior written consent from the management company. The sub-tenant must meet the development's minimum age requirement." },
-  { q: "Will someone help me move?", a: "Our concierge team can recommend trusted removal partners and will assist with bookings, lift access and parking arrangements on the day." },
-  { q: "If someone is causing a nuisance, who will deal with this?", a: "The estate manager addresses any complaints discreetly and follows the published community charter to resolve issues quickly and fairly." },
-  { q: "If a resident starts to show signs of dementia, who will deal with this?", a: "Our wellbeing team works with families and external healthcare providers to ensure the resident continues to live safely and with dignity. We can also recommend specialist care providers." },
-  { q: "What happens when I come to sell?", a: "The management company offers a guided resale service, marketing your apartment to a waiting list of prospective purchasers. You may also instruct an agent of your choice." },
-  { q: "What happens if a neighbour puts their property on the market at a reduced price?", a: "Pricing is determined by the seller and current market conditions. The management team monitors values and provides advisory guidance to all owners." },
-  { q: "Do you have an eligibility check in place to ensure that any residents can live at The Sandars without any issues, i.e. health problems?", a: "Prospective residents complete a confidential lifestyle questionnaire so we can ensure the apartment meets their long-term needs. We do not refuse residency on the basis of health alone." },
-  { q: "Who looks after the management charge at The Sandars?", a: "The management charge is administered by Eden Retirement Living's dedicated estate management team based on site." },
-  { q: "How often is the management charge collected?", a: "Management charges are collected quarterly in advance by direct debit." },
-  { q: "How often does the management charge increase?", a: "The charge is reviewed annually each April and adjusted in line with actual operating costs and RPI." },
-  { q: "What are the fees when I come to sell?", a: "A 1% transfer fee applies on resale, contributing to ongoing reinvestment in the estate's facilities and grounds." },
-  { q: "How much is the management charge?", a: "Indicative current management charges range from \u00a312,000 to \u00a316,000 per annum depending on apartment size. A full schedule is provided with each reservation." },
-  { q: "Are there electric charging points?", a: "Yes \u2014 dedicated electric vehicle charging points are available in the visitor parking area and selected resident bays." },
-  { q: "Is there a bin store and is our rubbish collected?", a: "Each building has a discreet bin store with general waste, recycling and food waste collection managed by the on-site team." },
-  { q: "Are there smoking areas within the development?", a: "The Sandars is a non-smoking development inside all buildings. Designated outdoor smoking areas are provided away from main entrances." },
-  { q: "May I smoke on my balcony?", a: "We ask residents to refrain from smoking on balconies out of consideration for neighbours, and to use the designated outdoor areas instead." },
-  { q: "Are there any restrictions on how I can use my balcony?", a: "Balconies are for personal enjoyment. We ask residents not to install fixed structures, dry laundry or store large items, in line with the residents' charter." },
-  { q: "How are the communal rooms used and are there any restrictions?", a: "Communal rooms are open to all residents and their guests during posted hours. Some rooms can be booked privately for events through the concierge." },
-  { q: "Who can use the multifunction room and are there any restrictions?", a: "The multifunction room is available to all residents and may be reserved for private gatherings of up to 30 guests." },
-  { q: "Who can use the Guest Suite and how long can someone stay there?", a: "The Guest Suite may be booked by residents for visiting friends and family for up to seven nights at a time, subject to availability." },
-  { q: "Is there a bar?", a: "Yes \u2014 The Sandars offers a residents' bar within the Community Hub, open daily from late afternoon." },
-  { q: "Can I use the facilities of other Eden retirement developments?", a: "Yes. As a Sandars resident you have reciprocal access to the social facilities at other Eden Retirement Living villages." },
-  { q: "Can my family and friends use the facilities within Eden's Club?", a: "Family and friends are welcome to enjoy the facilities when accompanied by a resident, subject to the published guest policy." },
-  { q: "What staff are there on-site and how often are they there?", a: "On-site staff include the Estate Manager, concierge team, wellbeing coordinator, housekeeping, maintenance and restaurant team \u2014 with cover seven days a week." },
-  { q: "What is the Estate Manager called and how often are they there and what do they do?", a: "The Estate Manager is on site Monday to Friday and oversees the day-to-day running of the development, residents' wellbeing and the management of all on-site teams." },
-  { q: "Is there a 24-hour call response?", a: "Yes. A 24-hour emergency call response system is in place via discreet pull-cords and pendant alarms in every apartment." },
-  { q: "How does one access the front doors and own front door?", a: "Residents access the buildings via secure key-fob entry. Apartment front doors are fitted with multi-point locking and a smart key system." },
-  { q: "What is the safety/security system in each apartment?", a: "Each apartment includes a video door entry system linked to the concierge desk, a 24-hour emergency call system and individual smoke and heat detection." },
-  { q: "Will you look after my home when I'm on holiday?", a: "Our concierge team can collect post, water plants and perform welfare checks while you're away \u2014 simply notify us before you travel." },
-  { q: "Are Energy Performance Certificates provided for each apartment?", a: "Yes \u2014 an EPC is provided to every purchaser as part of the legal pack at exchange." },
-  { q: "Are pets allowed?", a: "Well-behaved pets are welcome at The Sandars, subject to the published pet policy and prior approval from the management company." },
-  { q: "How will postal services be managed?", a: "Royal Mail and courier deliveries are received and held by the concierge team for collection or delivered direct to your apartment by arrangement." },
+  {
+    q: "What type of heating will I have, and where is its source?",
+    a: "The provision of electric heating throughout the whole building is via a dry underfloor coil system."
+  },
+  {
+    q: "Are there smoke, heat and carbon dioxide detectors in all apartments and throughout the communal areas?",
+    a: "Yes"
+  },
+  {
+    q: "Will there be free Wi-Fi in all the communal areas?",
+    a: "Yes, we provide this facility free of charge."
+  },
+  {
+    q: "Who is responsible for the maintenance of the patios and balconies?",
+    a: "Eden (The Sandars) Limited is responsible for maintaining all communal garden spaces and pods. Balconies, however, are the responsibility of the residents and should be maintained in keeping with the ambience of the overall development."
+  },
+  {
+    q: "Are there any curtains / voiles included?",
+    a: "Yes, we will provide voiles to each of the apartments."
+  },
+  {
+    q: "Will my oven self-clean?",
+    a: "Yes, we have selected a self-cleaning oven for your convenience."
+  },
+  {
+    q: "Who is Eden\u2019s company solicitor?",
+    a: "Our company Solicitors are Gowling WLG, based in both Birmingham and London."
+  },
+  {
+    q: "How much is the reservation fee?",
+    a: "Our apartment reservation fee is \u00a35000. This fee is a refundable deposit, subject to us incurring any legal costs. Please ask our Sales Executives for the full conditions that apply with this fee."
+  },
+  {
+    q: "How long does the reservation deposit secure an apartment?",
+    a: "We look at each situation individually and mutually agree a timescale at time of the reservation."
+  },
+  {
+    q: "What is the ground rent charge?",
+    a: "There is no ground rent charge at The Sandars."
+  },
+  {
+    q: "How much do I get back if I am unable to continue with my purchase?",
+    a: "If we are made aware of this fact before instructing our Solicitors to start exchange proceedings, then all your deposit will be returned. Full conditions are available from our Sales Executives."
+  },
+  {
+    q: "Should I allow for any extra cost?",
+    a: "You will need to consider a Car Parking Fee if required, Monthly Service Fee, plus Sales Administration Fee on leaving."
+  },
+  {
+    q: "How much does a parking space cost?",
+    a: "\u00a3500 per annum on a first-come, first-served basis."
+  },
+  {
+    q: "How do I pay for my electricity consumption?",
+    a: "Your electricity usage is billed directly from your nominated supplier."
+  },
+  {
+    q: "Do I own my own home?",
+    a: "Yes. We sell each property in an Eden development or village on a long leasehold basis, of up to 250 years. It is your home, held as your asset, and you are free to sell at any stage, on the open market."
+  },
+  {
+    q: "What documentation is available for the Buildings Insurance?",
+    a: "We will provide a full schedule of insurances on completion."
+  },
+  {
+    q: "Can I gift the apartment to a family member?",
+    a: "Yes, you can gift your apartment to a family member through your inheritance. They will need to meet our minimum age requirement if they intend to live within The Sandars."
+  },
+  {
+    q: "Can I sublet my apartment?",
+    a: "Sub-letting is prohibited under the Lease. However, there is the mechanism within the Lease for nominating a Designated Occupier for those whose intention it is to occupy but are unable to do so for a limited period of up to say 3 years. Please discuss this with the Sales Executives and your solicitor. Whilst the Lease prohibits any Landlord and Tenant relationship from occurring, the Designated Occupier provision enables owners to make independent arrangements for occupation by a qualifying person with whom they may have a private arrangement."
+  },
+  {
+    q: "Will someone help me move?",
+    a: "Our recommended removal company will help you with your move. If you also wish to use their decluttering service, please advise when booking. The cost for both these services will depend on the size of your current house and number of belongings. Customers have an entirely free choice of remover and Eden does not receive any commission or incentive from the suppliers for such referrals."
+  },
+  {
+    q: "If someone is causing a nuisance, who will deal with this?",
+    a: "We have designed our lease to ensure that our homeowners are protected, with our Concierge or Estate Manager being the first point of contact. The Lease provides the regulations and legal protections in this respect."
+  },
+  {
+    q: "If a resident starts to show signs of dementia, who will deal with this?",
+    a: "Periodic assessments for residency require leaseholders to engage with our services to enable them to continue to live independently. We assess the resident to ensure they have the capability of living independently, even with early stages of dementia. Our Care Providers (Care Partners (Newbury) Ltd) provide the assessment to establish whether this will be possible. This whole process involves any family member or a selected person who wishes to take part. Should the resident require additional dementia care, our care partners will assist with finding a suitable care home or dementia specialist. The Lease provides clarification on this with the Residency Criteria (under the Qualifying Person definition in the Lease)."
+  },
+  {
+    q: "What happens when I come to sell?",
+    a: "We are happy to assist you in moving with our Eden resale service, but you have every right to select your Estate Agent to provide this service."
+  },
+  {
+    q: "What happens if a neighbour puts their property on the market at a reduced price?",
+    a: "Eden has a pre-emptive right to purchase any property that is offered for sale and could exercise that option in such circumstances. Eden will advise those vendors who choose to appoint Eden as their agent on appropriate asking prices. Where vendors select external agents, Eden will liaise with them on all aspects of the resale."
+  },
+  {
+    q: "Do you have an eligibility check in place to ensure that any residents can live at The Sandars without any issues, i.e. health problems?",
+    a: "We will arrange a periodic health check in compliance with the Landlord\u2019s obligations under the S.106 Agreement with West Berkshire County Council. Residency criteria with our lease require all residents to be capable of living independently within the support regime that is available either via our care partners, Care Partners (Newbury) Limited, or another Care agency of your choosing. Care Partners (Newbury) Limited can provide both additional domestic help and full personal care if required. Please feel free to ask our Sales Executives for further information."
+  },
+  {
+    q: "Who looks after the management charge at The Sandars?",
+    a: "The Landlord, the property developer and long-term owner and operator of The Sandars is responsible for running the monthly management charge scheme."
+  },
+  {
+    q: "How often is the management charge collected?",
+    a: "The management charge is collected in advance every month."
+  },
+  {
+    q: "How often does the management charge increase?",
+    a: "The management charge changes annually in April. The new charge is based on the greater of the increase in the Average Earnings Index or the Retail Prices Index."
+  },
+  {
+    q: "What are the fees when I come to sell?",
+    a: "Vendors pay Eden a 1% + VAT Sales Administration Fee."
+  },
+  {
+    q: "How much is the management charge?",
+    a: "The 2022-3 management charge for a one-bedroom apartment is \u00a3500 per calendar month and \u00a3650 per calendar month for a two-bedroom apartment. The charge will increase annually in April. For further details see the leaflet Our Costs and Services Explained."
+  },
+  {
+    q: "Are there electric charging points?",
+    a: "Yes, there are charging points available."
+  },
+  {
+    q: "Is there a bin store and is our rubbish collected?",
+    a: "There are two bin stores and we encourage our residents to separate their rubbish into the separate recycle bins provided. Our Estate Manager together with West Berkshire Council collect and remove these bins."
+  },
+  {
+    q: "Are there smoking areas within the development?",
+    a: "There is a no smoking policy in public and communal areas."
+  },
+  {
+    q: "May I smoke on my balcony?",
+    a: "Smoking is permitted within your own private apartment. Smoking is NOT permitted on balconies because of the fire risk, or in the communal parts of the building and its grounds."
+  },
+  {
+    q: "Are there any restrictions on how I can use my balcony?",
+    a: "The Lease summary sets out common sense restrictions designed to maintain the appearance of the balconies. These include no drying of clothes or storage of bikes or any other unsightly items."
+  },
+  {
+    q: "How are the communal rooms used and are there any restrictions?",
+    a: "Our communal rooms are available for all residents. We encourage our residents to form their own social committees... we provide all the facilities for residents to provide their own breakfast and lunches if required."
+  },
+  {
+    q: "Who can use the multifunction room and are there any restrictions?",
+    a: "This space is primarily for the residents' use and for social committee meetings... but residents are free to use it as a hobby or activity room as they wish."
+  },
+  {
+    q: "Who can use the Guest Suite and how long can someone stay there?",
+    a: "Our Guest Suite is available only for residents' family and friends... the guest suite should only be used for a maximum of 7 days... nominal charge of \u00a325 per night."
+  },
+  {
+    q: "Is there a bar?",
+    a: "Yes, there is a bar within the club lounge, serviced via the day/night concierge desk."
+  },
+  {
+    q: "Can I use the facilities of other Eden retirement developments?",
+    a: "Yes... our homeowners have the free use of all the facilities in any of our Eden villages or developments."
+  },
+  {
+    q: "Can my family and friends use the facilities within Eden\u2019s Club?",
+    a: "Yes, we encourage you to spend time with your family and friends. Guests are welcome to use our club facilities in the presence of a resident."
+  },
+  {
+    q: "What staff are there on-site and how often are they there?",
+    a: "We have 24-hour on-site staffing to ensure there is always someone at hand should you need assistance."
+  },
+  {
+    q: "What is the Estate Manager called and how often are they there and what do they do?",
+    a: "The Estate Manager is on duty Monday- Friday from 7.00 a.m. to 3.00 p.m. At weekends there is an Assistant Estate Manager on duty from 8.00 am to 8.00 pm. Weekdays there is a Day Concierge on duty from 8.00 am to 8.00 pm and there is a Night Concierge operating from 8.00 pm to 8.00 am, 7 days a week."
+  },
+  {
+    q: "Is there a 24-hour call response?",
+    a: "Yes, and this is part of the basic service fee."
+  },
+  {
+    q: "Who manages the 24-hour call service?",
+    a: "Our on-site staff manage the 24-hour call response service. During night-time hours, it is the responsibility of the night concierge."
+  },
+  {
+    q: "Who is the Home Care Agency?",
+    a: "We facilitate personal care with a partnering agreement between Eden (The Sandars) Ltd and Care Partners (Newbury) Ltd; a reputable CQC registered home care agency based in Bartholomew Street, Newbury. They are engaged to provide the one hour of domestic help per apartment per week. The agency can offer additional domestic and social support to order by direct arrangement and all forms of personal care services, as shown in the client information packs."
+  },
+  {
+    q: "Are there any domestic/laundry services included?",
+    a: "Domestic services are included in the monthly management payment and this is based on one hour per week for each apartment. Our Care Partner can provide extra hours, or increments thereof, of domestic help, social calls and personal care at an additional cost. Laundry services are not included within the monthly fee, but these can be arranged direct with a local service provider using the Concierge desk."
+  },
+  {
+    q: "Who provides the one hour of housekeeping a week?",
+    a: "As above. Care Partners (Newbury) Ltd. Please refer to our Housekeeping leaflet and our Care Services leaflet for additional information."
+  },
+  {
+    q: "What does the Concierge do?",
+    a: "The concierge services are provided for the benefit of the residents... services such as booking family and friends into the Guest Suites, ordering a taxi, flowers, theatre tickets, groceries and parcels. They will also oversee the club lounge, bar and other facilities."
+  },
+  {
+    q: "Is there CCTV in the building and outside?",
+    a: "Yes, there is CCTV coverage at the main entrance and in some communal areas for the security and safety of the residents."
+  },
+  {
+    q: "How does one access the front doors and own front door?",
+    a: "We provide a key fob for all communal doors, and a separate key for each apartment."
+  },
+  {
+    q: "What is the safety security system in each apartment?",
+    a: "The Avukox emergency call system with video door entry and Intruder alarm."
+  },
+  {
+    q: "Will you look after my home when I\u2019m on holiday?",
+    a: "You can go on holiday or visit your relatives for as long as you please, knowing that we will look after your home. We fit all properties with an intruder and smoke alarm. There are also closed-circuit television cameras around the development. If you wish, we can also inspect your home while you are away and make any arrangements for your return, including opening and stocking your fridge."
+  },
+  {
+    q: "Are Energy Performance Certificates provided for each apartment?",
+    a: "Yes, an EPC will be provided for your home upon completion."
+  },
+  {
+    q: "Are pets allowed?",
+    a: "To ensure we consider you and your neighbours reasonably, we would ask for your pet to be well trained and in the case of a dog, kept on a lead on pathways when walking out of Pearl House. Full details of our pet policy are available from our Sales Executives on site."
+  },
+  {
+    q: "How will postal services be managed?",
+    a: "Each apartment will have its own mailbox."
+  }
 ];
 
 function FaqsPage() {

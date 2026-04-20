@@ -71,14 +71,16 @@ const SPEC_SECTIONS = [
     ],
   },
   {
-    title: "Bathroom & Ensuite",
+    title: "Utility & Electricals",
     items: [
-      "Porcelain tiles in all bathrooms",
-      "Large format porcelain tiles",
-      "Electric underfloor heating and towel rails",
-      "Recessed mirrors with LED",
-      "Villeroy Boch sanitaryware and Hansgrohe brassware",
-      "Walk-in wet room showers with glass screen",
+      "Recessed LED down-lighting",
+      "Sockets with USB charging points in the lounge, bedrooms, and entrance hall",
+      "TV/satellite, internet, and telephone points provided",
+      "Home automation for lighting throughout the apartment to give homeowners the ability to control all lighting functions via an app installed on their phone",
+      "Utility cupboards fitted with washer/dryer",
+      "Air-conditioning cooling and heating",
+      "Underfloor heating with smart controls and serviced by air source heat pumps",
+      "Mechanical ventilation with heat recovery system (MVHR)",
     ],
   },
   {
@@ -93,18 +95,17 @@ const SPEC_SECTIONS = [
     ],
   },
   {
-    title: "Utility & Electricals",
+    title: "Bathroom & Ensuite",
     items: [
-      "Recessed LED down-lighting",
-      "Sockets with USB charging points in the lounge, bedrooms, and entrance hall",
-      "TV/satellite, internet, and telephone points provided",
-      "Home automation for lighting throughout the apartment to give homeowners the ability to control all lighting functions via an app installed on their phone",
-      "Utility cupboards fitted with washer/dryer",
-      "Air-conditioning cooling and heating",
-      "Underfloor heating with smart controls and serviced by air source heat pumps",
-      "Mechanical ventilation with heat recovery system (MVHR)",
+      "Porcelain tiles in all bathrooms",
+      "Large format porcelain tiles",
+      "Electric underfloor heating and towel rails",
+      "Recessed mirrors with LED",
+      "Villeroy Boch sanitaryware and Hansgrohe brassware",
+      "Walk-in wet room showers with glass screen",
     ],
   },
+  
 ];
 
 function Specification() {
