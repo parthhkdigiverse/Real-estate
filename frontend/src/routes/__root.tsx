@@ -60,7 +60,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-        <Toaster position="bottom-right" richColors closeButton />
         <Scripts />
       </body>
     </html>
@@ -75,4 +74,3 @@ function RootComponent() {
     </>
   );
 }
-
