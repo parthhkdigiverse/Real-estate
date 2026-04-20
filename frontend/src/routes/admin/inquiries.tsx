@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Trash2, Mail, Phone, Calendar, User } from "lucide-react";
 import { AdminCard } from "@/components/admin/AdminCard";
 import { DataTable } from "@/components/admin/DataTable";
-import { API_BASE_URL } from "@/lib/api";
+import { API_BASE_URL, getApiUrl } from "@/lib/api";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/admin/inquiries")({
@@ -16,7 +16,7 @@ function InquiriesPage() {
 
   const fetchInquiries = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/api/inquiries`);
+      const res = await fetch(getApiUrl("/api/inquiries/"));
       const data = await res.json();
       // Filter out newsletter signups
       const filtered = data.filter((item: any) => item.property !== "Newsletter Signup");
@@ -36,7 +36,7 @@ function InquiriesPage() {
     if (!confirm("Are you certain you wish to remove this registration?")) return;
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/inquiries/${id}`, {
+      const res = await fetch(getApiUrl(`/api/inquiries/${id}`), {
         method: "DELETE",
       });
 

@@ -18,7 +18,7 @@ import {
   YAxis
 } from "recharts";
 import { useEffect, useState } from "react";
-import { API_BASE_URL } from "@/lib/api";
+import { API_BASE_URL, getApiUrl } from "@/lib/api";
 
 export const Route = createFileRoute("/admin/")({
   component: Dashboard,
@@ -31,7 +31,7 @@ function Dashboard() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/dashboard/stats`);
+        const res = await fetch(getApiUrl("/api/dashboard/stats/"));
         const data = await res.json();
         setStats(data);
       } catch (error) {

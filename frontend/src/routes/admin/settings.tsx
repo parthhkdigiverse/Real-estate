@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Save, Loader2, Phone, Mail, Instagram, Facebook, Linkedin, Video, MapPin } from "lucide-react";
 import { AdminCard } from "@/components/admin/AdminCard";
-import { API_BASE_URL } from "@/lib/api";
+import { API_BASE_URL, getApiUrl } from "@/lib/api";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/admin/settings")({
@@ -25,7 +25,7 @@ function SettingsPage() {
   useEffect(() => {
     const loadSettings = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/settings`);
+        const res = await fetch(getApiUrl("/api/settings/"));
         if (!res.ok) throw new Error("Failed");
         const data = await res.json();
         if (data) setSettings(data);
@@ -49,7 +49,7 @@ function SettingsPage() {
       const { _id, ...cleanSettings } = settings;
       console.log("Sending settings update:", cleanSettings);
       
-      const res = await fetch(`${API_BASE_URL}/api/settings`, {
+      const res = await fetch(getApiUrl("/api/settings/"), {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
