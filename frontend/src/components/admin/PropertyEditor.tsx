@@ -5,6 +5,7 @@ import { Plus, Trash2, Save, X, Image as ImageIcon, Loader2, Upload, ChevronDown
 import { AdminCard } from "./AdminCard";
 import { useState, useRef } from "react";
 import { uploadAsset } from "@/lib/api";
+import { toast } from "sonner";
 
 const dimensionSchema = z.object({
   room: z.string().nullable().optional().default(""),
@@ -187,7 +188,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
       const result = await uploadAsset(file);
       setValue(fieldPath as any, result.path);
     } catch (err) {
-      alert("Failed to upload image. Please try again.");
+      toast.error("Failed to upload image. Please try again.");
     } finally {
       setUploading(prev => ({ ...prev, [fieldPath]: false }));
     }

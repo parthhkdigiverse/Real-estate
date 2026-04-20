@@ -6,6 +6,7 @@ import { API_BASE_URL } from "@/lib/api";
 import contactImg from "@/assets/contact-conversation.jpg";
 import teaImg from "@/assets/contact-tea.jpg";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -68,11 +69,11 @@ function ContactPage() {
         (e.target as HTMLFormElement).reset();
       } else {
         console.error("Failed to submit inquiry");
-        alert("Sorry, there was an error submitting your inquiry. Please try again.");
+        toast.error("Sorry, there was an error submitting your inquiry. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting inquiry:", error);
-      alert("Sorry, there was a connection error. Please try again.");
+      toast.error("Sorry, there was a connection error. Please try again.");
     }
   };
 
