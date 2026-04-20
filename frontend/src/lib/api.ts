@@ -1,7 +1,29 @@
 const isServer = typeof window === "undefined";
-export const API_BASE_URL = isServer ? (process.env.VITE_PROXY_TARGET || "http://localhost:8000") : "";
 
-export const getApiUrl = (path: string) => `${API_BASE_URL}${path.startsWith("/") ? "" : "/"}${path}`;
+const getAutoDetectedApiBase = () => {
+  if (isServer) {
+    return process.env.VITE_PROXY_TARGET || "http://localhost:8000";
+  }
+  
+  // Browser logic: If we are on localhost, target the standard backend port
+  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+    return `http://${window.location.hostname}:8000`;
+  }
+  
+  // In production, we default to relative paths which use the current origin
+  return ""; 
+};
+
+export const API_BASE_URL = (import.meta.env.VITE_API_URL as string) || getAutoDetectedApiBase();
+
+export const getApiUrl = (path: string) => {
+  // Ensure we don't have double slashes when the base is empty or ends with a slash
+  const base = API_BASE_URL.replace(/\/$/, "");
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalizedPath}`;
+};
+
+
 
 export async function fetchProperties() {
   const res = await fetch(getApiUrl("/api/properties/"));
