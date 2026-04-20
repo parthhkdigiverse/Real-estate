@@ -34,7 +34,7 @@ function ApartmentDetailPage() {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/inquiries", {
+      const response = await fetch(getApiUrl("/api/inquiries"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
