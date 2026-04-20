@@ -1,8 +1,7 @@
 const isServer = typeof window === "undefined";
 
-const isServer = typeof window === "undefined";
-
 const getApiBase = () => {
+
   const envUrl = import.meta.env.VITE_API_URL as string;
   
   if (isServer) {
