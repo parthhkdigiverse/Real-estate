@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Save, Loader2, Phone, Mail, MapPin, Instagram, Facebook, Linkedin } from "lucide-react";
+import { Save, Loader2, Phone, Mail, Instagram, Facebook, Linkedin } from "lucide-react";
 import { AdminCard } from "@/components/admin/AdminCard";
 import { API_BASE_URL } from "@/lib/api";
 import { toast } from "sonner";
@@ -111,19 +111,6 @@ function SettingsPage() {
                 value={settings.email}
                 onChange={(e) => setSettings({...settings, email: e.target.value})}
                 className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors"
-                required
-              />
-            </div>
-            <div className="md:col-span-2 space-y-2">
-              <label className="text-[10px] font-bold text-ink/40 uppercase tracking-widest flex items-center gap-2">
-                <MapPin className="h-3 w-3" />
-                Physical Address
-              </label>
-              <textarea 
-                rows={3}
-                value={settings.address}
-                onChange={(e) => setSettings({...settings, address: e.target.value})}
-                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors resize-none"
                 required
               />
             </div>
