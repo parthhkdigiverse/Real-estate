@@ -1,35 +1,29 @@
 const isServer = typeof window === "undefined";
 
 const getApiBase = () => {
+  if (typeof window !== "undefined") {
+    // BROWSER LOGIC: Always use relative paths. 
+    // This is the ultimate "automatic detection" because it uses the host the page was loaded from.
+    return "";
+  }
 
+  // SSR LOGIC
   const envUrl = import.meta.env.VITE_API_URL as string;
-  
-  if (isServer) {
-    return envUrl || "http://localhost:8000";
-  }
-
-  // Browser Logic
-  const hostname = window.location.hostname;
-  const isLocalHost = hostname === "localhost" || hostname === "127.0.0.1";
-
-  // AGGRESSIVE OVERRIDE: If we are on a live domain, always default to relative paths
-  // unless we have an explicit non-localhost cross-domain API URL.
-  if (!isLocalHost) {
-    if (!envUrl || envUrl.includes("localhost") || envUrl.includes("127.0.0.1")) {
-      return ""; // Force relative path on live site
-    }
-  }
-
-  // Default fallbacks
   if (envUrl) return envUrl;
-  if (isLocalHost) return `http://${hostname}:8000`;
-  
-  return "";
+
+  // Fallback for local development SSR
+  const backendPort = import.meta.env.VITE_BACKEND_PORT;
+  if (backendPort) {
+    return `http://127.0.0.1:${backendPort}`;
+  }
+
+  // Final fallback (should only hit if orchestrator isn't used or .env is broken)
+  return ""; 
 };
 
 export const API_BASE_URL = getApiBase();
 
-// Diagnostic logging for live debugging
+// Diagnostic logging
 if (!isServer) {
   console.log("%c[API Config] Resolved Base URL:", "color: #ff00ff; font-weight: bold;", API_BASE_URL || "(relative)");
 }

@@ -4,6 +4,13 @@ import os
 import time
 import shutil
 import threading
+from dotenv import load_dotenv
+
+# Load .env from backend directory
+root_dir = os.path.dirname(os.path.abspath(__file__))
+backend_dir = os.path.join(root_dir, "backend")
+env_path = os.path.join(backend_dir, ".env")
+load_dotenv(env_path, override=True)
 
 def is_command_available(cmd):
     """Check if a command is available in the system PATH."""
@@ -14,17 +21,12 @@ def run_command(cmd, cwd=None, shell=True):
     print(f"RUNNING: {cmd} in {cwd or 'root'}...")
     return subprocess.run(cmd, cwd=cwd, shell=shell)
 
-def get_env_port(env_path, key, default):
-    """Read a port value from an .env file."""
-    if os.path.exists(env_path):
-        with open(env_path, "r") as f:
-            for line in f:
-                if line.strip().startswith(f"{key}="):
-                    try:
-                        return line.split("=")[1].strip()
-                    except (IndexError, ValueError):
-                        pass
-    return str(default)
+def get_required_env(key):
+    """Get a required environment variable or raise an error."""
+    value = os.getenv(key)
+    if not value:
+        raise RuntimeError(f"CRITICAL ERROR: {key} not found in environment or {env_path}. Please set it in your .env file.")
+    return value
 
 def install_dependencies(frontend_dir, backend_dir):
     """Automatically install missing dependencies."""
@@ -57,20 +59,16 @@ def run_services():
     # Ensure dependencies are installed
     install_dependencies(frontend_dir, backend_dir)
 
-    # Load ports from .env
-    env_path = os.path.join(backend_dir, ".env")
-    backend_port = get_env_port(env_path, "BACKEND_PORT", 8000)
-    if backend_port == "8000": # Fallback to PORT if BACKEND_PORT not found or default
-        backend_port = get_env_port(env_path, "PORT", 8000)
-    
-    frontend_port = get_env_port(env_path, "FRONTEND_PORT", 8080)
+    # Load ports from environment - Must be set in .env
+    backend_port = get_required_env("BACKEND_PORT")
+    frontend_port = get_required_env("FRONTEND_PORT")
 
     print("\nStarting The Sandras Services...")
 
     # Start Backend (FastAPI)
     print(f"Starting Backend (FastAPI) on port {backend_port}...")
     backend_process = subprocess.Popen(
-        f'"{sys.executable}" -m uvicorn app.main:app --reload --port {backend_port}',
+        f'"{sys.executable}" -m uvicorn app.main:app --reload --port {backend_port} --host 127.0.0.1',
         cwd=backend_dir,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
@@ -87,9 +85,10 @@ def run_services():
     
     print(f"Starting Frontend ({frontend_cmd})...")
     
-    # Pass backend port to frontend for proxying
+    # Pass backend port to frontend for proxying and dynamic detection
     frontend_env = os.environ.copy()
-    frontend_env["VITE_PROXY_TARGET"] = f"http://localhost:{backend_port}"
+    frontend_env["VITE_PROXY_TARGET"] = f"http://127.0.0.1:{backend_port}"
+    frontend_env["VITE_BACKEND_PORT"] = backend_port
     
     frontend_process = subprocess.Popen(
         frontend_cmd,
