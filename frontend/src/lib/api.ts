@@ -1,10 +1,11 @@
 const isServer = typeof window === "undefined";
 
+const isServer = typeof window === "undefined";
+
 const getApiBase = () => {
   const envUrl = import.meta.env.VITE_API_URL as string;
   
   if (isServer) {
-    // SSR: Use VITE_API_URL or fallback to local backend for development
     return envUrl || "http://localhost:8000";
   }
 
@@ -12,27 +13,28 @@ const getApiBase = () => {
   const hostname = window.location.hostname;
   const isLocalHost = hostname === "localhost" || hostname === "127.0.0.1";
 
-  // SMART OVERRIDE: If the environment provides a "localhost" URL but we are 
-  // currently browsing on a live domain, we MUST ignore it as it will cause 
-  // ERR_CONNECTION_REFUSED. We default to relative paths instead.
-  if (envUrl && envUrl.includes("localhost") && !isLocalHost) {
-    console.warn(`Overriding misconfigured API URL (${envUrl}) with relative path for domain: ${hostname}`);
-    return "";
+  // AGGRESSIVE OVERRIDE: If we are on a live domain, always default to relative paths
+  // unless we have an explicit non-localhost cross-domain API URL.
+  if (!isLocalHost) {
+    if (!envUrl || envUrl.includes("localhost") || envUrl.includes("127.0.0.1")) {
+      return ""; // Force relative path on live site
+    }
   }
 
-  // Use explicit environment variable if provided
+  // Default fallbacks
   if (envUrl) return envUrl;
-
-  // Fallback for local development if no env var is set
-  if (isLocalHost) {
-    return `http://${hostname}:8000`;
-  }
-
-  // Final default for production: use relative paths ("")
+  if (isLocalHost) return `http://${hostname}:8000`;
+  
   return "";
 };
 
 export const API_BASE_URL = getApiBase();
+
+// Diagnostic logging for live debugging
+if (!isServer) {
+  console.log("%c[API Config] Resolved Base URL:", "color: #ff00ff; font-weight: bold;", API_BASE_URL || "(relative)");
+}
+
 
 
 export const getApiUrl = (path: string) => {
