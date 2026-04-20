@@ -40,7 +40,7 @@ process.env.VITE_PROXY_TARGET = `http://127.0.0.1:${activeBackendPort}`;
 process.env.VITE_BACKEND_PORT = activeBackendPort;
 
 console.log(`\n[Orchestrator] Starting Backend on port ${activeBackendPort}...`);
-const backend = spawn('python3', ['-m', 'uvicorn', 'app.main:app', '--reload', '--port', activeBackendPort, '--host', '127.0.0.1'], {
+const backend = spawn('python3', ['-m', 'uvicorn', 'app.main:app', '--reload', '--port', activeBackendPort, '--host', '0.0.0.0'], {
   cwd: backendDir,
   shell: true,
   stdio: 'inherit',

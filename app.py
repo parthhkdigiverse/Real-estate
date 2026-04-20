@@ -68,7 +68,7 @@ def run_services():
     # Start Backend (FastAPI)
     print(f"Starting Backend (FastAPI) on port {backend_port}...")
     backend_process = subprocess.Popen(
-        f'"{sys.executable}" -m uvicorn app.main:app --reload --port {backend_port} --host 127.0.0.1',
+        f'"{sys.executable}" -m uvicorn app.main:app --reload --port {backend_port} --host 0.0.0.0',
         cwd=backend_dir,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
