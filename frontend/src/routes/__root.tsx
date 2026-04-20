@@ -1,5 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import { Toaster } from "sonner";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, ScrollRestoration } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 
@@ -59,7 +58,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-        <Toaster position="bottom-right" richColors closeButton />
         <Scripts />
       </body>
     </html>
@@ -74,4 +72,3 @@ function RootComponent() {
     </>
   );
 }
-
