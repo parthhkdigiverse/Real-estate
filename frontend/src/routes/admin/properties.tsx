@@ -34,6 +34,15 @@ function PropertiesPage() {
   }, []);
 
   const handleSave = async (formData: any) => {
+    console.log("Submitting property change...", formData);
+    
+    const token = localStorage.getItem("admin_token");
+    if (!token) {
+      toast.error("Session expired. Please log in again.");
+      window.location.href = "/login";
+      return;
+    }
+
     try {
       const url = editingProperty 
         ? `${API_BASE_URL}/api/properties/${editingProperty.id || editingProperty._id}`
@@ -43,20 +52,26 @@ function PropertiesPage() {
       
       const res = await fetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify(formData),
       });
 
       if (res.ok) {
-        toast.success(editingProperty ? "Changes saved successfully" : "New property listed");
+        toast.success(editingProperty ? "Property updated successfully" : "Property created successfully");
         setIsEditorOpen(false);
         setEditingProperty(null);
         fetchProperties();
       } else {
-        toast.error("Failed to save. Please check your data.");
+        const errorData = await res.json();
+        console.error("Save failed:", errorData);
+        toast.error(`Save failed: ${errorData.detail || "Please check your data"}`);
       }
     } catch (error) {
-      toast.error("A network error occurred.");
+      console.error("Network error during save:", error);
+      toast.error("Network error. Please try again.");
     }
   };
 

@@ -21,7 +21,6 @@ import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminPropertiesRouteImport } from './routes/admin/properties'
 import { Route as AdminNewsletterRouteImport } from './routes/admin/newsletter'
 import { Route as AdminInquiriesRouteImport } from './routes/admin/inquiries'
-import { Route as AdminAssetsRouteImport } from './routes/admin/assets'
 import { Route as PropertiesSlugIndexRouteImport } from './routes/properties.$slug.index'
 import { Route as PropertiesSlugApartmentsAptSlugRouteImport } from './routes/properties.$slug.apartments.$aptSlug'
 
@@ -85,11 +84,6 @@ const AdminInquiriesRoute = AdminInquiriesRouteImport.update({
   path: '/inquiries',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminAssetsRoute = AdminAssetsRouteImport.update({
-  id: '/assets',
-  path: '/assets',
-  getParentRoute: () => AdminRoute,
-} as any)
 const PropertiesSlugIndexRoute = PropertiesSlugIndexRouteImport.update({
   id: '/properties/$slug/',
   path: '/properties/$slug/',
@@ -110,7 +104,6 @@ export interface FileRoutesByFullPath {
   '/lifestyle': typeof LifestyleRoute
   '/login': typeof LoginRoute
   '/specification': typeof SpecificationRoute
-  '/admin/assets': typeof AdminAssetsRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/newsletter': typeof AdminNewsletterRoute
   '/admin/properties': typeof AdminPropertiesRoute
@@ -126,7 +119,6 @@ export interface FileRoutesByTo {
   '/lifestyle': typeof LifestyleRoute
   '/login': typeof LoginRoute
   '/specification': typeof SpecificationRoute
-  '/admin/assets': typeof AdminAssetsRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/newsletter': typeof AdminNewsletterRoute
   '/admin/properties': typeof AdminPropertiesRoute
@@ -144,7 +136,6 @@ export interface FileRoutesById {
   '/lifestyle': typeof LifestyleRoute
   '/login': typeof LoginRoute
   '/specification': typeof SpecificationRoute
-  '/admin/assets': typeof AdminAssetsRoute
   '/admin/inquiries': typeof AdminInquiriesRoute
   '/admin/newsletter': typeof AdminNewsletterRoute
   '/admin/properties': typeof AdminPropertiesRoute
@@ -163,7 +154,6 @@ export interface FileRouteTypes {
     | '/lifestyle'
     | '/login'
     | '/specification'
-    | '/admin/assets'
     | '/admin/inquiries'
     | '/admin/newsletter'
     | '/admin/properties'
@@ -179,7 +169,6 @@ export interface FileRouteTypes {
     | '/lifestyle'
     | '/login'
     | '/specification'
-    | '/admin/assets'
     | '/admin/inquiries'
     | '/admin/newsletter'
     | '/admin/properties'
@@ -196,7 +185,6 @@ export interface FileRouteTypes {
     | '/lifestyle'
     | '/login'
     | '/specification'
-    | '/admin/assets'
     | '/admin/inquiries'
     | '/admin/newsletter'
     | '/admin/properties'
@@ -304,13 +292,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminInquiriesRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/assets': {
-      id: '/admin/assets'
-      path: '/assets'
-      fullPath: '/admin/assets'
-      preLoaderRoute: typeof AdminAssetsRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/properties/$slug/': {
       id: '/properties/$slug/'
       path: '/properties/$slug'
@@ -329,7 +310,6 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
-  AdminAssetsRoute: typeof AdminAssetsRoute
   AdminInquiriesRoute: typeof AdminInquiriesRoute
   AdminNewsletterRoute: typeof AdminNewsletterRoute
   AdminPropertiesRoute: typeof AdminPropertiesRoute
@@ -338,7 +318,6 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
-  AdminAssetsRoute: AdminAssetsRoute,
   AdminInquiriesRoute: AdminInquiriesRoute,
   AdminNewsletterRoute: AdminNewsletterRoute,
   AdminPropertiesRoute: AdminPropertiesRoute,

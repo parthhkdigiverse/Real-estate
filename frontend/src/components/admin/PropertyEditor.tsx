@@ -1,41 +1,41 @@
 import { useForm, useFieldArray, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Plus, Trash2, Save, X, Image as ImageIcon, Loader2, Upload, ChevronDown, ChevronUp, MapPin, Layout } from "lucide-react";
+import { Plus, Trash2, Save, X, Image as ImageIcon, Loader2, Upload, ChevronDown, ChevronUp, MapPin, Layout, AlertCircle } from "lucide-react";
 import { AdminCard } from "./AdminCard";
 import { useState, useRef } from "react";
 import { uploadAsset } from "@/lib/api";
 
 const dimensionSchema = z.object({
-  room: z.string().min(1, "Room name is required"),
-  metric: z.string().min(1, "Metric size is required"),
-  imperial: z.string().min(1, "Imperial size is required"),
+  room: z.string().nullable().optional().default(""),
+  metric: z.string().nullable().optional().default(""),
+  imperial: z.string().nullable().optional().default(""),
 });
 
 const apartmentSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  type: z.string().min(1, "Type is required"),
-  size: z.string().min(1, "Size is required"),
-  price: z.string().min(1, "Price is required"),
-  slug: z.string().min(1, "Slug is required"),
-  hero_image: z.string().optional(),
-  floorplan_image: z.string().optional(),
-  location_map_image: z.string().optional(),
-  dimensions: z.array(dimensionSchema).default([]),
+  type: z.string().nullable().optional().default("Apartment"),
+  size: z.string().nullable().optional().default(""),
+  price: z.string().nullable().optional().default("On request"),
+  slug: z.string().nullable().optional().default(""),
+  hero_image: z.string().nullable().optional().default(""),
+  floorplan_image: z.string().nullable().optional().default(""),
+  location_map_image: z.string().nullable().optional().default(""),
+  dimensions: z.array(dimensionSchema).nullable().optional().default([]),
 });
 
 const propertySchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  slug: z.string().min(1, "Slug is required"),
-  hero: z.string().min(1, "Hero image is required"),
-  featured_image: z.string().optional(),
-  tag: z.string().optional(),
-  date: z.string().optional(),
-  is_featured: z.boolean().optional(),
-  intro: z.string().min(1, "Intro text is required"),
-  showApartmentNote: z.string().min(1, "Apartment note is required"),
-  hours: z.string().min(1, "Sales hours are required"),
-  apartments: z.array(apartmentSchema),
+  name: z.string().min(1, "Property name is required"),
+  hero: z.string().nullable().optional().default(""),
+  intro: z.string().nullable().optional().default(""),
+  showApartmentNote: z.string().nullable().optional().default(""),
+  hours: z.string().nullable().optional().default(""),
+  apartments: z.array(apartmentSchema).nullable().optional().default([]),
+  slug: z.string().min(1, "Property slug is required"),
+  tag: z.string().nullable().optional().default("For Sale"),
+  date: z.string().nullable().optional(),
+  featured_image: z.string().nullable().optional().default(""),
+  is_featured: z.boolean().nullable().optional().default(false),
 });
 
 type PropertyFormValues = z.infer<typeof propertySchema>;
@@ -112,7 +112,7 @@ function DimensionsEditor({ nestIndex, control, register }: { nestIndex: number,
   );
 }
 
-export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditorProps) {
+export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }: PropertyEditorProps) {
   const [uploading, setUploading] = useState<{ [key: string]: boolean }>({});
   const [expandedApartment, setExpandedApartment] = useState<number | null>(null);
   
@@ -129,20 +129,49 @@ export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditor
     formState: { errors },
   } = useForm<PropertyFormValues>({
     resolver: zodResolver(propertySchema),
-    defaultValues: initialData || {
-      name: "",
-      slug: "",
-      hero: "",
-      featured_image: "",
-      tag: "For Sale",
-      date: "",
-      is_featured: false,
-      intro: "",
-      showApartmentNote: "Apartments from \u00a3XXX",
-      hours: "Daily, 10am \u2014 5pm",
-      apartments: [],
+    defaultValues: {
+      name: initialData?.name || "",
+      slug: initialData?.slug || "",
+      hero: initialData?.hero || "",
+      featured_image: initialData?.featured_image || "",
+      tag: initialData?.tag || "For Sale",
+      date: initialData?.date || "",
+      is_featured: initialData?.is_featured || false,
+      intro: initialData?.intro || "",
+      showApartmentNote: initialData?.showApartmentNote || "Apartments from \u00a3XXX",
+      hours: initialData?.hours || "Daily, 10am \u2014 5pm",
+      apartments: (initialData?.apartments || []).map((apt: any) => ({
+        ...apt,
+        type: apt.type || "",
+        size: apt.size || "",
+        price: apt.price || "",
+        slug: apt.slug || "",
+        hero_image: apt.hero_image || "",
+        floorplan_image: apt.floorplan_image || "",
+        location_map_image: apt.location_map_image || "",
+        dimensions: (apt.dimensions || []).map((dim: any) => ({
+          room: dim.room || "",
+          metric: dim.metric || "",
+          imperial: dim.imperial || ""
+        }))
+      })),
     },
   });
+
+  const onSave = (data: any) => {
+    const validatedData = {
+      ...data,
+      apartments: data.apartments.map((apt: any) => ({
+        ...apt,
+        slug: apt.slug || apt.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || `unit-${Math.random().toString(36).slice(2, 5)}`
+      }))
+    };
+    initialOnSave(validatedData);
+  };
+
+  const onErrors = (err: any) => {
+    console.error("Form Validation Failed:", err);
+  };
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -173,7 +202,36 @@ export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditor
         title={initialData ? "Edit Property" : "Add New Property"} 
         className="max-h-[90vh] w-full max-w-4xl overflow-y-auto border-ink/10 shadow-2xl"
       >
-        <form onSubmit={handleSubmit(onSave)} className="space-y-8">
+        <form onSubmit={handleSubmit(onSave, onErrors)} className="space-y-8">
+          {Object.keys(errors).length > 0 && (
+            <div className="flex flex-col gap-3 rounded-xl bg-rose/5 p-5 text-rose border border-rose/10 animate-in fade-in slide-in-from-top-2">
+              <div className="flex items-center gap-3">
+                <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                <p className="text-xs font-bold uppercase tracking-widest">
+                  Validation Error
+                </p>
+              </div>
+              <ul className="space-y-1 pl-8 list-disc">
+                {Object.entries(errors).map(([key, error]: [string, any]) => (
+                  <li key={key} className="text-[10px] font-medium uppercase tracking-tight opacity-80">
+                    <span className="font-bold">{key.replace('_', ' ')}</span>: {error?.message || "Check nested details"}
+                    
+                    {/* Diagnostic detail for apartments */}
+                    {key === 'apartments' && Array.isArray(error) && (
+                      <ul className="mt-1 space-y-1 pl-4 border-l border-rose/20">
+                        {error.map((err, idx) => err && (
+                          <li key={idx} className="text-[9px] text-rose/70">
+                            Unit {idx + 1}: {watch(`apartments.${idx}.name`) || "Untitled"} 
+                            (Please check dimensions or required fields)
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
               <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Property Name</label>
@@ -369,6 +427,14 @@ export function PropertyEditor({ initialData, onSave, onCancel }: PropertyEditor
                       onClick={() => setExpandedApartment(isExpanded ? null : index)}
                     >
                       <div className="flex flex-1 items-center gap-6">
+                        <div className="flex-1 overflow-hidden">
+                          <p className="text-rose text-[15px] md:text-base flex items-center gap-2 font-display">
+                            {field.name || "Untitled Unit"}
+                            {errors.apartments?.[index] && (
+                              <span className="flex h-2 w-2 rounded-full bg-rose animate-pulse" title="Validation errors in this unit" />
+                            )}
+                          </p>
+                        </div>
                         <div className="space-y-1 min-w-[120px]">
                           <span className="text-[8px] font-bold text-ink/30 uppercase tracking-tighter">Name</span>
                           <input
