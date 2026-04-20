@@ -123,19 +123,6 @@ export const Hero = () => {
             ))}
           </div>
         </div>
-
-        <div className="grid md:grid-cols-[1fr_auto] items-end gap-6 mt-10 md:mt-14 pb-2">
-          <p className="font-display text-2xl md:text-3xl text-ink/90 leading-snug max-w-3xl">
-            1 &amp; 2 bedroom luxury later-living apartments, set in new build and grade II
-            listed buildings, surrounded by 27 acres of parkland and lakes.
-          </p>
-          <a
-            href="#about"
-            className="self-start md:self-end text-sm tracking-display uppercase text-rose hover:text-ink transition-colors border-b border-rose/40 hover:border-ink pb-1"
-          >
-            Discover more
-          </a>
-        </div>
       </div>
     </section>
   );
