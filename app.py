@@ -87,8 +87,10 @@ def run_services():
     
     # Pass backend port to frontend for proxying and dynamic detection
     frontend_env = os.environ.copy()
+    # FORCE 127.0.0.1 for the local proxy to ensure Vite can reach the backend
     frontend_env["VITE_PROXY_TARGET"] = f"http://127.0.0.1:{backend_port}"
     frontend_env["VITE_BACKEND_PORT"] = backend_port
+    frontend_env["BACKEND_PORT"] = backend_port
     
     frontend_process = subprocess.Popen(
         frontend_cmd,

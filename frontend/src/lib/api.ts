@@ -25,6 +25,21 @@ const getApiBase = () => {
 
 export const API_BASE_URL = getApiBase();
 
+// Utility to get the "clean" fetch to avoid interception by dev-tool proxies
+const safeFetch = async (url: string, options?: RequestInit) => {
+  // If we are on a public domain, and somehow an old tool is still trying to use localhost,
+  // we FORCE it back to the absolute URL.
+  let targetUrl = url;
+  if (typeof window !== "undefined") {
+    const isPublicHost = !window.location.hostname.includes("127.0.0.1") && !window.location.hostname.includes("localhost");
+    if (isPublicHost && (url.includes("127.0.0.1") || url.includes("localhost"))) {
+       console.warn("[API Sanity Check] Blocking attempted localhost fetch on public domain. Redirecting to relative origin.");
+       targetUrl = url.replace(/http:\/\/127\.0\.0\.1:\d+/, "").replace(/http:\/\/localhost:\d+/, "");
+    }
+  }
+  return fetch(targetUrl, options);
+};
+
 export const getApiUrl = (path: string) => {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   
@@ -45,27 +60,28 @@ export const getApiUrl = (path: string) => {
 // Extra diagnostic logging
 if (typeof window !== "undefined") {
   console.log("%c[API Config] Dynamic Base URL Discovery:", "color: #ff00ff; font-weight: bold; background: #330033; padding: 2px 6px; border-radius: 4px;");
-  console.log("  - Resolved BASE:", API_BASE_URL || "(relative)");
-  console.log("  - Window Origin:", window.location.origin);
-  console.log("  - Document Base:", document.baseURI);
-  console.log("  - Env VITE_BACKEND_PORT:", import.meta.env.VITE_BACKEND_PORT || "not set");
   console.log("  - FINAL API URL (Settings):", getApiUrl("/api/settings"));
+  
+  // Test if fetch is native or monkey-patched
+  const fetchStr = window.fetch.toString();
+  const isPatched = !fetchStr.includes("[native code]");
+  console.log("  - Fetch Implementation:", isPatched ? "MODIFIED (Likely by Dev Tools)" : "Native");
 }
 
 export async function fetchProperties() {
-  const res = await fetch(getApiUrl("/api/properties/"));
+  const res = await safeFetch(getApiUrl("/api/properties/"));
   if (!res.ok) throw new Error("Failed to fetch properties");
   return res.json();
 }
 
 export async function fetchPropertyBySlug(slug: string) {
-  const res = await fetch(getApiUrl(`/api/properties/${slug}`));
+  const res = await safeFetch(getApiUrl(`/api/properties/${slug}`));
   if (!res.ok) throw new Error("Property not found");
   return res.json();
 }
 
 export async function createProperty(data: any, token: string) {
-  const res = await fetch(getApiUrl("/api/properties/"), {
+  const res = await safeFetch(getApiUrl("/api/properties/"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +94,7 @@ export async function createProperty(data: any, token: string) {
 }
 
 export async function updateProperty(id: string, data: any, token: string) {
-  const res = await fetch(getApiUrl(`/api/properties/${id}`), {
+  const res = await safeFetch(getApiUrl(`/api/properties/${id}`), {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -91,7 +107,7 @@ export async function updateProperty(id: string, data: any, token: string) {
 }
 
 export async function deleteProperty(id: string, token: string) {
-  const res = await fetch(getApiUrl(`/api/properties/${id}`), {
+  const res = await safeFetch(getApiUrl(`/api/properties/${id}`), {
     method: "DELETE",
     headers: {
       "Authorization": `Bearer ${token}`
@@ -105,7 +121,7 @@ export async function uploadAsset(file: File) {
   const formData = new FormData();
   formData.append("file", file);
 
-  const res = await fetch(getApiUrl("/api/assets/upload"), {
+  const res = await safeFetch(getApiUrl("/api/assets/upload"), {
     method: "POST",
     body: formData,
   });
@@ -119,7 +135,7 @@ export async function uploadAsset(file: File) {
 }
 
 export async function fetchInquiries(token: string) {
-  const res = await fetch(getApiUrl("/api/inquiries/"), {
+  const res = await safeFetch(getApiUrl("/api/inquiries/"), {
     headers: {
       "Authorization": `Bearer ${token}`
     }
@@ -129,7 +145,7 @@ export async function fetchInquiries(token: string) {
 }
 
 export async function deleteInquiry(id: string, token: string) {
-  const res = await fetch(getApiUrl(`/api/inquiries/${id}`), {
+  const res = await safeFetch(getApiUrl(`/api/inquiries/${id}`), {
     method: "DELETE",
     headers: {
       "Authorization": `Bearer ${token}`
@@ -140,7 +156,7 @@ export async function deleteInquiry(id: string, token: string) {
 }
 
 export async function submitInquiry(data: any) {
-  const res = await fetch(getApiUrl("/api/inquiries/"), {
+  const res = await safeFetch(getApiUrl("/api/inquiries/"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -152,7 +168,7 @@ export async function submitInquiry(data: any) {
 
 export async function fetchSettings() {
   try {
-    const res = await fetch(getApiUrl("/api/settings"));
+    const res = await safeFetch(getApiUrl("/api/settings"));
     if (!res.ok) {
       console.warn(`Settings fetch failed with status ${res.status}. Using fallback defaults.`);
       return null;
