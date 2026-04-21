@@ -25,22 +25,34 @@ const getApiBase = () => {
 
 export const API_BASE_URL = getApiBase();
 
-// Diagnostic logging
+export const getApiUrl = (path: string) => {
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  
+  // SANITY CHECK: If we are in the browser, and the base URL is local, but we are on a public domain,
+  // we MUST force relative paths to prevent ERR_CONNECTION_REFUSED.
+  if (typeof window !== "undefined") {
+    const isLocalBase = API_BASE_URL?.includes("127.0.0.1") || API_BASE_URL?.includes("localhost");
+    const isPublicHost = !window.location.hostname.includes("127.0.0.1") && !window.location.hostname.includes("localhost");
+    
+    if (isLocalBase && isPublicHost) {
+      console.warn("[API Sanity Check] Overriding stale localhost API Base with relative path for public domain.");
+      return normalizedPath;
+    }
+  }
+
+  if (!API_BASE_URL) return normalizedPath;
+  return `${API_BASE_URL.replace(/\/$/, "")}${normalizedPath}`;
+};
+
+// Extra diagnostic logging
 if (typeof window !== "undefined") {
   console.log("%c[API Config] Dynamic Base URL Discovery:", "color: #ff00ff; font-weight: bold; background: #330033; padding: 2px 6px; border-radius: 4px;");
   console.log("  - Resolved BASE:", API_BASE_URL || "(relative)");
   console.log("  - Window Origin:", window.location.origin);
+  console.log("  - Document Base:", document.baseURI);
   console.log("  - Env VITE_API_URL:", import.meta.env.VITE_API_URL || "not set");
   console.log("  - Env VITE_BACKEND_PORT:", import.meta.env.VITE_BACKEND_PORT || "not set");
 }
-
-
-
-export const getApiUrl = (path: string) => {
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  if (!API_BASE_URL) return normalizedPath;
-  return `${API_BASE_URL.replace(/\/$/, "")}${normalizedPath}`;
-};
 
 export async function fetchProperties() {
   const res = await fetch(getApiUrl("/api/properties/"));
