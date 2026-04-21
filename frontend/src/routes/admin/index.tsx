@@ -35,7 +35,7 @@ function Dashboard() {
         const data = await res.json();
         setStats(data);
       } catch (error) {
-        console.error("Failed to fetch stats", error);
+        console.error(`Failed to fetch stats from ${getApiUrl("/api/dashboard/stats/")}`, error);
       } finally {
         setLoading(false);
       }

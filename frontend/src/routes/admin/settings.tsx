@@ -30,7 +30,7 @@ function SettingsPage() {
         const data = await res.json();
         if (data) setSettings(data);
       } catch (error) {
-        console.error("Settings load error:", error);
+        console.error(`Settings load error from ${getApiUrl("/api/settings/")}:`, error);
         toast.error("Failed to load site settings");
       } finally {
         setLoading(false);

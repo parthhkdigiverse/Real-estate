@@ -1,31 +1,37 @@
 const isServer = typeof window === "undefined";
 
 const getApiBase = () => {
-  if (typeof window !== "undefined") {
-    // BROWSER LOGIC: Always use relative paths. 
-    // This is the ultimate "automatic detection" because it uses the host the page was loaded from.
-    return "";
-  }
-
-  // SSR LOGIC
+  const isBrowser = typeof window !== "undefined";
+  
+  // 1. Explicit Override (highest priority)
   const envUrl = import.meta.env.VITE_API_URL as string;
   if (envUrl) return envUrl;
 
-  // Fallback for local development SSR
+  // 2. Browser Logic: Always use relative paths by default
+  if (isBrowser) {
+    // SECURITY: Even if a VITE_BACKEND_PORT exists, if we are in a public domain, 
+    // we should NOT fallback to 127.0.0.1. Relativeness is safer for SSL/Proxies.
+    return "";
+  }
+
+  // 3. SSR Logic fallback for development
   const backendPort = import.meta.env.VITE_BACKEND_PORT;
   if (backendPort) {
     return `http://127.0.0.1:${backendPort}`;
   }
 
-  // Final fallback (should only hit if orchestrator isn't used or .env is broken)
   return ""; 
 };
 
 export const API_BASE_URL = getApiBase();
 
 // Diagnostic logging
-if (!isServer) {
-  console.log("%c[API Config] Resolved Base URL:", "color: #ff00ff; font-weight: bold;", API_BASE_URL || "(relative)");
+if (typeof window !== "undefined") {
+  console.log("%c[API Config] Dynamic Base URL Discovery:", "color: #ff00ff; font-weight: bold; background: #330033; padding: 2px 6px; border-radius: 4px;");
+  console.log("  - Resolved BASE:", API_BASE_URL || "(relative)");
+  console.log("  - Window Origin:", window.location.origin);
+  console.log("  - Env VITE_API_URL:", import.meta.env.VITE_API_URL || "not set");
+  console.log("  - Env VITE_BACKEND_PORT:", import.meta.env.VITE_BACKEND_PORT || "not set");
 }
 
 
