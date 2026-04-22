@@ -158,6 +158,49 @@ function PropertyPage() {
         </div>
       </section>
 
+      {/* Location Section */}
+      <section className="py-20 md:py-32 bg-paper-soft overflow-hidden border-t border-ink/5">
+        <div className="container-luxe max-w-[1300px]">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-[44px] md:text-[56px] uppercase tracking-[0.2em] mb-6 text-ink/80">
+              Location
+            </h2>
+            <p className="text-[13px] md:text-[14px] font-medium text-ink/60 max-w-2xl mx-auto tracking-tight uppercase">
+              The Sandars is perfectly situated to enjoy both the tranquility of Surrey and the convenience of nearby links
+            </p>
+          </div>
+          
+          <div className="relative aspect-[21/9] w-full bg-ink/5 rounded-2xl overflow-hidden group shadow-2xl cursor-pointer">
+            {/* Clickable Overlay */}
+            <a 
+              href="https://maps.app.goo.gl/vZpbzjuWmdsk9yQG6" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="absolute inset-0 z-10 block"
+              aria-label="View on Google Maps"
+            >
+              <div className="absolute top-6 right-6 z-20 bg-white/90 backdrop-blur-md px-5 py-2 rounded-full border border-ink/5 text-[10px] uppercase tracking-widest font-bold text-ink opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 shadow-lg">
+                View on Google Maps
+              </div>
+            </a>
+
+            <iframe
+              title="Location Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19909.12130396001!2d-0.5208182!3d51.4096667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487677cee2ffa2ad%3A0xdbc5af55e8767878!2sEden%20Retirement%20Living!5e0!3m2!1sen!2sin!4v1713763784123!5m2!1sen!2sin"
+              className="absolute inset-0 w-full h-full border-0 grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            {/* Keeping the button as well for explicit CTA */}
+            <div className="absolute bottom-6 right-6 z-20 pointer-events-none">
+              <div className="bg-white/90 backdrop-blur-md px-6 py-3 rounded-full border border-ink/5 text-[11px] uppercase tracking-[0.2em] font-bold text-ink shadow-xl">
+                Open in Google Maps
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

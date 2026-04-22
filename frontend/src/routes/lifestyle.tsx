@@ -201,10 +201,24 @@ function LifestylePage() {
           </p>
         </div>
         <div className="max-w-7xl mx-auto px-4">
-          <div className="aspect-[21/9] w-full bg-[#3a4545] rounded-xl overflow-hidden grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 relative group">
+          <div className="aspect-[21/9] w-full bg-[#3a4545] rounded-xl overflow-hidden grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 relative group cursor-pointer shadow-2xl">
              <div className="absolute inset-0 bg-black/20 z-10" />
+             
+             {/* Clickable Overlay */}
+             <a 
+               href="https://maps.app.goo.gl/vZpbzjuWmdsk9yQG6" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="absolute inset-0 z-20 block"
+               aria-label="View on Google Maps"
+             >
+               <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-5 py-2 rounded-full border border-ink/5 text-[10px] uppercase tracking-widest font-bold text-ink opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 shadow-xl">
+                 View on Google Maps
+               </div>
+             </a>
+
              <iframe 
-               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155453.64024317!2d-0.6121430032959104!3d51.428574343881434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48767769970c8a6f%3A0xe54848483f848484!2sEgham%2C%20UK!5e0!3m2!1sen!2s!4v1713430000000!5m2!1sen!2s" 
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19909.12130396001!2d-0.5208182!3d51.4096667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487677cee2ffa2ad%3A0xdbc5af55e8767878!2sEden%20Retirement%20Living!5e0!3m2!1sen!2sin!4v1713763784123!5m2!1sen!2sin" 
                width="100%" 
                height="100%" 
                style={{ border: 0 }} 
