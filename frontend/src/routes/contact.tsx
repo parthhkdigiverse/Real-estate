@@ -86,9 +86,9 @@ function ContactPage() {
         <div
           className="relative w-full h-[160px] md:h-[180px]"
           style={{
-            backgroundColor: "oklch(0.52 0.035 200)",
+            backgroundColor: "var(--lake)",
             backgroundImage:
-              "repeating-linear-gradient(45deg, oklch(0.46 0.03 200) 0 1px, transparent 1px 22px), repeating-linear-gradient(-45deg, oklch(0.46 0.03 200) 0 1px, transparent 1px 22px)",
+              "repeating-linear-gradient(45deg, oklch(0.6 0.05 230) 0 1px, transparent 1px 22px), repeating-linear-gradient(-45deg, oklch(0.6 0.05 230) 0 1px, transparent 1px 22px)",
           }}
         >
           <div className="container-luxe h-full flex items-center">
@@ -118,7 +118,7 @@ function ContactPage() {
               Contact us
             </h2>
 
-            <div className="inline-block bg-[oklch(0.85_0.18_95)] text-[oklch(0.55_0.22_27)] font-bold tracking-wide text-2xl md:text-3xl px-5 py-3">
+            <div className="inline-block bg-gold text-ink font-bold tracking-wide text-2xl md:text-3xl px-5 py-3 shadow-sm">
               savills
             </div>
 
@@ -155,7 +155,7 @@ function ContactPage() {
       {/* Find us — teal section */}
       <section
         className="py-16 md:py-24 text-paper text-center"
-        style={{ backgroundColor: "oklch(0.52 0.035 200)" }}
+        style={{ backgroundColor: "var(--lake)" }}
       >
         <div className="container-luxe">
           <h2 className="font-display text-3xl md:text-5xl uppercase tracking-[0.08em] text-paper">
@@ -213,7 +213,7 @@ function ContactPage() {
       </section>
 
       {/* Get in touch */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: "oklch(0.86 0.025 60)" }}>
+      <section className="py-20 md:py-28" style={{ backgroundColor: "var(--stone)" }}>
         <div className="container-luxe">
           <h2 className="font-display text-3xl md:text-5xl uppercase tracking-tight text-center text-ink/85 mb-14 md:mb-16">
             Get in touch
@@ -249,7 +249,7 @@ function ContactPage() {
               <button
                 type="submit"
                 className="inline-flex items-center justify-center px-8 py-3 text-paper text-[12px] tracking-display uppercase transition-colors duration-300 hover:opacity-90"
-                style={{ backgroundColor: "oklch(0.52 0.035 200)" }}
+                style={{ backgroundColor: "var(--lake)" }}
               >
                 Submit
               </button>
@@ -282,8 +282,7 @@ function Field({ label, name, type = "text", placeholder, required }: FieldProps
     <div>
       <label
         htmlFor={name}
-        className="block text-[13px] font-semibold tracking-wide mb-2"
-        style={{ color: "oklch(0.35 0.04 240)" }}
+        className="block text-[13px] font-semibold tracking-wide mb-2 text-ink/70"
       >
         {label}
       </label>
@@ -293,7 +292,7 @@ function Field({ label, name, type = "text", placeholder, required }: FieldProps
         type={type}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-paper border border-[oklch(0.52_0.035_200/0.5)] px-4 py-3 text-ink placeholder:text-ink/40 focus:outline-none focus:border-[oklch(0.52_0.035_200)] focus:ring-1 focus:ring-[oklch(0.52_0.035_200/0.4)] transition-colors"
+        className="w-full bg-paper border border-lake/30 px-4 py-3 text-ink placeholder:text-ink/40 focus:outline-none focus:border-lake focus:ring-1 focus:ring-lake/40 transition-colors"
       />
     </div>
   );

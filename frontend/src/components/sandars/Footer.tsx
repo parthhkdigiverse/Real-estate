@@ -176,8 +176,8 @@ export const Footer = () => {
           <div className="lg:text-right flex flex-col items-start lg:items-end justify-between h-full">
             <div className="space-y-4">
               <h4 className="text-[11px] uppercase tracking-[0.3em] text-gold font-bold">Representation</h4>
-              <div className="bg-[#FFED00] w-[110px] h-[110px] flex items-center justify-center p-4">
-                <span className="text-[#D0021B] text-[24px] font-black lowercase tracking-tighter font-sans leading-none">
+              <div className="bg-gold w-[110px] h-[110px] flex items-center justify-center p-4 shadow-xl">
+                <span className="text-ink text-[24px] font-black lowercase tracking-tighter font-sans leading-none">
                   savills
                 </span>
               </div>

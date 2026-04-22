@@ -37,15 +37,18 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Bespoke Sandars tokens */
+  /* Bespoke Sandars tokens — New Palette */
   --color-ink: var(--ink);
   --color-paper: var(--paper);
   --color-paper-soft: var(--paper-soft);
-  --color-rose: var(--rose);
-  --color-rose-soft: var(--rose-soft);
   --color-gold: var(--gold);
-  --color-teal: var(--teal);
-  --color-sand: var(--sand);
+  --color-grey: var(--grey);
+  --color-sage: var(--sage);
+  --color-lake: var(--lake);
+  --color-brick: var(--brick);
+  --color-stone: var(--stone);
+  --color-forest: var(--forest);
+  --color-road: var(--road);
 
   --font-display: "Cormorant Garamond", "Times New Roman", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -57,67 +60,72 @@
 :root {
   --radius: 0.25rem;
 
-  --background: oklch(0.975 0.012 80);
-  --foreground: oklch(0.27 0.02 260);
+  /* Primary Brand Definitions */
+  --ink: oklch(0.282 0.003 260); /* Charcoal #2E2E2E */
+  --paper: oklch(0.963 0.005 85); /* Off-White #F6F3EF */
+  --paper-soft: oklch(0.93 0.005 85);
+  --gold: oklch(0.628 0.088 81); /* Warm Gold #B08B56 */
+  --grey: oklch(0.674 0.002 260); /* Cool Grey #9A9A9A */
+  
+  /* Accents */
+  --sage: oklch(0.735 0.038 145); /* Sage Green #A4B49E */
+  --lake: oklch(0.675 0.065 230); /* Lake Blue #6FA2B8 */
+  --brick: oklch(0.495 0.115 35); /* Brick Red #A44E3F */
+  --stone: oklch(0.805 0.025 85); /* Natural Stone #D4C7B3 */
+  --forest: oklch(0.355 0.04 165); /* Forest Green #355042 */
+  --road: oklch(0.675 0.05 85); /* Road Tan #B89E81 */
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.27 0.02 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.27 0.02 260);
+  /* shadcn/ui Standard Mappings */
+  --background: var(--paper);
+  --foreground: var(--ink);
 
-  --primary: oklch(0.5 0.03 10);
-  --primary-foreground: oklch(0.975 0.012 80);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
 
-  --secondary: oklch(0.93 0.012 60);
-  --secondary-foreground: oklch(0.27 0.02 260);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
 
-  --muted: oklch(0.94 0.01 60);
-  --muted-foreground: oklch(0.5 0.015 260);
+  --secondary: var(--stone);
+  --secondary-foreground: var(--ink);
 
-  --accent: oklch(0.5 0.03 10);
-  --accent-foreground: oklch(0.975 0.012 80);
+  --muted: var(--paper-soft);
+  --muted-foreground: var(--grey);
+
+  --accent: var(--gold);
+  --accent-foreground: var(--paper);
 
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.88 0.012 60);
-  --input: oklch(0.88 0.012 60);
-  --ring: oklch(0.5 0.03 10);
-
-  /* Sandars bespoke */
-  --ink: oklch(0.27 0.02 260);
-  --paper: oklch(0.975 0.012 80);
-  --paper-soft: oklch(0.94 0.012 60);
-  --rose: oklch(0.5 0.03 10);
-  --rose-soft: oklch(0.78 0.025 10);
-  --gold: oklch(0.7 0.12 75);
-  --teal: oklch(0.52 0.035 200);
-  --sand: oklch(0.86 0.025 60);
+  --border: oklch(0.282 0.003 260 / 0.1);
+  --input: oklch(0.282 0.003 260 / 0.1);
+  --ring: var(--gold);
 }
 
 .dark {
   --background: oklch(0.18 0.015 260);
-  --foreground: oklch(0.97 0.012 80);
+  --foreground: var(--paper);
   --card: oklch(0.22 0.015 260);
-  --card-foreground: oklch(0.97 0.012 80);
+  --card-foreground: var(--paper);
   --popover: oklch(0.22 0.015 260);
-  --popover-foreground: oklch(0.97 0.012 80);
-  --primary: oklch(0.78 0.03 10);
+  --popover-foreground: var(--paper);
+  --primary: var(--gold);
   --primary-foreground: oklch(0.18 0.015 260);
   --secondary: oklch(0.28 0.015 260);
-  --secondary-foreground: oklch(0.97 0.012 80);
+  --secondary-foreground: var(--paper);
   --muted: oklch(0.28 0.015 260);
-  --muted-foreground: oklch(0.72 0.015 60);
-  --accent: oklch(0.78 0.03 10);
+  --muted-foreground: var(--grey);
+  --accent: var(--gold);
   --accent-foreground: oklch(0.18 0.015 260);
   --border: oklch(0.32 0.012 260);
   --input: oklch(0.32 0.012 260);
-  --ring: oklch(0.78 0.03 10);
+  --ring: var(--gold);
 
   --ink: oklch(0.97 0.012 80);
   --paper: oklch(0.18 0.015 260);
   --paper-soft: oklch(0.22 0.015 260);
-  --rose: oklch(0.78 0.03 10);
 }
 
 @layer base {

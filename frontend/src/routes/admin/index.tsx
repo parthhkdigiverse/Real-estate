@@ -92,8 +92,8 @@ function Dashboard() {
               <AreaChart data={stats?.trends || []}>
                 <defs>
                   <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="oklch(0.5 0.03 10)" stopOpacity={0.1}/>
-                    <stop offset="95%" stopColor="oklch(0.5 0.03 10)" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="var(--brick)" stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor="var(--brick)" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -107,14 +107,14 @@ function Dashboard() {
                 />
                 <YAxis stroke="#bbb" fontSize={9} axisLine={false} tickLine={false} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: "#fff", border: "1px solid #eee", borderRadius: "12px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)" }}
-                  itemStyle={{ color: "oklch(0.27 0.02 260)" }}
-                  labelStyle={{ color: "oklch(0.5 0.03 10)", fontWeight: "bold", fontSize: "10px" }}
+                  contentStyle={{ backgroundColor: "var(--paper)", border: "1px solid var(--border)", borderRadius: "12px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)" }}
+                  itemStyle={{ color: "var(--ink)" }}
+                  labelStyle={{ color: "var(--brick)", fontWeight: "bold", fontSize: "10px" }}
                 />
                 <Area 
                   type="monotone" 
                   dataKey="count" 
-                  stroke="oklch(0.5 0.03 10)" 
+                  stroke="var(--brick)" 
                   fillOpacity={1} 
                   fill="url(#colorCount)" 
                   strokeWidth={3}
