@@ -8,7 +8,7 @@ interface LogoProps {
 }
 
 export const Logo = ({ className = "", variant = 'dark', size = 'md' }: LogoProps) => {
-  const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
+  const [imgError, setImgError] = useState(false);
 
   const sizes = {
     sm: { img: 'h-8', sandars: 'text-[10px]' },
@@ -16,6 +16,7 @@ export const Logo = ({ className = "", variant = 'dark', size = 'md' }: LogoProp
     lg: { img: 'h-24 md:h-28', sandars: 'text-[20px] md:text-[24px]' }
   };
 
+  // Using /assets/ as it maps to the public directory in Vite
   const logoPath = "/assets/eden-logo.png";
 
   return (
@@ -24,21 +25,20 @@ export const Logo = ({ className = "", variant = 'dark', size = 'md' }: LogoProp
       aria-label="Eden Retirement Living — home"
       className={`group no-underline inline-flex items-center gap-4 ${className}`}
     >
-      <div className="relative flex items-center min-w-4">
-        {/* Hidden image to test loading without showing broken icon */}
-        <img 
-          src={logoPath} 
-          alt="" 
-          onLoad={() => setStatus('success')}
-          onError={() => setStatus('error')}
-          className={`absolute inset-0 opacity-0 pointer-events-none pointer-events-none ${
-            status === 'success' ? 'static opacity-100' : ''
-          } ${sizes[size].img} w-auto object-contain transition-opacity duration-300 group-hover:opacity-80 ${
-            variant === 'light' ? 'brightness-0 invert' : ''
-          }`}
-        />
-        
-        {status !== 'success' && (
+      <div className="relative flex items-center">
+        {!imgError ? (
+          <img 
+            src={logoPath} 
+            alt="Eden" 
+            onError={() => {
+              console.error("Logo failed to load at:", logoPath);
+              setImgError(true);
+            }}
+            className={`${sizes[size].img} w-auto object-contain transition-all duration-300 group-hover:opacity-80 ${
+              variant === 'light' ? 'brightness-0 invert' : ''
+            }`}
+          />
+        ) : (
           <div className="flex flex-col items-start select-none">
             <span className={`font-['Great_Vibes'] leading-[0.6] transition-colors ${
               size === 'sm' ? 'text-[24px]' : size === 'md' ? 'text-[32px]' : 'text-[64px]'
