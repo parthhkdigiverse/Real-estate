@@ -44,6 +44,7 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap",
       },
+      { rel: "icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: appCss },
     ],
   }),
