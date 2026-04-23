@@ -249,7 +249,7 @@ function ContactPage() {
               <Field 
                 label="Message" 
                 name="message" 
-                placeholder="How can we help you?" 
+                placeholder="Your enquiry or specific requirements..." 
                 isTextArea 
               />
 

@@ -247,7 +247,7 @@ function ApartmentDetailPage() {
               
               <div className="md:col-span-2 space-y-8">
                 <Field label="Postcode" name="postcode" placeholder="Post code" />
-                <Field label="Message" name="message" placeholder="Optional message" isTextArea />
+                <Field label="Message" name="message" placeholder="Any specific requirements or questions?" isTextArea />
               </div>
             </div>
             
