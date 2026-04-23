@@ -86,9 +86,9 @@ function ContactPage() {
         <div
           className="relative w-full h-[160px] md:h-[180px]"
           style={{
-            backgroundColor: "var(--lake)",
+            backgroundColor: "var(--forest)",
             backgroundImage:
-              "repeating-linear-gradient(45deg, oklch(0.6 0.05 230) 0 1px, transparent 1px 22px), repeating-linear-gradient(-45deg, oklch(0.6 0.05 230) 0 1px, transparent 1px 22px)",
+              "repeating-linear-gradient(45deg, oklch(0.4 0.04 160) 0 1px, transparent 1px 22px), repeating-linear-gradient(-45deg, oklch(0.4 0.04 160) 0 1px, transparent 1px 22px)",
           }}
         >
           <div className="container-luxe h-full flex items-center">
@@ -155,7 +155,7 @@ function ContactPage() {
       {/* Find us — teal section */}
       <section
         className="py-16 md:py-24 text-paper text-center"
-        style={{ backgroundColor: "var(--lake)" }}
+        style={{ backgroundColor: "var(--forest)" }}
       >
         <div className="container-luxe">
           <h2 className="font-display text-3xl md:text-5xl uppercase tracking-[0.08em] text-paper">
@@ -255,8 +255,8 @@ function ContactPage() {
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center px-8 py-3 text-paper text-[12px] tracking-display uppercase transition-colors duration-300 hover:opacity-90"
-                style={{ backgroundColor: "var(--lake)" }}
+                className="inline-flex items-center justify-center px-8 py-3 text-paper text-[12px] tracking-display uppercase transition-colors duration-300 hover:bg-forest"
+                style={{ backgroundColor: "var(--gold)" }}
               >
                 Submit
               </button>
@@ -301,7 +301,7 @@ function Field({ label, name, type = "text", placeholder, required, isTextArea }
           placeholder={placeholder}
           required={required}
           rows={4}
-          className="w-full bg-paper border border-lake/30 px-4 py-3 text-ink placeholder:text-ink/40 focus:outline-none focus:border-lake focus:ring-1 focus:ring-lake/40 transition-colors resize-none"
+          className="w-full bg-paper border border-road/30 px-4 py-3 text-ink placeholder:text-ink/40 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/40 transition-colors resize-none"
         />
       ) : (
         <input
@@ -310,7 +310,7 @@ function Field({ label, name, type = "text", placeholder, required, isTextArea }
           type={type}
           placeholder={placeholder}
           required={required}
-          className="w-full bg-paper border border-lake/30 px-4 py-3 text-ink placeholder:text-ink/40 focus:outline-none focus:border-lake focus:ring-1 focus:ring-lake/40 transition-colors"
+          className="w-full bg-paper border border-road/30 px-4 py-3 text-ink placeholder:text-ink/40 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/40 transition-colors"
         />
       )}
     </div>
