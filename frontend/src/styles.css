@@ -151,6 +151,7 @@
     background-color: var(--color-paper);
     color: var(--color-grey); /* Body Copy / Subtext */
     font-family: var(--font-sans);
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
   }
 

@@ -290,7 +290,7 @@ function Field({ label, name, type = "text", placeholder, required, isTextArea }
     <div>
       <label
         htmlFor={name}
-        className="block text-[13px] font-semibold tracking-wide mb-2 text-ink/70"
+        className="block text-[14px] font-semibold tracking-wide mb-2 text-ink/70"
       >
         {label}
       </label>

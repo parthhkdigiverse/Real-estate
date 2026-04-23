@@ -46,7 +46,7 @@ export const Header = () => {
   };
 
   const renderLink = (item: NavItem, onClick?: () => void) => {
-    const cls = `inline-flex items-center gap-1 text-[15px] text-ink/85 hover:text-gold transition-colors duration-300 ${
+    const cls = `inline-flex items-center gap-1 text-[16px] text-ink/85 hover:text-gold transition-colors duration-300 ${
       isActive(item) ? "text-gold underline underline-offset-[10px] decoration-1" : ""
     }`;
     if (item.to) {

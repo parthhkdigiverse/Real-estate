@@ -283,7 +283,7 @@ function ApartmentDetailPage() {
 function Field({ label, name, type = "text", placeholder, required, isTextArea }: any) {
   return (
     <div className="space-y-2.5">
-      <label htmlFor={name} className="block text-[11px] font-bold tracking-[0.1em] uppercase text-ink/80">
+      <label htmlFor={name} className="block text-[13px] font-bold tracking-[0.1em] uppercase text-ink/80">
         {label} {required && <span className="text-gold opacity-50">*</span>}
       </label>
       {isTextArea ? (
