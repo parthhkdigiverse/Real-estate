@@ -22,7 +22,7 @@ export function AdminCard({ title, children, className, description }: AdminCard
       </div>
       <div>{children}</div>
       {/* Subtle brand touch */}
-      <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-rose/5 blur-3xl" />
+      <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-gold/5 blur-3xl" />
     </div>
   );
 }

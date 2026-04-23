@@ -87,7 +87,7 @@ function SettingsPage() {
   if (loading) {
     return (
       <div className="flex h-96 items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-rose" />
+        <Loader2 className="h-8 w-8 animate-spin text-gold" />
       </div>
     );
   }
@@ -113,7 +113,7 @@ function SettingsPage() {
                 type="text" 
                 value={settings.phone}
                 onChange={(e) => setSettings({...settings, phone: e.target.value})}
-                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors"
+                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-gold/30 transition-colors"
                 required
               />
             </div>
@@ -126,7 +126,7 @@ function SettingsPage() {
                 type="email" 
                 value={settings.email}
                 onChange={(e) => setSettings({...settings, email: e.target.value})}
-                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors"
+                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-gold/30 transition-colors"
                 required
               />
             </div>
@@ -139,7 +139,7 @@ function SettingsPage() {
                 value={settings.address}
                 onChange={(e) => setSettings({...settings, address: e.target.value})}
                 rows={2}
-                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors resize-none"
+                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-gold/30 transition-colors resize-none"
                 required
               />
             </div>
@@ -157,7 +157,7 @@ function SettingsPage() {
                 type="text" 
                 value={settings.instagram}
                 onChange={(e) => setSettings({...settings, instagram: e.target.value})}
-                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors px-4 py-3"
+                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-gold/30 transition-colors px-4 py-3"
                 placeholder="https://instagram.com/..."
               />
             </div>
@@ -170,7 +170,7 @@ function SettingsPage() {
                 type="text" 
                 value={settings.facebook}
                 onChange={(e) => setSettings({...settings, facebook: e.target.value})}
-                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors px-4 py-3"
+                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-gold/30 transition-colors px-4 py-3"
                 placeholder="https://facebook.com/..."
               />
             </div>
@@ -183,7 +183,7 @@ function SettingsPage() {
                 type="text" 
                 value={settings.linkedin}
                 onChange={(e) => setSettings({...settings, linkedin: e.target.value})}
-                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors px-4 py-3"
+                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-gold/30 transition-colors px-4 py-3"
                 placeholder="https://linkedin.com/..."
               />
             </div>
@@ -201,7 +201,7 @@ function SettingsPage() {
                 type="text" 
                 value={settings.video_url}
                 onChange={(e) => setSettings({...settings, video_url: e.target.value})}
-                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-rose/30 transition-colors"
+                className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-gold/30 transition-colors"
                 placeholder="https://www.youtube.com/watch?v=..."
               />
               <p className="text-[9px] text-ink/30 italic">This link will be used for the "Watch the Film" button on the home page hero section.</p>
@@ -213,7 +213,7 @@ function SettingsPage() {
           <button 
             type="submit"
             disabled={saving}
-            className="flex items-center gap-3 px-8 py-4 bg-ink text-white rounded-2xl text-xs uppercase tracking-[0.2em] font-bold hover:bg-rose transition-all shadow-xl shadow-ink/10 active:scale-95 disabled:opacity-50"
+            className="flex items-center gap-3 px-8 py-4 bg-ink text-white rounded-2xl text-xs uppercase tracking-[0.2em] font-bold hover:bg-gold transition-all shadow-xl shadow-ink/10 active:scale-95 disabled:opacity-50"
           >
             {saving ? (
               <Loader2 className="h-5 w-5 animate-spin" />

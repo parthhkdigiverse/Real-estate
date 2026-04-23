@@ -55,7 +55,7 @@ function Dashboard() {
           <p className="mt-2 text-ink/40 font-medium uppercase tracking-widest text-[10px]">Management & Analytics Dashboard</p>
         </div>
         <div className="text-right">
-          <p className="text-[10px] font-bold text-rose uppercase tracking-widest">Property Portfolio</p>
+          <p className="text-[10px] font-bold text-gold uppercase tracking-widest">Property Portfolio</p>
           <p className="font-display text-2xl text-ink">SURREY, UK</p>
         </div>
       </div>
@@ -130,7 +130,7 @@ function Dashboard() {
           <div className="space-y-6 mt-4">
             {stats?.recentInquiries?.map((inquiry: any) => (
               <div key={inquiry._id} className="flex items-center gap-4 border-b border-ink/5 pb-4 last:border-0 last:pb-0 group">
-                <div className="h-10 w-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-paper-soft text-ink/30 border border-ink/5 group-hover:bg-rose group-hover:text-white transition-all">
+                <div className="h-10 w-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-paper-soft text-ink/30 border border-ink/5 group-hover:bg-gold group-hover:text-white transition-all">
                   <User className="h-5 w-5" />
                 </div>
                 <div className="flex-1 overflow-hidden">
@@ -141,7 +141,7 @@ function Dashboard() {
                       <span>{new Date(inquiry.createdAt).toLocaleDateString()}</span>
                     </div>
                     {inquiry.property && (
-                      <span className="text-[9px] font-bold text-rose uppercase tracking-tighter truncate max-w-[80px]">
+                      <span className="text-[9px] font-bold text-gold uppercase tracking-tighter truncate max-w-[80px]">
                         {inquiry.apartment ? `${inquiry.property}: ${inquiry.apartment}` : inquiry.property}
                       </span>
                     )}

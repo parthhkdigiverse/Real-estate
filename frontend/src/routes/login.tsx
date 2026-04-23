@@ -53,7 +53,7 @@ function LoginPage() {
             <h1 className="font-display text-4xl md:text-5xl text-ink uppercase tracking-tight mb-4">
               Administrator
             </h1>
-            <p className="text-sm tracking-[0.2em] text-rose uppercase font-medium">
+            <p className="text-sm tracking-[0.2em] text-gold uppercase font-medium">
               The Sandars Portal
             </p>
           </div>
@@ -61,7 +61,7 @@ function LoginPage() {
           <div className="bg-paper-soft border border-border/40 p-10 md:p-12 shadow-card transition-all duration-500 hover:shadow-xl">
             <form onSubmit={handleLogin} className="space-y-6">
               {error && (
-                <div className="bg-rose/10 border border-rose/20 text-rose text-xs tracking-wide p-4 font-medium text-center">
+                <div className="bg-gold/10 border border-gold/20 text-gold text-xs tracking-wide p-4 font-medium text-center">
                   {error}
                 </div>
               )}
@@ -74,7 +74,7 @@ function LoginPage() {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full bg-paper border border-border/60 px-5 py-4 text-sm focus:outline-none focus:border-rose/50 transition-colors"
+                  className="w-full bg-paper border border-border/60 px-5 py-4 text-sm focus:outline-none focus:border-gold/50 transition-colors"
                   placeholder="Enter your username"
                   required
                 />
@@ -88,7 +88,7 @@ function LoginPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-paper border border-border/60 px-5 py-4 text-sm focus:outline-none focus:border-rose/50 transition-colors"
+                  className="w-full bg-paper border border-border/60 px-5 py-4 text-sm focus:outline-none focus:border-gold/50 transition-colors"
                   placeholder="Enter your password"
                   required
                 />
@@ -97,7 +97,7 @@ function LoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-rose text-paper py-5 text-[11px] tracking-display uppercase font-bold hover:bg-ink transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                className="w-full bg-gold text-paper py-5 text-[11px] tracking-display uppercase font-bold hover:bg-ink transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
                 {isLoading ? (
                   <>

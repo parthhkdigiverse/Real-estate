@@ -132,7 +132,7 @@ function ContactPage() {
                 <>
                   <p>
                     <span className="font-medium">Phone:</span>{" "}
-                    <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="hover:text-rose transition-colors">
+                    <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="hover:text-gold transition-colors">
                       {contact.phone}
                     </a>
                   </p>
@@ -140,7 +140,7 @@ function ContactPage() {
                     <span className="font-medium">Email:</span>{" "}
                     <a
                       href={`mailto:${contact.email}`}
-                      className="text-ink/70 underline underline-offset-2 hover:text-rose transition-colors"
+                      className="text-ink/70 underline underline-offset-2 hover:text-gold transition-colors"
                     >
                       {contact.email}
                     </a>
@@ -202,7 +202,7 @@ function ContactPage() {
           {/* Location Label - Refined */}
           <div className="absolute bottom-8 left-8 z-20 pointer-events-none hidden md:block">
             <div className="bg-white/80 backdrop-blur-xl px-6 py-3 border border-ink/5 shadow-2xl flex items-center gap-4">
-              <div className="w-1 h-8 bg-rose/40" />
+              <div className="w-1 h-8 bg-gold/40" />
               <div className="flex flex-col">
                 <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-ink">Eden Retirement Living</span>
                 <span className="text-[10px] uppercase tracking-[0.1em] text-ink/40">{contact.address || "Cemex House, Coldharbour Ln, Egham TW20 8TD"}</span>
@@ -255,7 +255,7 @@ function ContactPage() {
               </button>
 
               {submitted && (
-                <p className="text-sm text-rose mt-2" role="status">
+                <p className="text-sm text-gold mt-2" role="status">
                   Thank you — we will be in touch shortly.
                 </p>
               )}

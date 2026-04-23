@@ -24,7 +24,7 @@ export function Sidebar() {
       <div className="mb-10 px-4 py-8">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-white">
           THE SANDRAS
-          <span className="block text-[9px] tracking-[0.3em] text-rose font-sans font-bold uppercase">Administrator</span>
+          <span className="block text-[9px] tracking-[0.3em] text-gold font-sans font-bold uppercase">Administrator</span>
         </h1>
       </div>
 
@@ -38,7 +38,7 @@ export function Sidebar() {
               className={cn(
                 "group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all",
                 isActive 
-                  ? "bg-rose text-white shadow-lg shadow-rose/20" 
+                  ? "bg-gold text-white shadow-lg shadow-gold/20" 
                   : "text-white/50 hover:bg-white/5 hover:text-white"
               )}
             >
@@ -52,7 +52,7 @@ export function Sidebar() {
       <div className="mt-auto border-t border-white/5 pt-6 px-2">
         <button 
           onClick={handleLogout}
-          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/30 transition-all hover:bg-rose/10 hover:text-rose cursor-pointer"
+          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/30 transition-all hover:bg-gold/10 hover:text-gold cursor-pointer"
         >
           <LogOut className="h-4 w-4" />
           Sign Out

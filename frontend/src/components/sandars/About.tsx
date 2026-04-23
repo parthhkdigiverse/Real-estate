@@ -14,11 +14,11 @@ export const About = () => (
             height={896}
           />
         </div>
-        <div className="hidden md:block absolute -right-6 -bottom-6 h-32 w-32 border border-rose/40" />
+        <div className="hidden md:block absolute -right-6 -bottom-6 h-32 w-32 border border-gold/40" />
       </div>
 
       <div>
-        <p className="text-xs tracking-display uppercase text-rose mb-5">Discover</p>
+        <p className="text-xs tracking-display uppercase text-gold mb-5">Discover</p>
         <h2 className="font-display text-4xl md:text-5xl leading-[1.1] text-ink mb-6">
           Discover the Sandars
         </h2>
@@ -35,7 +35,7 @@ export const About = () => (
         </div>
         <a
           href="#lifestyle"
-          className="inline-block mt-10 text-sm tracking-display uppercase text-rose hover:text-ink border-b border-rose/40 hover:border-ink pb-1 transition-colors"
+          className="inline-block mt-10 text-sm tracking-display uppercase text-gold hover:text-ink border-b border-gold/40 hover:border-ink pb-1 transition-colors"
         >
           Discover more about the Sandars lifestyle
         </a>

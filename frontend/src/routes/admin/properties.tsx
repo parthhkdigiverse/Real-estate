@@ -148,7 +148,7 @@ function PropertiesPage() {
           </button>
           <button 
             onClick={(e) => handleDelete(item.id || item._id, e)}
-            className="rounded-xl p-2.5 text-ink/20 transition-all hover:bg-rose/10 hover:text-rose active:scale-90"
+            className="rounded-xl p-2.5 text-ink/20 transition-all hover:bg-gold/10 hover:text-gold active:scale-90"
           >
             <Trash2 className="h-4 w-4" />
           </button>

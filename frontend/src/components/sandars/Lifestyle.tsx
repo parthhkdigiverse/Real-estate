@@ -5,7 +5,7 @@ export const Lifestyle = () => (
   <section id="lifestyle" className="py-20 md:py-32">
     <div className="container-luxe grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div className="order-2 lg:order-1">
-        <p className="text-xs tracking-display uppercase text-rose mb-5">Sandars lifestyle</p>
+        <p className="text-xs tracking-display uppercase text-gold mb-5">Sandars lifestyle</p>
         <h2 className="font-display text-4xl md:text-5xl leading-[1.1] text-ink mb-6">
           A close-knit community where you belong
         </h2>
@@ -19,7 +19,7 @@ export const Lifestyle = () => (
         </div>
         <Link
           to="/lifestyle"
-          className="inline-block mt-10 text-sm tracking-display uppercase text-rose hover:text-ink border-b border-rose/40 hover:border-ink pb-1 transition-colors"
+          className="inline-block mt-10 text-sm tracking-display uppercase text-gold hover:text-ink border-b border-gold/40 hover:border-ink pb-1 transition-colors"
         >
           Discover more
         </Link>

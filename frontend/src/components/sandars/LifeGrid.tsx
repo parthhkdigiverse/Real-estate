@@ -18,7 +18,7 @@ export const LifeGrid = () => (
   <section className="py-20 md:py-28 bg-paper-soft">
     <div className="container-luxe">
       <div className="text-center max-w-2xl mx-auto mb-14 md:mb-20">
-        <p className="text-xs tracking-display uppercase text-rose mb-5">Image caption</p>
+        <p className="text-xs tracking-display uppercase text-gold mb-5">Image caption</p>
         <h2 className="font-display text-4xl md:text-5xl leading-[1.1] text-ink">
           Life at the Sandars
         </h2>

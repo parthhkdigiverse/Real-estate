@@ -246,7 +246,7 @@ function Specification() {
                   <ul className="space-y-3 pb-4 text-ink/75 leading-relaxed">
                     {s.items.map((it) => (
                       <li key={it} className="flex gap-3">
-                        <span className="mt-2 inline-block h-1 w-1 rounded-full bg-rose shrink-0" />
+                        <span className="mt-2 inline-block h-1 w-1 rounded-full bg-gold shrink-0" />
                         <span>{it}</span>
                       </li>
                     ))}
@@ -270,7 +270,7 @@ function Specification() {
           <button
             onClick={() => setLightbox(null)}
             aria-label="Close"
-            className="absolute top-6 right-6 text-paper hover:text-rose transition-colors"
+            className="absolute top-6 right-6 text-paper hover:text-gold transition-colors"
           >
             <X className="h-7 w-7" />
           </button>

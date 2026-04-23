@@ -75,7 +75,7 @@ function NewsletterPage() {
       header: "Subscriber Details",
       accessor: (item: any) => (
         <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-paper-soft text-ink p-1 border border-ink/5 group-hover:bg-rose group-hover:text-white transition-all">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-paper-soft text-ink p-1 border border-ink/5 group-hover:bg-gold group-hover:text-white transition-all">
             <Mail className="h-5 w-5" />
           </div>
           <div>
@@ -92,7 +92,7 @@ function NewsletterPage() {
           <div className="text-[10px] font-bold text-ink/80 uppercase tracking-widest leading-tight">
             Digital Footer Opt-in
           </div>
-          <div className="text-[9px] font-bold text-rose uppercase tracking-tighter">
+          <div className="text-[9px] font-bold text-gold uppercase tracking-tighter">
             Direct Lead
           </div>
         </div>
@@ -116,7 +116,7 @@ function NewsletterPage() {
       accessor: (item: any) => (
         <button 
           onClick={() => handleDelete(item.id || item._id)}
-          className="rounded-xl p-3 text-ink/10 transition-all hover:bg-rose/10 hover:text-rose active:scale-90"
+          className="rounded-xl p-3 text-ink/10 transition-all hover:bg-gold/10 hover:text-gold active:scale-90"
         >
           <Trash2 className="h-4.5 w-4.5" />
         </button>
@@ -133,7 +133,7 @@ function NewsletterPage() {
         </div>
         <button 
           onClick={exportCSV}
-          className="flex items-center gap-2 px-6 py-3 bg-ink text-white rounded-xl text-[10px] uppercase tracking-widest font-bold hover:bg-rose transition-all group"
+          className="flex items-center gap-2 px-6 py-3 bg-ink text-white rounded-xl text-[10px] uppercase tracking-widest font-bold hover:bg-gold transition-all group"
         >
           <Download className="h-3.5 w-3.5 group-hover:-translate-y-0.5 transition-transform" />
           Export Subscriber List

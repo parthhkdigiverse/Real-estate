@@ -21,7 +21,7 @@ export const Route = createFileRoute("/lifestyle")({
 
 function LifestylePage() {
   return (
-    <main className="bg-paper text-ink selection:bg-rose/20">
+    <main className="bg-paper text-ink selection:bg-gold/20">
       <Header />
 
       {/* Hero Section */}
@@ -60,7 +60,7 @@ function LifestylePage() {
       </section>
 
       {/* Section 2: Leisure Suite */}
-      <section className="py-24 md:py-32 bg-[#e8ded1]">
+      <section className="py-24 md:py-32 bg-stone/20">
         <div className="container-luxe grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ink leading-tight">
@@ -102,7 +102,7 @@ function LifestylePage() {
       </section>
 
       {/* Section 4: Concierge */}
-      <section className="py-24 md:py-32 bg-[#3a3d46] text-white">
+      <section className="py-24 md:py-32 bg-ink text-paper">
         <div className="container-luxe grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-10">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-tight">
@@ -191,7 +191,7 @@ function LifestylePage() {
       </section>
 
       {/* Section 6: Location */}
-      <section className="py-24 md:py-32 bg-[#5e6d6d] text-white overflow-hidden">
+      <section className="py-24 md:py-32 bg-sage text-paper overflow-hidden">
         <div className="container-luxe text-center space-y-8 mb-16">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-tight">
             LOCATION OF THE SANDARS
@@ -200,7 +200,7 @@ function LifestylePage() {
             "The Sandars is just 2.5 miles drive from junction 13 of the M25 or 4.2 miles from junction 11 of the M25 and is located on the edge of the beautiful village of Thorpe in Surrey, just off Norlands Lane."          
           </p>
         </div>
-        <div className="relative w-full h-[450px] md:h-[600px] bg-[#3a4545] overflow-hidden grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 group cursor-pointer shadow-2xl">
+        <div className="relative w-full h-[450px] md:h-[600px] bg-ink/90 overflow-hidden grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 group cursor-pointer shadow-2xl">
            <div className="absolute inset-0 bg-black/20 z-10" />
            
            {/* Clickable Overlay */}
@@ -229,7 +229,7 @@ function LifestylePage() {
            {/* Location Label - Refined */}
            <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
              <div className="bg-white/80 backdrop-blur-xl px-6 py-3 border border-ink/5 shadow-2xl flex items-center gap-4 group-hover:bg-white transition-colors duration-500">
-               <div className="w-1 h-8 bg-rose/40" />
+               <div className="w-1 h-8 bg-gold/40" />
                <div className="flex flex-col">
                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-ink">Thorpe, Surrey</span>
                  <span className="text-[8px] uppercase tracking-[0.1em] text-ink/40">The Sandars Lifestyle</span>
@@ -240,7 +240,7 @@ function LifestylePage() {
       </section>
 
       {/* Section 7: On Your Doorstep */}
-      <section className="py-24 md:py-32 bg-[#5e6d6d] text-white">
+      <section className="py-24 md:py-32 bg-sage text-paper overflow-hidden">
         <div className="container-luxe grid md:grid-cols-2 gap-16 items-center">
           <div className="relative group">
             <div className="aspect-square md:aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">

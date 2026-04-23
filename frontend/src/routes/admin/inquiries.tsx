@@ -56,7 +56,7 @@ function InquiriesPage() {
       header: "Lead Profile",
       accessor: (item: any) => (
         <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-paper-soft text-ink p-1 border border-ink/5 group-hover:bg-rose group-hover:text-white transition-all">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-paper-soft text-ink p-1 border border-ink/5 group-hover:bg-gold group-hover:text-white transition-all">
             <User className="h-5 w-5" />
           </div>
           <div>
@@ -78,7 +78,7 @@ function InquiriesPage() {
             {item.property || "General Inquiry"}
           </div>
           {item.apartment && (
-            <div className="text-[9px] font-bold text-rose uppercase tracking-tighter">
+            <div className="text-[9px] font-bold text-gold uppercase tracking-tighter">
               {item.apartment}
             </div>
           )}
@@ -90,12 +90,12 @@ function InquiriesPage() {
       accessor: (item: any) => (
         <div className="space-y-2">
           <div className="flex items-center gap-2.5 text-xs text-ink/60 font-medium">
-            <Mail className="h-3.5 w-3.5 text-rose opacity-50" />
+            <Mail className="h-3.5 w-3.5 text-gold opacity-50" />
             {item.email}
           </div>
           {item.telephone && (
             <div className="flex items-center gap-2.5 text-xs text-ink/60 font-medium">
-              <Phone className="h-3.5 w-3.5 text-rose opacity-50" />
+              <Phone className="h-3.5 w-3.5 text-gold opacity-50" />
               {item.telephone}
             </div>
           )}
@@ -120,7 +120,7 @@ function InquiriesPage() {
       accessor: (item: any) => (
         <button 
           onClick={() => handleDelete(item.id || item._id)}
-          className="rounded-xl p-3 text-ink/10 transition-all hover:bg-rose/10 hover:text-rose active:scale-90"
+          className="rounded-xl p-3 text-ink/10 transition-all hover:bg-gold/10 hover:text-gold active:scale-90"
         >
           <Trash2 className="h-4.5 w-4.5" />
         </button>

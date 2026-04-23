@@ -60,7 +60,7 @@ function DimensionsEditor({ nestIndex, control, register }: { nestIndex: number,
         <button
           type="button"
           onClick={() => append({ room: "", metric: "", imperial: "" })}
-          className="flex items-center gap-1.5 text-[10px] font-bold text-rose uppercase tracking-widest hover:text-ink transition-colors"
+          className="flex items-center gap-1.5 text-[10px] font-bold text-gold uppercase tracking-widest hover:text-ink transition-colors"
         >
           <Plus className="h-3 w-3" />
           Add Room
@@ -98,7 +98,7 @@ function DimensionsEditor({ nestIndex, control, register }: { nestIndex: number,
               <button
                 type="button"
                 onClick={() => remove(index)}
-                className="text-ink/20 hover:text-rose transition-colors"
+                className="text-ink/20 hover:text-gold transition-colors"
               >
                 <Trash2 className="h-3.5 w-3.5" />
               </button>
@@ -205,7 +205,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
       >
         <form onSubmit={handleSubmit(onSave, onErrors)} className="space-y-8">
           {Object.keys(errors).length > 0 && (
-            <div className="flex flex-col gap-3 rounded-xl bg-rose/5 p-5 text-rose border border-rose/10 animate-in fade-in slide-in-from-top-2">
+            <div className="flex flex-col gap-3 rounded-xl bg-gold/5 p-5 text-gold border border-gold/10 animate-in fade-in slide-in-from-top-2">
               <div className="flex items-center gap-3">
                 <AlertCircle className="h-5 w-5 flex-shrink-0" />
                 <p className="text-xs font-bold uppercase tracking-widest">
@@ -219,9 +219,9 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                     
                     {/* Diagnostic detail for apartments */}
                     {key === 'apartments' && Array.isArray(error) && (
-                      <ul className="mt-1 space-y-1 pl-4 border-l border-rose/20">
+                      <ul className="mt-1 space-y-1 pl-4 border-l border-gold/20">
                         {error.map((err, idx) => err && (
-                          <li key={idx} className="text-[9px] text-rose/70">
+                          <li key={idx} className="text-[9px] text-gold/70">
                             Unit {idx + 1}: {watch(`apartments.${idx}.name`) || "Untitled"} 
                             (Please check dimensions or required fields)
                           </li>
@@ -238,19 +238,19 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
               <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Property Name</label>
               <input
                 {...register("name")}
-                className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all placeholder:text-ink/20"
                 placeholder="The Sandras"
               />
-              {errors.name && <p className="mt-1 text-xs text-rose">{errors.name.message}</p>}
+              {errors.name && <p className="mt-1 text-xs text-gold">{errors.name.message}</p>}
             </div>
             <div>
               <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Slug (URL path)</label>
               <input
                 {...register("slug")}
-                className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all placeholder:text-ink/20"
                 placeholder="the-sandras"
               />
-              {errors.slug && <p className="mt-1 text-xs text-rose">{errors.slug.message}</p>}
+              {errors.slug && <p className="mt-1 text-xs text-gold">{errors.slug.message}</p>}
             </div>
 
             <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -267,7 +267,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                   type="button"
                   onClick={() => heroInputRef.current?.click()}
                   disabled={uploading["hero"]}
-                  className="group relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-dashed border-ink/10 bg-paper-soft transition-all hover:border-rose/40 disabled:opacity-50"
+                  className="group relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-dashed border-ink/10 bg-paper-soft transition-all hover:border-gold/40 disabled:opacity-50"
                 >
                   {heroUrl ? (
                     <>
@@ -278,20 +278,20 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                     </>
                   ) : (
                     <div className="flex flex-col items-center justify-center h-full gap-3 p-4 text-center">
-                      <div className="rounded-full bg-ink/5 p-4 transition-colors group-hover:bg-rose/5">
-                        <ImageIcon className="h-6 w-6 text-ink/20 group-hover:text-rose/40" />
+                      <div className="rounded-full bg-ink/5 p-4 transition-colors group-hover:bg-gold/5">
+                        <ImageIcon className="h-6 w-6 text-ink/20 group-hover:text-gold/40" />
                       </div>
                       <span className="text-[10px] font-bold text-ink/30 uppercase tracking-widest group-hover:text-ink">Click to Browse System</span>
                     </div>
                   )}
                   {uploading["hero"] && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-paper/80 backdrop-blur-sm">
-                      <Loader2 className="h-8 w-8 text-rose animate-spin mb-2" />
-                      <span className="text-[10px] font-bold text-rose uppercase tracking-widest">Uploading...</span>
+                      <Loader2 className="h-8 w-8 text-gold animate-spin mb-2" />
+                      <span className="text-[10px] font-bold text-gold uppercase tracking-widest">Uploading...</span>
                     </div>
                   )}
                 </button>
-                {errors.hero && <p className="mt-1 text-xs text-rose">{errors.hero.message}</p>}
+                {errors.hero && <p className="mt-1 text-xs text-gold">{errors.hero.message}</p>}
               </div>
 
               <div className="space-y-4">
@@ -307,7 +307,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                   type="button"
                   onClick={() => featuredInputRef.current?.click()}
                   disabled={uploading["featured_image"]}
-                  className="group relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-dashed border-ink/10 bg-paper-soft transition-all hover:border-rose/40 disabled:opacity-50"
+                  className="group relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-dashed border-ink/10 bg-paper-soft transition-all hover:border-gold/40 disabled:opacity-50"
                 >
                   {featuredUrl ? (
                     <>
@@ -318,16 +318,16 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                     </>
                   ) : (
                     <div className="flex flex-col items-center justify-center h-full gap-3 p-4 text-center">
-                      <div className="rounded-full bg-ink/5 p-4 transition-colors group-hover:bg-rose/5">
-                        <ImageIcon className="h-6 w-6 text-ink/20 group-hover:text-rose/40" />
+                      <div className="rounded-full bg-ink/5 p-4 transition-colors group-hover:bg-gold/5">
+                        <ImageIcon className="h-6 w-6 text-ink/20 group-hover:text-gold/40" />
                       </div>
                       <span className="text-[10px] font-bold text-ink/30 uppercase tracking-widest group-hover:text-ink">Click to Browse System</span>
                     </div>
                   )}
                   {uploading["featured_image"] && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-paper/80 backdrop-blur-sm">
-                      <Loader2 className="h-8 w-8 text-rose animate-spin mb-2" />
-                      <span className="text-[10px] font-bold text-rose uppercase tracking-widest">Uploading...</span>
+                      <Loader2 className="h-8 w-8 text-gold animate-spin mb-2" />
+                      <span className="text-[10px] font-bold text-gold uppercase tracking-widest">Uploading...</span>
                     </div>
                   )}
                 </button>
@@ -339,7 +339,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                 <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Property Tag</label>
                 <input
                   {...register("tag")}
-                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all placeholder:text-ink/20"
                   placeholder="For Sale"
                 />
               </div>
@@ -347,7 +347,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                 <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Availability Date</label>
                 <input
                   {...register("date")}
-                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all placeholder:text-ink/20"
                   placeholder="18 November 2024"
                 />
               </div>
@@ -359,7 +359,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                       {...register("is_featured")}
                       className="peer sr-only"
                     />
-                    <div className="h-6 w-11 rounded-full bg-ink/10 transition-colors peer-checked:bg-rose group-hover:bg-ink/20"></div>
+                    <div className="h-6 w-11 rounded-full bg-ink/10 transition-colors peer-checked:bg-gold group-hover:bg-ink/20"></div>
                     <div className="absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition-transform peer-checked:translate-x-5"></div>
                   </div>
                   <span className="text-[10px] font-bold text-ink/40 uppercase tracking-widest group-hover:text-ink transition-colors">Featured</span>
@@ -372,14 +372,14 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                 <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Show Apartment Note</label>
                 <input
                   {...register("showApartmentNote")}
-                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all placeholder:text-ink/20"
                 />
               </div>
               <div>
                 <label className="mb-2 block text-[10px] font-bold text-ink/40 uppercase tracking-widest">Sales Hours</label>
                 <input
                   {...register("hours")}
-                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                  className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all placeholder:text-ink/20"
                 />
               </div>
             </div>
@@ -389,9 +389,9 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
               <textarea
                 {...register("intro")}
                 rows={3}
-                className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-rose focus:ring-1 focus:ring-rose/20 focus:outline-none transition-all placeholder:text-ink/20"
+                className="w-full rounded-xl border border-ink/10 bg-paper-soft px-4 py-3 text-ink focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all placeholder:text-ink/20"
               />
-              {errors.intro && <p className="mt-1 text-xs text-rose">{errors.intro.message}</p>}
+              {errors.intro && <p className="mt-1 text-xs text-gold">{errors.intro.message}</p>}
             </div>
           </div>
 
@@ -429,10 +429,10 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                     >
                       <div className="flex flex-1 items-center gap-6">
                         <div className="flex-1 overflow-hidden">
-                          <p className="text-rose text-[15px] md:text-base flex items-center gap-2 font-display">
+                          <p className="text-gold text-[15px] md:text-base flex items-center gap-2 font-display">
                             {field.name || "Untitled Unit"}
                             {errors.apartments?.[index] && (
-                              <span className="flex h-2 w-2 rounded-full bg-rose animate-pulse" title="Validation errors in this unit" />
+                              <span className="flex h-2 w-2 rounded-full bg-gold animate-pulse" title="Validation errors in this unit" />
                             )}
                           </p>
                         </div>
@@ -471,7 +471,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                             e.stopPropagation();
                             remove(index);
                           }}
-                          className="text-ink/20 hover:text-rose transition-colors"
+                          className="text-ink/20 hover:text-gold transition-colors"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -508,7 +508,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                               <label className="text-[10px] font-bold text-ink/40 uppercase tracking-widest">Detail Page Header</label>
                               <div 
                                 onClick={() => apartmentImageRefs.current[aptHeroPath]?.click()}
-                                className="group relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl border-2 border-dashed border-ink/10 bg-white hover:border-rose/40 transition-all"
+                                className="group relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl border-2 border-dashed border-ink/10 bg-white hover:border-gold/40 transition-all"
                               >
                                 <input 
                                   type="file" 
@@ -527,7 +527,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                                 )}
                                 {uploading[aptHeroPath] && (
                                   <div className="absolute inset-0 flex items-center justify-center bg-white/80">
-                                    <Loader2 className="h-5 w-5 text-rose animate-spin" />
+                                    <Loader2 className="h-5 w-5 text-gold animate-spin" />
                                   </div>
                                 )}
                               </div>
@@ -539,7 +539,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                               <label className="text-[10px] font-bold text-ink/40 uppercase tracking-widest">Floorplan</label>
                               <div 
                                 onClick={() => apartmentImageRefs.current[aptFloorplanPath]?.click()}
-                                className="group relative aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-xl border-2 border-dashed border-ink/10 bg-white hover:border-rose/40 transition-all"
+                                className="group relative aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-xl border-2 border-dashed border-ink/10 bg-white hover:border-gold/40 transition-all"
                               >
                                 <input 
                                   type="file" 
@@ -558,7 +558,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                                 )}
                                 {uploading[aptFloorplanPath] && (
                                   <div className="absolute inset-0 flex items-center justify-center bg-white/80">
-                                    <Loader2 className="h-5 w-5 text-rose animate-spin" />
+                                    <Loader2 className="h-5 w-5 text-gold animate-spin" />
                                   </div>
                                 )}
                               </div>
@@ -568,7 +568,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                               <label className="text-[10px] font-bold text-ink/40 uppercase tracking-widest">Location Map</label>
                               <div 
                                 onClick={() => apartmentImageRefs.current[aptMapPath]?.click()}
-                                className="group relative aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-xl border-2 border-dashed border-ink/10 bg-white hover:border-rose/40 transition-all"
+                                className="group relative aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-xl border-2 border-dashed border-ink/10 bg-white hover:border-gold/40 transition-all"
                               >
                                 <input 
                                   type="file" 
@@ -587,7 +587,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
                                 )}
                                 {uploading[aptMapPath] && (
                                   <div className="absolute inset-0 flex items-center justify-center bg-white/80">
-                                    <Loader2 className="h-5 w-5 text-rose animate-spin" />
+                                    <Loader2 className="h-5 w-5 text-gold animate-spin" />
                                   </div>
                                 )}
                               </div>
@@ -618,7 +618,7 @@ export function PropertyEditor({ initialData, onSave: initialOnSave, onCancel }:
             </button>
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-xl bg-rose px-8 py-3 text-sm font-semibold text-white shadow-xl shadow-rose/20 transition-all hover:scale-[1.02] active:scale-95"
+              className="flex items-center gap-2 rounded-xl bg-gold px-8 py-3 text-sm font-semibold text-white shadow-xl shadow-gold/20 transition-all hover:scale-[1.02] active:scale-95"
             >
               <Save className="h-4 w-4" />
               Save Changes

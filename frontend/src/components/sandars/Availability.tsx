@@ -27,7 +27,7 @@ export const Availability = () => {
   if (loading) {
     return (
       <div className="py-20 flex justify-center items-center bg-paper-soft">
-        <Loader2 className="h-10 w-10 text-rose animate-spin" />
+        <Loader2 className="h-10 w-10 text-gold animate-spin" />
       </div>
     );
   }
@@ -41,7 +41,7 @@ export const Availability = () => {
       <div className="container-luxe">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
           <div>
-            <p className="text-xs tracking-display uppercase text-rose mb-5">Featured availability</p>
+            <p className="text-xs tracking-display uppercase text-gold mb-5">Featured availability</p>
             <h2 className="font-display text-4xl md:text-5xl text-ink leading-[1.1]">
               Homes currently available
             </h2>
@@ -60,7 +60,7 @@ export const Availability = () => {
                   width={1024}
                   height={768}
                 />
-                <span className="absolute top-4 left-4 bg-rose text-paper text-[11px] tracking-display uppercase px-3 py-1.5">
+                <span className="absolute top-4 left-4 bg-gold text-paper text-[11px] tracking-display uppercase px-3 py-1.5">
                   {p.tag || "For Sale"}
                 </span>
               </div>
@@ -73,7 +73,7 @@ export const Availability = () => {
                   <Link
                     to="/properties/$slug"
                     params={{ slug: p.slug }}
-                    className="text-xs tracking-display uppercase text-rose hover:text-ink border-b border-rose/40 hover:border-ink pb-0.5 transition-colors"
+                    className="text-xs tracking-display uppercase text-gold hover:text-ink border-b border-gold/40 hover:border-ink pb-0.5 transition-colors"
                   >
                     Take a look
                   </Link>

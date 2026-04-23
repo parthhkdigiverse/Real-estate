@@ -33,7 +33,7 @@ export const Route = createFileRoute("/properties/$slug/")({
       <Header />
       <div className="container-luxe pt-40 pb-32 text-center">
         <h1 className="font-display text-5xl">Property not found</h1>
-        <Link to="/" className="mt-6 inline-block text-rose underline">Go home</Link>
+        <Link to="/" className="mt-6 inline-block text-gold underline">Go home</Link>
       </div>
       <Footer />
     </main>
@@ -83,7 +83,7 @@ function PropertyPage() {
               </p>
               <Link
                 to="/contact"
-                className="mt-8 inline-flex items-center bg-paper/95 text-ink px-8 py-3.5 text-[11px] tracking-display uppercase hover:bg-rose hover:text-paper transition-colors duration-500"
+                className="mt-8 inline-flex items-center bg-paper/95 text-ink px-8 py-3.5 text-[11px] tracking-display uppercase hover:bg-gold hover:text-paper transition-colors duration-500"
               >
                 Book a visit
               </Link>
@@ -125,7 +125,7 @@ function PropertyPage() {
               >
                 <div className="md:col-span-4">
                   <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Apartment</p>
-                  <p className="text-rose text-[15px] md:text-base">{a.name}</p>
+                  <p className="text-gold text-[15px] md:text-base">{a.name}</p>
                 </div>
                 <div className="md:col-span-2">
                   <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Type</p>
@@ -147,7 +147,7 @@ function PropertyPage() {
                       aptSlug: a.slug 
                     }}
                     aria-label={`Take a look at ${a.name}`}
-                    className="inline-flex items-center justify-center bg-rose text-paper px-5 py-2.5 text-[10px] tracking-display uppercase hover:bg-ink transition-colors duration-300"
+                    className="inline-flex items-center justify-center bg-gold text-paper px-5 py-2.5 text-[10px] tracking-display uppercase hover:bg-ink transition-colors duration-300"
                   >
                     Take a look
                   </Link>
@@ -196,7 +196,7 @@ function PropertyPage() {
           {/* Location Label - Refined */}
           <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
             <div className="bg-white/80 backdrop-blur-xl px-6 py-3 border border-ink/5 shadow-2xl flex items-center gap-4">
-              <div className="w-1 h-8 bg-rose/40" />
+              <div className="w-1 h-8 bg-gold/40" />
               <div className="flex flex-col">
                 <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-ink">Eden Retirement Living</span>
                 <span className="text-[8px] uppercase tracking-[0.1em] text-ink/40">Cemex House, Egham TW20 8TD</span>

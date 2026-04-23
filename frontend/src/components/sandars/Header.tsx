@@ -46,8 +46,8 @@ export const Header = () => {
   };
 
   const renderLink = (item: NavItem, onClick?: () => void) => {
-    const cls = `inline-flex items-center gap-1 text-[15px] text-ink/85 hover:text-rose transition-colors duration-300 ${
-      isActive(item) ? "text-rose underline underline-offset-[10px] decoration-1" : ""
+    const cls = `inline-flex items-center gap-1 text-[15px] text-ink/85 hover:text-gold transition-colors duration-300 ${
+      isActive(item) ? "text-gold underline underline-offset-[10px] decoration-1" : ""
     }`;
     if (item.to) {
       return (
@@ -85,7 +85,7 @@ export const Header = () => {
                       <li key={c.label}>
                         <Link
                           to={c.to}
-                          className="block px-5 py-2.5 text-sm text-ink/80 hover:text-rose hover:bg-paper-soft transition-colors"
+                          className="block px-5 py-2.5 text-sm text-ink/80 hover:text-gold hover:bg-paper-soft transition-colors"
                         >
                           {c.label}
                         </Link>
@@ -124,7 +124,7 @@ export const Header = () => {
                       <Link
                         to={c.to}
                         onClick={() => setOpen(false)}
-                        className="text-sm text-ink/70 hover:text-rose"
+                        className="text-sm text-ink/70 hover:text-gold"
                       >
                         {c.label}
                       </Link>

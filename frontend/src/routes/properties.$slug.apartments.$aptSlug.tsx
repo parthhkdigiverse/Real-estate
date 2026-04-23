@@ -211,7 +211,7 @@ function ApartmentDetailPage() {
           {/* Location Label - Refined */}
           <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
             <div className="bg-white/80 backdrop-blur-xl px-6 py-3 border border-ink/5 shadow-2xl flex items-center gap-4">
-              <div className="w-1 h-8 bg-rose/40" />
+              <div className="w-1 h-8 bg-gold/40" />
               <div className="flex flex-col">
                 <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-ink">Eden Retirement Living</span>
                 <span className="text-[8px] uppercase tracking-[0.1em] text-ink/40">Cemex House, Egham TW20 8TD</span>
@@ -222,7 +222,7 @@ function ApartmentDetailPage() {
       </section>
 
       {/* Inquiry Form Section - Light Beige Background */}
-      <section className="py-24 md:py-36 bg-[#F2ECE4]">
+      <section className="py-24 md:py-36 bg-stone/30">
         <div className="container-luxe max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="font-display text-4xl md:text-[54px] uppercase tracking-[0.1em] text-ink leading-tight">
@@ -253,7 +253,7 @@ function ApartmentDetailPage() {
             <div className="flex justify-center pt-8">
               <button
                 type="submit"
-                className="w-full md:w-auto px-16 py-4 bg-[#576D69] text-white text-[11px] font-bold tracking-[0.2em] uppercase transition-all hover:bg-ink hover:scale-[1.02] active:scale-95 disabled:opacity-50"
+                className="w-full md:w-auto px-16 py-4 bg-sage text-paper text-[11px] font-bold tracking-[0.2em] uppercase transition-all hover:bg-ink hover:scale-[1.02] active:scale-95 disabled:opacity-50"
                 disabled={submitted}
               >
                 {submitted ? "Inquiry Received" : "Submit"}
@@ -283,7 +283,7 @@ function Field({ label, name, type = "text", placeholder, required }: any) {
   return (
     <div className="space-y-2.5">
       <label htmlFor={name} className="block text-[11px] font-bold tracking-[0.1em] uppercase text-ink/80">
-        {label} {required && <span className="text-rose opacity-50">*</span>}
+        {label} {required && <span className="text-gold opacity-50">*</span>}
       </label>
       <input
         id={name}
@@ -291,7 +291,7 @@ function Field({ label, name, type = "text", placeholder, required }: any) {
         type={type}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-white border border-transparent border-b-ink/10 px-0 py-3 text-ink text-sm placeholder:text-ink/20 focus:outline-none focus:border-b-rose transition-all bg-transparent"
+        className="w-full bg-white border border-transparent border-b-ink/10 px-0 py-3 text-ink text-sm placeholder:text-ink/20 focus:outline-none focus:border-b-gold transition-all bg-transparent"
       />
     </div>
   );
