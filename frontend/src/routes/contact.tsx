@@ -126,21 +126,25 @@ function ContactPage() {
                 </div>
               ) : (
                 <>
-                  <p>
-                    <span className="font-medium">Phone:</span>{" "}
-                    <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="hover:text-gold transition-colors">
-                      {contact.phone}
-                    </a>
-                  </p>
-                  <p>
-                    <span className="font-medium">Email:</span>{" "}
-                    <a
-                      href={`mailto:${contact.email}`}
-                      className="text-ink/70 underline underline-offset-2 hover:text-gold transition-colors"
-                    >
-                      {contact.email}
-                    </a>
-                  </p>
+                  {contact.phone && contact.phone.trim() !== "" && (
+                    <p>
+                      <span className="font-medium">Phone:</span>{" "}
+                      <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="hover:text-gold transition-colors">
+                        {contact.phone}
+                      </a>
+                    </p>
+                  )}
+                  {contact.email && contact.email.trim() !== "" && (
+                    <p>
+                      <span className="font-medium">Email:</span>{" "}
+                      <a
+                        href={`mailto:${contact.email}`}
+                        className="text-ink/70 underline underline-offset-2 hover:text-gold transition-colors"
+                      >
+                        {contact.email}
+                      </a>
+                    </p>
+                  )}
                 </>
               )}
             </div>

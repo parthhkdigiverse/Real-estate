@@ -150,12 +150,16 @@ export const Footer = () => {
                 </div>
               ) : (
                 <>
-                  <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="block text-paper text-lg font-bold font-sans hover:text-gold transition-colors">
-                    {contact.phone}
-                  </a>
-                  <a href={`mailto:${contact.email}`} className="block text-paper/60 text-sm font-bold font-sans hover:text-paper transition-colors">
-                    {contact.email}
-                  </a>
+                  {contact.phone && contact.phone.trim() !== "" && (
+                    <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="block text-paper text-lg font-bold font-sans hover:text-gold transition-colors">
+                      {contact.phone}
+                    </a>
+                  )}
+                  {contact.email && contact.email.trim() !== "" && (
+                    <a href={`mailto:${contact.email}`} className="block text-paper/60 text-sm font-bold font-sans hover:text-paper transition-colors">
+                      {contact.email}
+                    </a>
+                  )}
                 </>
               )}
             </div>

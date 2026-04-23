@@ -98,17 +98,19 @@ export const Hero = () => {
             <ChevronRight className="h-5 w-5" />
           </button>
 
-          <a 
-            href={settings?.video_url || "#"} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="absolute right-4 md:right-8 top-4 md:top-8 z-20 inline-flex items-center gap-2 text-paper/95 hover:text-paper text-sm tracking-display uppercase group"
-          >
-            <span className="grid place-items-center h-9 w-9 rounded-full bg-paper/20 backdrop-blur-sm border border-paper/40 group-hover:bg-gold transition-all duration-300">
-              <Play className="h-3.5 w-3.5 fill-paper" />
-            </span>
-            Watch the film
-          </a>
+          {settings?.video_url && (
+            <a 
+              href={settings.video_url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="absolute right-4 md:right-8 top-4 md:top-8 z-20 inline-flex items-center gap-2 text-paper/95 hover:text-paper text-sm tracking-display uppercase group"
+            >
+              <span className="grid place-items-center h-9 w-9 rounded-full bg-paper/20 backdrop-blur-sm border border-paper/40 group-hover:bg-gold transition-all duration-300">
+                <Play className="h-3.5 w-3.5 fill-paper" />
+              </span>
+              Watch the film
+            </a>
+          )}
 
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-2">
             {SLIDES.map((_, idx) => (

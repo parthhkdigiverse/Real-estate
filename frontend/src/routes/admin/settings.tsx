@@ -114,7 +114,6 @@ function SettingsPage() {
                 value={settings.phone}
                 onChange={(e) => setSettings({...settings, phone: e.target.value})}
                 className="w-full bg-paper border border-ink/5 rounded-xl px-4 py-3 font-medium focus:outline-none focus:border-gold/30 transition-colors"
-                required
               />
             </div>
             <div className="space-y-2">
