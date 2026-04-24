@@ -147,12 +147,50 @@
     scroll-behavior: smooth;
   }
 
+  /* 
+   * Global brand pattern set on body. 
+   * Sections use semi-transparent backgrounds to let this show through at exactly 4% intensity.
+   */
   body {
     background-color: var(--color-paper);
     color: var(--color-grey); /* Body Copy / Subtext */
     font-family: var(--font-sans);
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* 
+   * Global brand pattern - Visible Design Layer
+   * Placed via pseudo-elements to ensure it's behind images but visible on all pages.
+   */
+  section, header, footer, main {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+  }
+
+  section::before, header::before, footer::before, main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url('/favicon.ico');
+    background-repeat: repeat;
+    background-size: 60px 60px;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.02; /* Increased to ensure visibility as requested */
+  }
+
+  :root {
+    --paper: #F6F3EF;
+    --paper-soft: #EFEBE4; 
+    --forest: #355042;
+    --stone: #D4C7B3;
+    --sage: #A4B49E;
+    --lake: #6FA2B8;
+    --brick: #A44E3F;
   }
 
   h1, h2, h3, h4, h5, h6 {
