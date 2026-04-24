@@ -108,53 +108,61 @@ function PropertyPage() {
           <p className="text-ink/65 mb-10 md:mb-12">
             For individual apartment details and specification please select from the list below
           </p>
- 
-          <div className="hidden md:grid grid-cols-12 gap-6 px-2 pb-4 text-[11px] tracking-display uppercase text-ink/60 border-b border-border">
-            <div className="col-span-4">Apartment</div>
-            <div className="col-span-2">Type</div>
-            <div className="col-span-2">Size</div>
-            <div className="col-span-2">Price</div>
-            <div className="col-span-2"></div>
-          </div>
-
-          <ul className="divide-y divide-border">
-            {property.apartments.map((a: any) => (
-              <li
-                key={a.slug}
-                className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 items-start md:items-center px-2 py-5 md:py-6 group"
-              >
-                <div className="md:col-span-4">
-                  <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Apartment</p>
-                  <p className="text-gold text-[15px] md:text-base">{a.name}</p>
-                </div>
-                <div className="md:col-span-2">
-                  <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Type</p>
-                  <p className="text-ink/85 text-sm md:text-base">{a.type}</p>
-                </div>
-                <div className="md:col-span-2">
-                  <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Size</p>
-                  <p className="text-ink/85 text-sm md:text-base">{a.size}</p>
-                </div>
-                <div className="md:col-span-2">
-                  <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Price</p>
-                  <p className="text-ink/85 text-sm md:text-base">{a.price}</p>
-                </div>
-                <div className="md:col-span-2 md:text-right">
-                  <Link
-                    to="/properties/$slug/apartments/$aptSlug"
-                    params={{ 
-                      slug: property.slug || params.slug, 
-                      aptSlug: a.slug 
-                    }}
-                    aria-label={`Take a look at ${a.name}`}
-                    className="inline-flex items-center justify-center bg-gold text-paper px-5 py-2.5 text-[10px] tracking-display uppercase hover:bg-ink transition-colors duration-300"
+  
+          {property.apartments && property.apartments.length > 0 ? (
+            <>
+              <div className="hidden md:grid grid-cols-12 gap-6 px-2 pb-4 text-[11px] tracking-display uppercase text-ink/60 border-b border-border">
+                <div className="col-span-4">Apartment</div>
+                <div className="col-span-2">Type</div>
+                <div className="col-span-2">Size</div>
+                <div className="col-span-2">Price</div>
+                <div className="col-span-2"></div>
+              </div>
+    
+              <ul className="divide-y divide-border">
+                {property.apartments.map((a: any) => (
+                  <li
+                    key={a.slug}
+                    className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 items-start md:items-center px-2 py-5 md:py-6 group"
                   >
-                    Take a look
-                  </Link>
-                </div>
-              </li>
-            ))}
-          </ul>
+                    <div className="md:col-span-4">
+                      <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Apartment</p>
+                      <p className="text-gold text-[15px] md:text-base">{a.name}</p>
+                    </div>
+                    <div className="md:col-span-2">
+                      <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Type</p>
+                      <p className="text-ink/85 text-sm md:text-base">{a.type}</p>
+                    </div>
+                    <div className="md:col-span-2">
+                      <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Size</p>
+                      <p className="text-ink/85 text-sm md:text-base">{a.size}</p>
+                    </div>
+                    <div className="md:col-span-2">
+                      <p className="md:hidden text-[11px] tracking-display uppercase text-ink/50 mb-1">Price</p>
+                      <p className="text-ink/85 text-sm md:text-base">{a.price}</p>
+                    </div>
+                    <div className="md:col-span-2 md:text-right">
+                      <Link
+                        to="/properties/$slug/apartments/$aptSlug"
+                        params={{ 
+                          slug: property.slug || params.slug, 
+                          aptSlug: a.slug 
+                        }}
+                        aria-label={`Take a look at ${a.name}`}
+                        className="inline-flex items-center justify-center bg-gold text-paper px-5 py-2.5 text-[10px] tracking-display uppercase hover:bg-ink transition-colors duration-300"
+                      >
+                        Take a look
+                      </Link>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className="py-24 text-center text-[12px] font-bold uppercase tracking-[0.3em] text-ink/80">
+              Units coming soon — Please check back later
+            </p>
+          )}
         </div>
       </section>
 
