@@ -1,7 +1,7 @@
 import estate from "@/assets/about-estate.jpg";
 
 export const About = () => (
-  <section id="about" className="py-20 md:py-32">
+  <section id="about" className="py-20 md:py-32 reveal">
     <div className="container-luxe grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div className="relative">
         <div className="aspect-[5/6] overflow-hidden">

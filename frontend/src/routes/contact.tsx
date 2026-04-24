@@ -82,7 +82,7 @@ function ContactPage() {
       <Header />
 
       {/* CONTACT banner */}
-      <section className="pt-24 md:pt-28">
+      <section className="pt-24 md:pt-28 reveal">
         <div
           className="relative w-full h-[160px] md:h-[180px]"
           style={{
@@ -100,7 +100,7 @@ function ContactPage() {
       </section>
 
       {/* Contact us */}
-      <section className="bg-paper-soft py-16 md:py-24">
+      <section className="bg-paper-soft py-16 md:py-24 reveal">
         <div className="container-luxe grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div className="aspect-[4/3] overflow-hidden bg-ink/5">
             <img
@@ -154,7 +154,7 @@ function ContactPage() {
 
       {/* Find us — teal section */}
       <section
-        className="py-16 md:py-24 text-paper text-center"
+        className="py-16 md:py-24 text-paper text-center relative overflow-hidden reveal"
         style={{ backgroundColor: "var(--forest)" }}
       >
         <div className="container-luxe">
@@ -176,7 +176,7 @@ function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-12 md:py-16 bg-paper">
+      <section className="py-24 md:py-36 bg-paper-soft reveal">
         <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden group cursor-pointer shadow-inner">
           {/* Clickable Overlay */}
           <a 
