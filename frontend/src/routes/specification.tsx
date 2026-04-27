@@ -159,7 +159,7 @@ function Specification() {
             />
             <div className="absolute inset-0 bg-ink/30" />
             <div className="relative h-full flex items-center justify-center px-6">
-              <h1 className="font-display text-paper text-5xl md:text-7xl lg:text-[88px] uppercase tracking-tight text-center">
+              <h1 className="font-display text-paper text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight text-center">
                 Specification
               </h1>
             </div>

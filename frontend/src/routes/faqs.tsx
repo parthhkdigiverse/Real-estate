@@ -264,7 +264,7 @@ function FaqsPage() {
             />
             <div className="absolute inset-0 bg-ink/35" />
             <div className="relative h-full flex items-center justify-center px-6">
-              <h1 className="font-display text-paper text-5xl md:text-7xl lg:text-[88px] uppercase tracking-tight text-center leading-[1.05]">
+              <h1 className="font-display text-paper text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight text-center leading-[1.05]">
                 Frequently Asked Questions
               </h1>
             </div>

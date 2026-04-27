@@ -70,7 +70,7 @@ function PropertyPage() {
             />
             <div className="absolute inset-0 bg-ink/25" />
             <div className="relative h-full flex flex-col items-center justify-center text-center px-6">
-              <h1 className="font-display text-paper text-5xl md:text-7xl lg:text-[88px] leading-[1.05] uppercase tracking-tight">
+              <h1 className="font-display text-paper text-4xl md:text-6xl lg:text-7xl leading-[1.05] uppercase tracking-tight">
                 {property.name.split(" ").map((w: string, i: number) => (
                   <span key={i} className="block">{w}</span>
                 ))}

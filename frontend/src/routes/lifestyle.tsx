@@ -32,7 +32,7 @@ function LifestylePage() {
           className="absolute inset-0 h-full w-full object-cover brightness-75 scale-105"
         />
         <div className="relative z-10 container-luxe text-center">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-tight max-w-5xl mx-auto drop-shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-white leading-tight max-w-5xl mx-auto drop-shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
             LUXURY LATER LIVING THAT MAKES A REAL DIFFERENCE
           </h1>
         </div>

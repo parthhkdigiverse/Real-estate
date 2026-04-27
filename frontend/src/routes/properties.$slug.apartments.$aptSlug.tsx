@@ -75,7 +75,7 @@ function ApartmentDetailPage() {
               <h2 className="text-paper/90 tracking-display text-[10px] md:text-xs uppercase mb-4">
                 {property.name}
               </h2>
-              <h1 className="font-display text-white text-5xl md:text-7xl lg:text-[84px] uppercase tracking-tight leading-none mb-6">
+              <h1 className="font-display text-white text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight leading-none mb-6">
                 {apartment.name}
               </h1>
               <p className="text-[11px] md:text-xs tracking-display uppercase text-paper/80 mb-2">
