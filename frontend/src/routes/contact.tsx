@@ -93,7 +93,7 @@ function ContactPage() {
         >
           <div className="container-luxe h-full flex items-center">
             <h1 className="font-display text-paper text-3xl md:text-5xl uppercase tracking-[0.06em]">
-              Contact
+              Get in touch
             </h1>
           </div>
         </div>
