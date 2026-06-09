@@ -172,13 +172,13 @@
    * Global brand pattern - Visible Design Layer
    * Placed via pseudo-elements to ensure it's behind images but visible on all pages.
    */
-  section, header, footer, main {
+  header, footer {
     position: relative;
     z-index: 1;
     isolation: isolate;
   }
 
-  section::before, header::before, footer::before, main::before {
+  header::before, footer::before {
     content: "";
     position: absolute;
     inset: 0;
