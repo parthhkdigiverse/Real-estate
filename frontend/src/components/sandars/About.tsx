@@ -14,7 +14,7 @@ export const About = () => (
             height={896}
           />
         </div>
-        <div className="hidden md:block absolute -right-6 -bottom-6 h-32 w-32 border border-brick opacity-40" />
+
       </div>
 
       <div>
